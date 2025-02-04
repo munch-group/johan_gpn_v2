@@ -1,0 +1,24 @@
+<!-- ---
+title: About
+author: My Name
+date: 'April 25nd, 2024'
+format:
+ html:
+  code-fold: true
+--- -->
+
+# Preface { .unnumbered .noexport }
+
+These pages are generated from a Git repository...
+
+
+
+
+## Section { .unnumbered .noexport  }
+
+{{< lipsum 1 >}} 
+
+## Section { .unnumbered .noexport  }
+
+{{< lipsum 1 >}} 
+
