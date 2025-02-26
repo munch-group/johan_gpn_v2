@@ -21,12 +21,27 @@ date-format: long
 degree: Master of Science in Bioinformatics
 ---
 
-# DNA language models are powerful predictors of genome-wide
-variant effects
+# DNA language models are powerful predictors of genome-wide variant effects
 
-A recent study published in the Proceedings of the National Academy of Sciences introduces the Genomic Pre-trained Network (GPN), a model designed to predict genome-wide variant effects through unsupervised pretraining on genomic DNA sequences. The researchers trained GPN using unaligned reference genomes of Arabidopsis thaliana and seven related species within the Brassicales order. GPN successfully learned gene structures and DNA motifs without supervision and outperformed traditional conservation-based predictors like phyloP and phastCons. The model's predictions for A. thaliana are accessible as sequence logos in the UCSC Genome Browser. Additionally, the authors have made the code publicly available, enabling the training of GPN for any species using its DNA sequence alone, facilitating unsupervised prediction of variant effects across entire genomes
+The idea for this project was to evaluate the Genome-Pretrained Network (GPN) introduced in [@Kantorovitz2024] and determine whether it could achieve greater accuracy than traditional methods in predicting genome-wide variant effects.
 
-[@Kantorovitz2024]. 
+The model is designed as a convolutional neural network (CNN) and takes input sequences with a window size of 512. During training, 15% of the positions within each window are masked to enable the model to learn meaningful representations.
+
+The architecture consists of 25 layers, each structured as follows: a dilated convolution layer, followed by an add-and-norm layer with a skip connection from before the dilated convolution. This is followed by a feedforward layer, another add-and-norm layer, and additional skip connections.
+
+A feedforward layer is a fundamental component of neural networks, where inputs pass through one or more fully connected layers with activation functions, transforming data without looping back. This structure helps the model learn complex representations by applying weighted transformations and non-linearities.
+
+A dilated convolution expands the receptive field of a convolutional layer without increasing the number of parameters or reducing resolution. By spacing kernel elements apart, it captures long-range dependencies in sequences, making it particularly useful in genomic data analysis. When combined, dilated convolutions and feedforward layers enhance a model’s ability to recognize patterns across different scales efficiently.
+
+After passing through the 25 layers, the model produces a contextual embedding with a dimension of 512 (D=512), followed by classification layers. The final layer outputs the probabilities of the four nucleotides at each masked position.
+
+The GPN variant effect prediction score is calculated as the log-likelihood ratio between the alternate (ALT) and reference (REF) alleles. Here, L represents the window length in base pairs, and D denotes the embedding dimension.
+
+
+::: {#fig-fig_1_kantorovitz}
+
+![](illustrations/fig_1_kantorovitz.png){width="50%"}
+ 
 
 
 
