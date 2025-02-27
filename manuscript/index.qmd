@@ -19,6 +19,7 @@ key-points:
 date: last-modified
 date-format: long
 degree: Master of Science in Bioinformatics
+bibliography: references.bib
 ---
 
 # DNA language models are powerful predictors of genome-wide variant effects
@@ -43,10 +44,6 @@ The GPN variant effect prediction score is calculated as the log-likelihood rati
 :::
  
 # Genome-wide coancestry reveals details of ancient and recent male-driven reticulation in baboons
-
-
-
-
 
 # References
 ::: {#refs}
