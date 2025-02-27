@@ -19,6 +19,7 @@ key-points:
 date: last-modified
 date-format: long
 degree: Master of Science in Bioinformatics
+bibliography: references.bib
 ---
 
 # DNA language models are powerful predictors of genome-wide variant effects
@@ -39,8 +40,8 @@ The GPN variant effect prediction score is calculated as the log-likelihood rati
 
 
 ::: {#fig-fig_1_kantorovitz}
-
 ![](illustrations/fig_1_kantorovitz.png){width="50%"}
+:::
  
 
 
@@ -69,4 +70,6 @@ The GPN variant effect prediction score is calculated as the log-likelihood rati
 # References
 
 ::: {#refs}
+...
 :::
+
