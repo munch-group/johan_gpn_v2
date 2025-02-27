@@ -1,5 +1,5 @@
 ---
-title: Title of my thesis
+title: Notes to paperes
 subtitle: Some subtitle for my thesis
 authors:
   - name: Johan Ulstrup
@@ -48,7 +48,6 @@ The GPN variant effect prediction score is calculated as the log-likelihood rati
 
 # Genome-wide coancestry reveals details of ancient and recent male-driven reticulation in baboons
 
-[@Erik2023]
 
 
 
