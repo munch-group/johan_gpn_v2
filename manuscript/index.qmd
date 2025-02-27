@@ -21,7 +21,7 @@ date-format: long
 degree: Master of Science in Bioinformatics
 bibliography: references.bib
 ---
-
+# index
 # DNA language models are powerful predictors of genome-wide variant effects
 
 The idea for this project was to evaluate the Genome-Pretrained Network (GPN) introduced in [@Kantorovitz2024] and determine whether it could achieve greater accuracy than traditional methods in predicting genome-wide variant effects.
