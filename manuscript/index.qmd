@@ -23,9 +23,9 @@ degree: Master of Science in Bioinformatics
 
 # DNA language models are powerful predictors of genome-wide variant effects
 
-The idea for this project was to evaluate the Genome-Pretrained Network (GPN) introduced in [@Kantorovitz2024] and determine whether it could achieve greater accuracy than traditional methods in predicting genome-wide variant effects.
+*The idea for this project was to evaluate the Genome-Pretrained Network (GPN) introduced in [@Kantorovitz2024] and determine whether it could achieve greater accuracy than traditional methods in predicting genome-wide variant effects.
 
-The model is designed as a convolutional neural network (CNN) and takes input sequences with a window size of 512. During training, 15% of the positions within each window are masked to enable the model to learn meaningful representations.
+*The model is designed as a convolutional neural network (CNN) and takes input sequences with a window size of 512. During training, 15% of the positions within each window are masked to enable the model to learn meaningful representations.
 
 The architecture consists of 25 layers, each structured as follows: a dilated convolution layer, followed by an add-and-norm layer with a skip connection from before the dilated convolution. This is followed by a feedforward layer, another add-and-norm layer, and additional skip connections.
 
