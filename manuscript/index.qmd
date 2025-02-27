@@ -1,8 +1,8 @@
 ---
-title: Title of my thesis
+title: Notes to paperes
 subtitle: Some subtitle for my thesis
 authors:
-  - name: Your Name
+  - name: Johan Ulstrup
     affiliation: Aarhus University
     roles: writing
     corresponding: true
