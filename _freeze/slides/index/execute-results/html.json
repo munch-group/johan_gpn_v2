@@ -1,0 +1,12 @@
+{
+  "hash": "f8df38a6ecded8a498c95fe37db1ac19",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Example\"\ndata: today\nauthor: \"Your name\"\n---\n\n\n\n## Admixture displacement in each <br>**geographical region** {.smaller}\n\n### This is a subtitle\n\nHere we have some text that may run over several lines of the slide frame,\ndepending on how long it is.\n\n- first item \n    - A sub item\n\nNext, we'll brief review some theme-specific components.\n\n- Note that _all_ of the standard Reveal.js\n[features](https://quarto.org/docs/presentations/revealjs/)\ncan be used with this theme, even if we don't highlight them here.\n\n## Additional theme classes\n\n### Some extra things you can do with the clean theme\n\nSpecial classes for emphasis\n\n- `.alert` class for default emphasis, e.g. [important note]{.alert}.\n- `.fg` class for custom colour, e.g. [important note]{.fg style=\"--col: #e64173\"}.\n- `.bg` class for custom background, e.g. [important note]{.bg style=\"--col: #e64173\"}.\n\nCross-references\n\n- `.button` class provides a Beamer-like button, e.g.\n[[Summary]{.button}](#sec-summary)\n\n\n## Social norms\n\n### Sampling\n\nWe used a sample size of 24.\n\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age. \n\n\n{{< embed ../notebooks/example.ipynb#doc-sampling echo=false >}}\n\n\n## Social norms\n\n### Neither academic seniority or age affected interaction\n\n\n{{< embed ../notebooks/example.ipynb#fig-danishinteraction >}}\n\n\n<!-- a bug in quarto does not allow successive embeds witout somthing in between (like this) -->\n\n\n{{< embed ../notebooks/example.ipynb#doc-formality-correlation echo=false >}}\n\n\n## Slide title\n\n::: {.incremental}\n- Eat spaghetti\n- Drink wine\n:::\n\n## Slide title\n\n:::: {.columns}\n\n::: {.column width=\"40%\"}\nLeft column\n:::\n\n::: {.column width=\"60%\"}\n- One\n- Two\n- Three\n:::\n\n::::\n\n## Admixture displacement in each <br>**geographical region** {.smaller}\n\n:::: {.columns}\n\n::: {.column width=\"40%\"}\n\n{{< embed ../notebooks/example.ipynb#doc-formality-correlation echo=false >}}\n\n:::\n\n::: {.column width=\"60%\"}\n\n{{< embed ../notebooks/example.ipynb#fig-danishinteraction >}}\n\n:::\n\n::::\n\n## Slide Title\n\nSlide content\n\n::: aside\nSchumer et al. (2018)\n:::\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
