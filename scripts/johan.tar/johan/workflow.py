@@ -9,6 +9,7 @@
 """
 ## Imports and utility functions
 """
+print("theck that it runs")
 
 # %%
 import os
@@ -30,8 +31,10 @@ Instantiate the workflow with the name of the project folder:
 gwf = Workflow(defaults={'account': 'baboons'})
 
 
-config = yaml.safe_load(open("workflow.yaml"))
+config = yaml.safe_load(open("snakemake_workflow/workflow.yaml"))
 
+
+## loading data and preparatoin (pandas)
 assemblies = pd.read_csv(config['assemblies_path'], sep='\t')
 assemblies["Assembly Name"] = assemblies["Assembly Name"].str.replace(" ", "_")
 assemblies.set_index("Assembly Accession", inplace=True)
@@ -68,7 +71,7 @@ def modify_path(path, **kwargs):
         assert len(kwargs['suffix']) == 2
         new_path, nsubs = re.subn(r'{}$'.format(kwargs['suffix'][0]), kwargs['suffix'][1], new_path)
         assert nsubs == 1, nsubs
-    return new_path
+    return new_path, print("modify_path done")
 
 # %% [markdown]
 """
@@ -105,91 +108,92 @@ def download_genome(assembly):
         gzip -c {genome_path} > {genome_file} && 
         gzip -c {annotation_path} > {annotation_file} && rm -r {tmp_dir}
     """
+    print("download_genome done")
     # return target
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-def make_all_intervals(assembly):
-    inputs = [f"steps/genome/{assembly}.fa.gz"]
-    outputs = [f"steps/intervals/{assembly}/all.parquet"]
-    options = {'memory': '8g', 'walltime': '02:00:00'} 
-    spec = f"""
-    mkdir -p steps/intervals/{assembly} &&
-    python scripts/make_all_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
-    """
-    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+# def make_all_intervals(assembly):
+#     inputs = [f"steps/genome/{assembly}.fa.gz"]
+#     outputs = [f"steps/intervals/{assembly}/all.parquet"]
+#     options = {'memory': '8g', 'walltime': '02:00:00'} 
+#     spec = f"""
+#     mkdir -p steps/intervals/{assembly} &&
+#     python scripts/make_all_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
+#     """
+#     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-def make_defined_intervals(assembly):
-    inputs = [f"steps/genome/{assembly}.fa.gz"]
-    outputs = [f"steps/intervals/{assembly}/defined.parquet"]
-    options = {'memory': '8g', 'walltime': '02:00:00'} 
-    spec = f"""
-    mkdir -p steps/intervals/{assembly} &&
-    python scripts/make_defined_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
-    """
-    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+# def make_defined_intervals(assembly):
+#     inputs = [f"steps/genome/{assembly}.fa.gz"]
+#     outputs = [f"steps/intervals/{assembly}/defined.parquet"]
+#     options = {'memory': '8g', 'walltime': '02:00:00'} 
+#     spec = f"""
+#     mkdir -p steps/intervals/{assembly} &&
+#     python scripts/make_defined_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
+#     """
+#     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-def make_annotation_intervals(assembly, feature):
-    inputs = [f"steps/intervals/{assembly}/defined.parquet",
-              f"steps/genome/{assembly}.fa.gz"]
-    outputs = [f"steps/intervals/{assembly}/annotation_{feature}.parquet"]
-    options = {'memory': '8g', 'walltime': '02:00:00'} 
-    include_flank = config.get("annotation_features_include_flank", config['window_size'] // 2)
-    add_jiter = config.get("annotation_features_add_jitter", 100)
-    spec = f"""
-    mkdir -p steps/intervals/{assembly} &&
-    python scripts/make_annotation_intervals.py {inputs[0]} {inputs[1]} {outputs[0]} \
-        {config['window_size']} {feature} {include_flank} {add_jiter}
-    """
-    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+# def make_annotation_intervals(assembly, feature):
+#     inputs = [f"steps/intervals/{assembly}/defined.parquet",
+#               f"steps/genome/{assembly}.fa.gz"]
+#     outputs = [f"steps/intervals/{assembly}/annotation_{feature}.parquet"]
+#     options = {'memory': '8g', 'walltime': '02:00:00'} 
+#     include_flank = config.get("annotation_features_include_flank", config['window_size'] // 2)
+#     add_jiter = config.get("annotation_features_add_jitter", 100)
+#     spec = f"""
+#     mkdir -p steps/intervals/{assembly} &&
+#     python scripts/make_annotation_intervals.py {inputs[0]} {inputs[1]} {outputs[0]} \
+#         {config['window_size']} {feature} {include_flank} {add_jiter}
+#     """
+#     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-def make_balanced_v1_intervals(assembly):
-    inputs = [f"steps/intervals/{assembly}/defined.parquet",
-              f"steps/annotation/{assembly}.gff.gz"]
-    outputs = [f"steps/intervals/{assembly}/balanced_v1.parquet"]
-    options = {'memory': '8g', 'walltime': '02:00:00'} 
-    promoter_upstream = config.get("promoter_upstream", 1000)
-    spec = f"""
-    mkdir -p steps/intervals/{assembly} &&
-    python scripts/make_defined_intervals.py {inputs[0]} {outputs[0]} \
-        {config['window_size']} {promoter_upstream}
-    """
-    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+# def make_balanced_v1_intervals(assembly):
+#     inputs = [f"steps/intervals/{assembly}/defined.parquet",
+#               f"steps/annotation/{assembly}.gff.gz"]
+#     outputs = [f"steps/intervals/{assembly}/balanced_v1.parquet"]
+#     options = {'memory': '8g', 'walltime': '02:00:00'} 
+#     promoter_upstream = config.get("promoter_upstream", 1000)
+#     spec = f"""
+#     mkdir -p steps/intervals/{assembly} &&
+#     python scripts/make_defined_intervals.py {inputs[0]} {outputs[0]} \
+#         {config['window_size']} {promoter_upstream}
+#     """
+#     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-def make_dataset_assembly(assembly):
-    splits = ["train", "validation", "test"]
-    inputs = [f"results/intervals/{assembly}/{config['target_intervals']}.parquet",
-              f"results/genome/{assembly}.fa.gz"]
-    outputs = [f"results/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
-    options = {'memory': '8g', 'walltime': '02:00:00'} 
-    spec = f"""
-    mkdir -p steps/intervals/{assembly} &&    
-    python scripts/make_dataset_assembly.py {' '.join(inputs)} {' '.join(outputs)} \
-        {config['split_proportion']} {config['window_size']} {config['step_size']} {config['add_rc']} \
-        {config['whitelist_validation_chroms']} {config['whitelist_test_chroms']}
-    """
-    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+# def make_dataset_assembly(assembly):
+#     splits = ["train", "validation", "test"]
+#     inputs = [f"results/intervals/{assembly}/{config['target_intervals']}.parquet",
+#               f"results/genome/{assembly}.fa.gz"]
+#     outputs = [f"results/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
+#     options = {'memory': '8g', 'walltime': '02:00:00'} 
+#     spec = f"""
+#     mkdir -p steps/intervals/{assembly} &&    
+#     python scripts/make_dataset_assembly.py {' '.join(inputs)} {' '.join(outputs)} \
+#         {config['split_proportion']} {config['window_size']} {config['step_size']} {config['add_rc']} \
+#         {config['whitelist_validation_chroms']} {config['whitelist_test_chroms']}
+#     """
+#     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-download_targets = gwf.map(download_genome, assemblies.index)
+# download_targets = gwf.map(download_genome, assemblies.index)
 
-if config['target_intervals'] == 'all':
-    interval_targets = gwf.map(make_all_intervals, assemblies.index)
-elif config['target_intervals'] == 'defined':
-    interval_targets = gwf.map(make_defined_intervals, assemblies.index)
-elif config['target_intervals'].startswith('annotation'):
-    feature = config['target_intervals'].replace('annotation_', '')
-    interval_targets = gwf.map(make_annotation_intervals, assemblies.index, feature)
-elif config['target_intervals'] == 'balanced_v1':
-    interval_targets = gwf.map(make_balanced_v1_intervals, assemblies.index)
-else:
-    assert 0
+# if config['target_intervals'] == 'all':
+#     interval_targets = gwf.map(make_all_intervals, assemblies.index)
+# elif config['target_intervals'] == 'defined':
+#     interval_targets = gwf.map(make_defined_intervals, assemblies.index)
+# elif config['target_intervals'].startswith('annotation'):
+#     feature = config['target_intervals'].replace('annotation_', '')
+#     interval_targets = gwf.map(make_annotation_intervals, assemblies.index, feature)
+# elif config['target_intervals'] == 'balanced_v1':
+#     interval_targets = gwf.map(make_balanced_v1_intervals, assemblies.index)
+# else:
+#     assert 0
 
-datasets = gwf.map(make_dataset_assembly, assemblies.index)
+# datasets = gwf.map(make_dataset_assembly, assemblies.index)
 
 
 # from gpn.data import (

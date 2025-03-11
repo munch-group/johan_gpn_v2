@@ -1,0 +1,68 @@
+Assembly Accession	Assembly Name	Organism Name	Organism Infraspecific Names Breed	Organism Infraspecific Names Strain	Organism Infraspecific Names Cultivar	Organism Infraspecific Names Ecotype	Organism Infraspecific Names Isolate	Organism Infraspecific Names Sex	Annotation Name	Assembly Level	Assembly Release Date	WGS project accession	Assembly Stats Number of Scaffolds	genus	Priority
+GCF_003957565.2	bTaeGut1.4.pri	Taeniopygia guttata					Blue55	female	NCBI Taeniopygia guttata Annotation Release 106	Chromosome	2021-05-04	RRCB02	198	Taeniopygia	0_High
+GCF_929443795.1	bAccGen1.1	Accipiter gentilis							GCF_929443795.1-RS_2023_02	Chromosome	2022-02-09	CAKNBG01	454	Accipiter	1_Low
+GCF_020745825.1	Agelaius phoeniceus 1.1	Agelaius phoeniceus					BioBank_ID:100140	female	GCF_020745825.1-RS_2023_03	Chromosome	2023-03-15	JAIWQD01	440	Agelaius	1_Low
+GCF_027887145.1	bAmmCau1.pri	Ammospiza caudacuta					bAmmCau1	female	GCF_027887145.1-RS_2023_08	Chromosome	2023-01-18	JAQIHB01	282	Ammospiza	1_Low
+GCF_963932015.1	bAnaAcu1.1	Anas acuta							GCF_963932015.1-RS_2024_09	Chromosome	2024-02-07	CAWVPS01	394	Anas	1_Low
+GCF_031753505.1	ASM3175350v1	Anomalospiza imberbis					Cuckoo-Finch-1a 21T00152	female	GCF_031753505.1-RS_2024_07	Chromosome	2023-09-22	JASJUL01	1370	Anomalospiza	1_Low
+GCF_040182565.1	Taihu_goose_T2T_genome	Anser cygnoides	goose				HZ-2024a	female	GCF_040182565.1-RS_2024_07	Chromosome	2024-06-14	JBECYW01	74	Anser	1_Low
+GCF_041296385.1	UR_Acoe_1.0	Aphelocoma coerulescens					FSJ_1873_10779	female	GCF_041296385.1-RS_2024_10	Chromosome	2024-08-16	JBGGOT01	659	Aphelocoma	1_Low
+GCF_036417845.1	bAptMan1.hap1	Apteryx mantelli					bAptMan1	male	GCF_036417845.1-RS_2024_08	Chromosome	2024-02-06	JAYMGQ01	408	Apteryx	1_Low
+GCF_020740795.1	bApuApu2.pri.cur	Apus apus					bApuApu2	female	GCF_020740795.1-RS_2023_02	Chromosome	2021-11-04	JAJGQY01	109	Apus	1_Low
+GCF_900496995.4	bAquChr1.4	Aquila chrysaetos chrysaetos							NCBI Aquila chrysaetos chrysaetos Annotation Release 101	Chromosome	2021-03-26	UFQG04	144	Aquila	1_Low
+GCF_009819795.1	bAytFul2.pri	Aythya fuligula					bAytFul2	female	NCBI Aythya fuligula Annotation Release 100	Chromosome	2019-12-31	WNMM01	104	Aythya	1_Low
+GCF_036013445.1	bCalNic1.hap1	Caloenas nicobarica					bCalNic1	female	GCF_036013445.1-RS_2024_06	Chromosome	2024-01-26	JAYKXI01	806	Caloenas	1_Low
+GCF_003957555.1	bCalAnn1_v1.p	Calypte anna					BGI_N300	female	NCBI Calypte anna Annotation Release 101	Chromosome	2019-05-16	RRCD01	159	Calypte	1_Low
+GCF_901933205.1	STF_HiC	Camarhynchus parvulus							NCBI Camarhynchus parvulus Annotation Release 100	Chromosome	2019-09-06	CABFNF01	1345	Camarhynchus	1_Low
+GCF_009819885.2	bCatUst1.pri.v2	Catharus ustulatus					bCatUst1	female	NCBI Catharus ustulatus Annotation Release 101	Chromosome	2020-12-22	WNMQ02	160	Catharus	1_Low
+GCF_009829145.1	bChiLan1.pri	Chiroxiphia lanceolata					bChiLan1	female	NCBI Chiroxiphia lanceolata Annotation Release 100	Chromosome	2020-01-03	WNMC01	93	Chiroxiphia	1_Low
+GCF_963924245.1	bChrRid1.1	Chroicocephalus ridibundus							GCF_963924245.1-RS_2024_02	Chromosome	2024-01-20	CAWUPF01	728	Chroicocephalus	1_Low
+GCF_963662255.1	bCinCin1.1	Cinclus cinclus							GCF_963662255.1-RS_2024_01	Chromosome	2023-12-11	CAVLEW01	277	Cinclus	1_Low
+GCF_028858725.1	bColStr4.1.hap1	Colius striatus					bColStr4	female	GCF_028858725.1-RS_2023_12	Chromosome	2023-02-24	JARBXP01	190	Colius	1_Low
+GCF_036013475.1	bColLiv1.pat.W.v2	Columba livia	racing homer				bColLiv1	female	GCF_036013475.1-RS_2024_05	Chromosome	2024-04-08	JAYMZD02	869	Columba	1_Low
+GCF_000738735.6	ASM73873v6	Corvus cornix cornix					S_Up_H32	male	NCBI Corvus cornix cornix Annotation Release 104	Chromosome	2022-04-01	JPSR04	46	Corvus	1_Low
+GCF_001577835.2	Coturnix japonica 2.1	Coturnix japonica					7356	male	NCBI Coturnix japonica Annotation Release 101	Chromosome	2016-03-01	LSZS01	2530	Coturnix	1_Low
+GCF_017976375.1	bCucCan1.pri	Cuculus canorus					bCucCan1	female	GCF_017976375.1-RS_2023_02	Chromosome	2021-04-15	JAGIYT01	150	Cuculus	1_Low
+GCF_013377495.2	CAtr_DNAZoo_HiC_assembly	Cygnus atratus				Queensland, Australia	AKBS03	male	GCF_013377495.2-RS_2023_02	Chromosome	2022-08-03	JABXOC02	567	Cygnus	1_Low
+GCF_036370855.1	bDroNov1.hap1	Dromaius novaehollandiae					bDroNov1	female	GCF_036370855.1-RS_2024_04	Chromosome	2024-02-26	JAZAQV01	271	Dromaius	1_Low
+GCF_014839835.1	bDryPub1.pri	Dryobates pubescens					bDryPub1	female	GCF_014839835.1-RS_2023_03	Chromosome	2020-10-02	JACNMV01	180	Dryobates	1_Low
+GCF_023638135.1	bFalBia1.pri	Falco biarmicus					bFalBia1	female	GCF_023638135.1-RS_2023_05	Chromosome	2022-06-02	JAMOAT01	397	Falco	1_Low
+GCF_000247815.1	FicAlb1.5	Ficedula albicollis					OC2	male	NCBI Ficedula albicollis Annotation Release 101	Chromosome	2013-06-27	AGTO02	21835	Ficedula	1_Low
+GCF_016699485.2	bGalGal1.mat.broiler.GRCg7b	Gallus gallus					bGalGal1	female	NCBI Gallus gallus Annotation Release 106	Chromosome	2021-01-19	JAENSK01	213	Gallus	1_Low
+GCF_030936135.1	bGavSte3.hap2	Gavia stellata					bGavSte3	male	GCF_030936135.1-RS_2023_09	Chromosome	2023-08-30	JAVGIZ01	1185	Gavia	1_Low
+GCF_028858705.1	bGruAme1.mat	Grus americana					bGruAme1	male	GCF_028858705.1-RS_2023_03	Chromosome	2023-02-24	JARBUS01	929	Grus	1_Low
+GCF_018139145.2	ASM1813914v2	Gymnogyps californianus					813	female	GCF_018139145.2-RS_2023_02	Chromosome	2022-09-01	JAGKTE02	542	Gymnogyps	1_Low
+GCF_027477595.1	bHaeMex1.pri	Haemorhous mexicanus					bHaeMex1	female	GCF_027477595.1-RS_2023_09	Chromosome	2022-12-29	JAPYKC01	183	Haemorhous	1_Low
+GCF_947461875.1	bHalAlb1.1	Haliaeetus albicilla							GCF_947461875.1-RS_2024_11	Chromosome	2022-12-06	CANHOD01	188	Haliaeetus	1_Low
+GCF_026419915.1	bHarHar1 primary haplotype	Harpia harpyja					bHarHar1	female	GCF_026419915.1-RS_2023_02	Chromosome	2022-11-27	JAPMHW01	322	Harpia	1_Low
+GCF_015227805.2	bHirRus1.pri.v3	Hirundo rustica					bHirRus1	female	GCF_015227805.2-RS_2023_07	Chromosome	2021-11-30	JADDRP03	617	Hirundo	1_Low
+GCF_027791375.1	UM_Iind_1.1	Indicator indicator					239-I01	female	GCF_027791375.1-RS_2023_03	Chromosome	2023-01-13	JAQHUL01	896	Indicator	1_Low
+GCF_023343835.1	bLagMut1 primary	Lagopus muta					bLagMut1	female	NCBI Lagopus muta Annotation Release 100	Chromosome	2022-05-12	JAMCCT01	164	Lagopus	1_Low
+GCF_037157495.1	bLatDis1.hap1	Lathamus discolor					bLatDis1	female	GCF_037157495.1-RS_2024_06	Chromosome	2024-03-15	JBBBVN01	367	Lathamus	1_Low
+GCF_005870125.1	lonStrDom2	Lonchura striata					Mets1	male	GCF_005870125.1-RS_2024_09	Chromosome	2019-06-05	SWKX01	2014	Lonchura	1_Low
+GCF_000146605.3	Turkey_5.1	Meleagris gallopavo	Aviagen turkey brand Nicholas breeding stock				NT-WF06-2002-E0010	female	NCBI Meleagris gallopavo Annotation Release 103	Chromosome	2019-10-21	ADDD02	187694	Meleagris	1_Low
+GCF_012275295.1	bMelUnd1.mat.Z	Melopsittacus undulatus					bMelUnd1	female	GCF_012275295.1-RS_2024_11	Chromosome	2020-04-13	JAAVWG01	864	Melopsittacus	1_Low
+GCF_028018845.1	bMelGeo1.pri	Melospiza georgiana					bMelGeo1	female	GCF_028018845.1-RS_2023_07	Chromosome	2023-01-31	JAQMCQ01	40	Melospiza	1_Low
+GCF_037042795.1	BPBGC_Maene_1.0	Molothrus aeneus					106	female	GCF_037042795.1-RS_2024_07	Chromosome	2024-03-07	JAXHEC01	527	Molothrus	1_Low
+GCF_015832195.1	Motacilla_alba_V1.0_pri	Motacilla alba alba					MOTALB_02	male	NCBI Motacilla alba alba Annotation Release 100	Chromosome	2020-12-08	JACXWE01	618	Motacilla	1_Low
+GCF_002078875.1	NumMel1.0	Numida meleagris	g44 Domestic line				19003	male	NCBI Numida meleagris Annotation Release 100	Chromosome	2017-06-01	MTSP01	2738	Numida	1_Low
+GCF_013368605.1	bNycGra1.pri	Nyctibius grandis					bNycGra1	female	GCF_013368605.1-RS_2024_09	Chromosome	2020-06-23	JABXNV01	190	Nyctibius	1_Low
+GCF_029582105.1	OMel1.0	Oenanthe melanoleuca					GR-GAL-2019-014	male	GCF_029582105.1-RS_2023_05	Chromosome	2023-04-06	JARJVX01	587	Oenanthe	1_Low
+GCF_011077185.1	BPBGC_Ojam_1.0	Oxyura jamaicensis	ruddy duck				SHBP4307	female	NCBI Oxyura jamaicensis Annotation Release 100	Chromosome	2020-03-10	JAACYN01	9642	Oxyura	1_Low
+GCF_001522545.3	Parus_major1.1	Parus major					Abel	male	NCBI Parus major Annotation Release 102	Chromosome	2019-01-15	JRXK01	1674	Parus	1_Low
+GCF_036417665.1	bPasDom1.hap1	Passer domesticus					bPasDom1	female	GCF_036417665.1-RS_2024_04	Chromosome	2024-02-07	JAZGKA01	334	Passer	1_Low
+GCF_036971685.1	bPatFas1.hap2	Patagioenas fasciata					bPatFas1	female	GCF_036971685.1-RS_2024_06	Chromosome	2024-03-06	JBAMBT01	452	Patagioenas	1_Low
+GCF_032191515.1	BPBGC_Pcur_1.0	Phaenicophaeus curvirostris					KB17595	female	GCF_032191515.1-RS_2024_11	Chromosome	2023-09-29	JASZXW01	587	Phaenicophaeus	1_Low
+GCF_963921805.1	bPhaCar2.1	Phalacrocorax carbo							GCF_963921805.1-RS_2024_04	Chromosome	2024-02-09	CAWUGV01	350	Phalacrocorax	1_Low
+GCF_030490865.1	bPoeAtr1.hap1	Poecile atricapillus					bPoeAtr1	female	GCF_030490865.1-RS_2023_08	Chromosome	2023-07-18	JAUKOI01	306	Poecile	1_Low
+GCF_015220805.1	bPogPus1.pri	Pogoniulus pusillus					bPogPus1	female	GCF_015220805.1-RS_2024_03	Chromosome	2020-11-03	JADCQK01	252	Pogoniulus	1_Low
+GCF_021018805.1	Cam_Psub_1.2	Prinia subflava				Zambia	CZ2003	female	GCF_021018805.1-RS_2024_02	Chromosome	2024-01-26	JAIOWR02	538	Prinia	1_Low
+GCF_036250125.1	bDixPip1.hap1	Pseudopipra pipra					bDixPip1	female	GCF_036250125.1-RS_2024_04	Chromosome	2024-01-31	JAZAVG01	696	Pseudopipra	1_Low
+GCF_028389875.1	bPtePen1.pri	Rhea pennata					bPtePen1	male	GCF_028389875.1-RS_2023_12	Chromosome	2023-02-06	JAQOLV01	179	Rhea	1_Low
+GCF_028500815.1	bRisTri1.patW.cur.20221130	Rissa tridactyla					bRisTri1	female	GCF_028500815.1-RS_2023_03	Chromosome	2023-02-09	JAPUFG01	716	Rissa	1_Low
+GCF_022539315.1	serCan2020	Serinus canaria					serCan28SL12	female	GCF_022539315.1-RS_2023_02	Chromosome	2022-08-25	JAKSEN01	684	Serinus	1_Low
+GCF_004027225.2	bStrHab1.2.pri	Strigops habroptila					Jane	female	NCBI Strigops habroptila Annotation Release 101	Chromosome	2020-03-04	RXXE02	89	Strigops	1_Low
+GCF_040807025.1	bStrCam1.hap1	Struthio camelus					bStrCam1	female	GCF_040807025.1-RS_2024_10	Chromosome	2024-07-22	JBFMIB01	262	Struthio	1_Low
+GCF_009819655.1	bSylAtr1.pri	Sylvia atricapilla					bSylAtr1	female	GCF_009819655.1-RS_2024_07	Chromosome	2019-12-31	WNMY01	189	Sylvia	1_Low
+GCF_026979565.1	bVidCha1 merged haplotype	Vidua chalybeata					OUT-0048	female	GCF_026979565.1-RS_2023_03	Chromosome	2022-12-21	JAPVQZ01	177	Vidua	1_Low
+GCF_028769735.1	RI_Zleu_2.0	Zonotrichia leucophrys gambelii					GWCS_2022_RI	female	GCF_028769735.1-RS_2024_04	Chromosome	2023-12-27	JAPPSN02	3792	Zonotrichia	1_Low
