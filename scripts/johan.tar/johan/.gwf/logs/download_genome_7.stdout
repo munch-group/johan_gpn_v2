@@ -1,7 +1,0 @@
-Archive:  ncbi_dataset.zip
-  inflating: README.md               
-  inflating: ncbi_dataset/data/assembly_data_report.jsonl  
-  inflating: ncbi_dataset/data/GCF_028858725.1/GCF_028858725.1_bColStr4.1.hap1_genomic.fna  
-  inflating: ncbi_dataset/data/GCF_028858725.1/genomic.gff  
-  inflating: ncbi_dataset/data/dataset_catalog.json  
-  inflating: md5sum.txt              

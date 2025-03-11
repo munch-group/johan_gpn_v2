@@ -191,11 +191,11 @@ download_targets = gwf.map(download_genome, assemblies.index)
 
 if config['target_intervals'] == 'all':
     interval_targets = gwf.map(make_all_intervals, assemblies.index)
-# elif config['target_intervals'] == 'defined':
-#     interval_targets = gwf.map(make_defined_intervals, assemblies.index)
-# elif config['target_intervals'].startswith('annotation'):
-#     feature = config['target_intervals'].replace('annotation_', '')
-#     interval_targets = gwf.map(make_annotation_intervals, assemblies.index, feature)
+elif config['target_intervals'] == 'defined':
+    interval_targets = gwf.map(make_defined_intervals, assemblies.index)
+elif config['target_intervals'].startswith('annotation'):
+    feature = config['target_intervals'].replace('annotation_', '')
+    interval_targets = gwf.map(make_annotation_intervals, assemblies.index, feature)
 # elif config['target_intervals'] == 'balanced_v1':
 #     interval_targets = gwf.map(make_balanced_v1_intervals, assemblies.index)
 # else:

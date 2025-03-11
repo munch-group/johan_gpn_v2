@@ -1,2 +1,0 @@
-Running make_all_intervals with input_file=/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/steps/genome/GCF_963662255.1.fa.gz, output_file=/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/steps/intervals/GCF_963662255.1/all.parquet, window_size=512
-Intervals saved to /home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/steps/intervals/GCF_963662255.1/all.parquet
