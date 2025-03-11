@@ -36,7 +36,7 @@ chrom_split = pd.Series(chrom_split, index=chroms)
 
 intervals_split = chrom_split[intervals.chrom]
 
-for path, split in zip(output, splits):
+for path, split in zip(outputs, splits):
     dirname = os.path.dirname(path)
     if not os.path.exists(dirname):
         assert os.path.isdir(dirname)

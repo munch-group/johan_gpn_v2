@@ -1,0 +1,11 @@
+Assembly Accession	Assembly Name	Organism Name	Organism Infraspecific Names Breed	Organism Infraspecific Names Strain	Organism Infraspecific Names Cultivar	Organism Infraspecific Names Ecotype	Organism Infraspecific Names Isolate	Organism Infraspecific Names Sex	Annotation Name	Assembly Level	Assembly Release Date	WGS project accession	Assembly Stats Number of Scaffolds	genus	Priority
+GCF_020745825.1	Agelaius phoeniceus 1.1	Agelaius phoeniceus					BioBank_ID:100140	female	GCF_020745825.1-RS_2023_03	Chromosome	2023-03-15	JAIWQD01	440	Agelaius	1_Low
+GCF_027887145.1	bAmmCau1.pri	Ammospiza caudacuta					bAmmCau1	female	GCF_027887145.1-RS_2023_08	Chromosome	2023-01-18	JAQIHB01	282	Ammospiza	1_Low
+GCF_036417845.1	bAptMan1.hap1	Apteryx mantelli					bAptMan1	male	GCF_036417845.1-RS_2024_08	Chromosome	2024-02-06	JAYMGQ01	408	Apteryx	1_Low
+GCF_020740795.1	bApuApu2.pri.cur	Apus apus					bApuApu2	female	GCF_020740795.1-RS_2023_02	Chromosome	2021-11-04	JAJGQY01	109	Apus	1_Low
+GCF_900496995.4	bAquChr1.4	Aquila chrysaetos chrysaetos							NCBI Aquila chrysaetos chrysaetos Annotation Release 101	Chromosome	2021-03-26	UFQG04	144	Aquila	1_Low
+GCF_901933205.1	STF_HiC	Camarhynchus parvulus							NCBI Camarhynchus parvulus Annotation Release 100	Chromosome	2019-09-06	CABFNF01	1345	Camarhynchus	1_Low
+GCF_963662255.1	bCinCin1.1	Cinclus cinclus							GCF_963662255.1-RS_2024_01	Chromosome	2023-12-11	CAVLEW01	277	Cinclus	1_Low
+GCF_028858725.1	bColStr4.1.hap1	Colius striatus					bColStr4	female	GCF_028858725.1-RS_2023_12	Chromosome	2023-02-24	JARBXP01	190	Colius	1_Low
+GCF_036013475.1	bColLiv1.pat.W.v2	Columba livia	racing homer				bColLiv1	female	GCF_036013475.1-RS_2024_05	Chromosome	2024-04-08	JAYMZD02	869	Columba	1_Low
+GCF_017976375.1	bCucCan1.pri	Cuculus canorus					bCucCan1	female	GCF_017976375.1-RS_2023_02	Chromosome	2021-04-15	JAGIYT01	150	Cuculus	1_Low

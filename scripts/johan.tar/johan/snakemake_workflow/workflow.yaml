@@ -1,5 +1,5 @@
 # assumes the first column contains the assembly name
-assemblies_path: "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/assemblies.tsv"
+assemblies_path: "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/birds.tsv"
 
 # Intervals from fasta file used for training:
 # - "all": all positions
