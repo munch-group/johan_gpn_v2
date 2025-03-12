@@ -5,6 +5,7 @@ import numpy as np
 import os
 import pandas as pd
 from tqdm import tqdm
+import json
 
 import sys
 (_, parquet, fasta, *outputs, assembly, split_proportion, window_size, step_size, add_rc,
@@ -12,6 +13,20 @@ import sys
 
 splits = ['train', 'validation', 'test']
 
+
+# Write split_proportion to a temporary file for debugging
+debug_file_path = "/faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/data/steps/tmp/split_proportion_debug.txt"
+with open(debug_file_path, "w") as f:
+    f.write(split_proportion)
+print(f"split_proportion written to {debug_file_path}")
+
+# Read the content of the temporary file to ensure it is correct
+with open(debug_file_path, "r") as f:
+    split_proportion_content = f.read()
+    print(f"split_proportion_content: {split_proportion_content}")
+
+
+split_proportion = json.loads(split_proportion)  # Parse the JSON string
 split_proportions = [split_proportion[split] for split in splits]
 assert np.isclose(sum(split_proportions), 1)
 

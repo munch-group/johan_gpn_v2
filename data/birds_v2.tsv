@@ -1,0 +1,6 @@
+Assembly Accession	Assembly Name	Organism Name	Organism Infraspecific Names Breed	Organism Infraspecific Names Strain	Organism Infraspecific Names Cultivar	Organism Infraspecific Names Ecotype	Organism Infraspecific Names Isolate	Organism Infraspecific Names Sex	Annotation Name	Assembly Level	Assembly Release Date	WGS project accession	Assembly Stats Number of Scaffolds	genus	Priority
+GCF_020745825.1	Agelaius phoeniceus 1.1	Agelaius phoeniceus					BioBank_ID:100140	female	GCF_020745825.1-RS_2023_03	Chromosome	2023-03-15	JAIWQD01	440	Agelaius	1_Low
+GCF_027887145.1	bAmmCau1.pri	Ammospiza caudacuta					bAmmCau1	female	GCF_027887145.1-RS_2023_08	Chromosome	2023-01-18	JAQIHB01	282	Ammospiza	1_Low
+GCF_036417845.1	bAptMan1.hap1	Apteryx mantelli					bAptMan1	male	GCF_036417845.1-RS_2024_08	Chromosome	2024-02-06	JAYMGQ01	408	Apteryx	1_Low
+GCF_020740795.1	bApuApu2.pri.cur	Apus apus					bApuApu2	female	GCF_020740795.1-RS_2023_02	Chromosome	2021-11-04	JAJGQY01	109	Apus	1_Low
+GCF_900496995.4	bAquChr1.4	Aquila chrysaetos chrysaetos							NCBI Aquila chrysaetos chrysaetos Annotation Release 101	Chromosome	2021-03-26	UFQG04	144	Aquila	1_Low

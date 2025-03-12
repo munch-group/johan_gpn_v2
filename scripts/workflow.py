@@ -131,7 +131,7 @@ def make_all_intervals(assembly):
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-def make_defined_intervals(assembly):
+def make_defined_intervals(assembly): ## does not show up in gwf
     inputs = [f"{base_dir}/steps/genome/{assembly}.fa.gz"]
     outputs = [f"{base_dir}/steps/intervals/{assembly}/defined.parquet"]
     options = {'memory': '8g', 'walltime': '02:00:00'} 
@@ -157,7 +157,7 @@ def make_annotation_intervals(assembly, feature):
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-def make_balanced_v1_intervals(assembly):
+def make_balanced_v1_intervals(assembly):  ### maybe not that inmpotent becuase it was the date created for the paper 
     inputs = [f"{base_dir}/steps/intervals/{assembly}/defined.parquet",
               f"{base_dir}/steps/annotation/{assembly}.gff.gz"]
     outputs = [f"{base_dir}/steps/intervals/{assembly}/balanced_v1.parquet"]
@@ -173,9 +173,9 @@ def make_balanced_v1_intervals(assembly):
 
 def make_dataset_assembly(assembly):
     splits = ["train", "validation", "test"]
-    inputs = [f"{base_dir}/results/intervals/{assembly}/{config['target_intervals']}.parquet",
-              f"{base_dir}/results/genome/{assembly}.fa.gz"]
-    outputs = [f"{base_dir}/results/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
+    inputs = [f"{base_dir}/steps/intervals/{assembly}/{config['target_intervals']}.parquet",      ### it ask for data in a folder that does not exist
+              f"{base_dir}/steps/genome/{assembly}.fa.gz"]                                        ### it ask for data in a folder that does not exist
+    outputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
     options = {'memory': '8g', 'walltime': '02:00:00'} 
     spec = f"""
     mkdir -p steps/intervals/{assembly} &&    
@@ -188,20 +188,34 @@ def make_dataset_assembly(assembly):
 
 download_targets = gwf.map(download_genome, assemblies.index)
 
+# Check the value of config['target_intervals']
+print(f"Target intervals: {config['target_intervals']}")
+
+# %% [markdown]
+"""
+## Logic for target intervals defind in the yaml file:
+# Intervals from fasta file used for training:
+# - "all": all positions
+# - "defined": positions with defined nucleotides (not N)
+# - "annotation_{feature}": only <feature> positions from annotation, e.g. CDS, exon
+# - "balanced_v1": recipe used in original paper
+"""
+# %%
 
 if config['target_intervals'] == 'all':
     interval_targets = gwf.map(make_all_intervals, assemblies.index)
 elif config['target_intervals'] == 'defined':
-    interval_targets = gwf.map(make_defined_intervals, assemblies.index)
+    print("Calling make_defined_intervals")
+    interval_targets = gwf.map(make_defined_intervals, assemblies.index)  
 elif config['target_intervals'].startswith('annotation'):
     feature = config['target_intervals'].replace('annotation_', '')
     interval_targets = gwf.map(make_annotation_intervals, assemblies.index, feature)
-# elif config['target_intervals'] == 'balanced_v1':
-#     interval_targets = gwf.map(make_balanced_v1_intervals, assemblies.index)
-# else:
-#     assert 0
+elif config['target_intervals'] == 'balanced_v1':
+    interval_targets = gwf.map(make_balanced_v1_intervals, assemblies.index)
+else:
+    assert 0
 
-# datasets = gwf.map(make_dataset_assembly, assemblies.index)
+datasets = gwf.map(make_dataset_assembly, assemblies.index)
 
 
 

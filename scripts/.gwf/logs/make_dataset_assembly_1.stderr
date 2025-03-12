@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/scripts/make_dataset_assembly.py", line 29, in <module>
+    split_proportion = json.loads(split_proportion)  # Parse the JSON string
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/json/decoder.py", line 341, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 6 (char 5)
