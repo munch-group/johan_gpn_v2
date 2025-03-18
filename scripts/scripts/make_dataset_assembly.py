@@ -1,37 +1,29 @@
-
 from gpn.data import Genome, make_windows, get_seq
 import math
 import numpy as np
 import os
 import pandas as pd
 from tqdm import tqdm
-import json
+import ast
 
 import sys
 (_, parquet, fasta, *outputs, assembly, split_proportion, window_size, step_size, add_rc,
-  whitelist_validation_chroms,whitelist_test_chroms) = sys.argv
+  whitelist_validation_chroms, whitelist_test_chroms) = sys.argv
 
 splits = ['train', 'validation', 'test']
 
+window_size = int(window_size)
+step_size = int(step_size)
+add_rc = bool(add_rc)
 
-# Write split_proportion to a temporary file for debugging
-debug_file_path = "/faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/data/steps/tmp/split_proportion_debug.txt"
-with open(debug_file_path, "w") as f:
-    f.write(split_proportion)
-print(f"split_proportion written to {debug_file_path}")
+# Hardcoded split_proportion dictionary
+split_proportion = {'train': 0.7, 'validation': 0.2, 'test': 0.1}
 
-# Read the content of the temporary file to ensure it is correct
-with open(debug_file_path, "r") as f:
-    split_proportion_content = f.read()
-    print(f"split_proportion_content: {split_proportion_content}")
-
-
-split_proportion = json.loads(split_proportion)  # Parse the JSON string
 split_proportions = [split_proportion[split] for split in splits]
 assert np.isclose(sum(split_proportions), 1)
 
-intervals = pd.read_parquet(input[0])
-genome = Genome(input[1])
+intervals = pd.read_parquet(parquet)
+genome = Genome(fasta)
 intervals = make_windows(
     intervals, window_size, step_size, add_rc,
 )
@@ -54,8 +46,7 @@ intervals_split = chrom_split[intervals.chrom]
 for path, split in zip(outputs, splits):
     dirname = os.path.dirname(path)
     if not os.path.exists(dirname):
-        assert os.path.isdir(dirname)
-        os.makedir(dirname)
+        os.makedirs(dirname)
         print(dirname, 'created')
     print(path, split, dirname, os.getcwd(), os.path.exists(dirname))
     # to parquet to be able to load faster later

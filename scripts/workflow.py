@@ -1,6 +1,6 @@
 # %% [markdown]
 # ---
-# title: GWF workflow
+# title: Making a dataset for GPN 
 # execute:
 #   eval: false
 # ---
@@ -176,7 +176,7 @@ def make_dataset_assembly(assembly):
     inputs = [f"{base_dir}/steps/intervals/{assembly}/{config['target_intervals']}.parquet",      ### it ask for data in a folder that does not exist
               f"{base_dir}/steps/genome/{assembly}.fa.gz"]                                        ### it ask for data in a folder that does not exist
     outputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
-    options = {'memory': '8g', 'walltime': '02:00:00'} 
+    options = {'memory': '24g', 'walltime': '02:00:00'} 
     spec = f"""
     mkdir -p steps/intervals/{assembly} &&    
     python scripts/make_dataset_assembly.py {' '.join(inputs)} {' '.join(outputs)} \
@@ -188,8 +188,28 @@ def make_dataset_assembly(assembly):
 
 download_targets = gwf.map(download_genome, assemblies.index)
 
-# Check the value of config['target_intervals']
-print(f"Target intervals: {config['target_intervals']}")
+
+
+
+
+
+
+from gpn.data import (
+    Genome, load_table, get_balanced_intervals, filter_length,
+    filter_annotation_features,
+)
+
+def merge_datasets(assembly):
+    splits = ["train", "validation", "test"]
+    inputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
+    output_dir = f"{base_dir}/steps/dataset/data/{assembly}"
+    options = {'memory': '32g', 'walltime': '02:00:00'} 
+    spec = f"""
+    mkdir -p {output_dir} &&    
+    python /faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/scripts/make_merge_datasets.py {' '.join(inputs)} {output_dir}
+    """
+    return AnonymousTarget(inputs=inputs, outputs=[output_dir], options=options, spec=spec)
+
 
 # %% [markdown]
 """
@@ -201,6 +221,7 @@ print(f"Target intervals: {config['target_intervals']}")
 # - "balanced_v1": recipe used in original paper
 """
 # %%
+
 
 if config['target_intervals'] == 'all':
     interval_targets = gwf.map(make_all_intervals, assemblies.index)
@@ -216,55 +237,7 @@ else:
     assert 0
 
 datasets = gwf.map(make_dataset_assembly, assemblies.index)
-
-
-
-# from gpn.data import (
-#     Genome, load_table, get_balanced_intervals, filter_length,
-#     filter_annotation_features,
-# )
-
-# def merge_datasets():
-#     inputs = [f"{base_dir}/results/dataset_assembly/{assembly}/{split}.parquet" for assembly in assemblies.index for split in ["train", "validation", "test"]]
-#     output_dir = "{base_dir}/results/dataset/data"
-#     outputs = [output_dir]
-#     options = {'memory': '8g', 'walltime': '02:00:00'}
-#     spec = f"""
-#     import pandas as pd
-#     from tqdm import tqdm
-#     import os
-#     import math
-#     from pathlib import Path
-
-#     intervals = pd.concat(
-#         tqdm((pd.read_parquet(path) for path in {inputs}), total=len({inputs})),
-#         ignore_index=True,
-#     ).sample(frac=1, random_state=42)
-#     print(intervals)
-
-#     if {config}.get("subsample_to_target", False) and "train" in {inputs}:
-#         n_target = (intervals.assembly=={config}["target_assembly"]).sum()
-#         intervals = intervals.groupby("assembly").sample(
-#             n=n_target, random_state=42
-#         ).sample(frac=1, random_state=42)
-#         print("train", intervals.assembly.value_counts())
-#         print(intervals)
-
-#     n_shards = math.ceil(len(intervals) / {config}["samples_per_file"])
-#     assert n_shards < 10000
-#     os.makedirs("{output_dir}", exist_ok=True)
-#     for i in tqdm(range(n_shards)):
-#         path = Path("{output_dir}") / f"shard_{{i:05}}.jsonl.zst"
-#         intervals.iloc[i::n_shards].to_json(
-#             path, orient="records", lines=True,
-#             compression={{'method': 'zstd', 'threads': -1}}
-#         )
-#     """
-#     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
-
-#merge_datasets_target = gwf.target_from_template("merge_datasets", merge_datasets())
-
-
+merge_datasets_targets = gwf.map(merge_datasets, assemblies.index)
 
 # # %%
 
@@ -272,10 +245,3 @@ datasets = gwf.map(make_dataset_assembly, assemblies.index)
 
 
 
-### some testing
-# print(assemblies.index)
-
-# print(config['assemblies_path'])
-# print(os.path.exists(config['assemblies_path']))
-
-# print(assemblies.head())
