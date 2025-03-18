@@ -1,57 +1,15 @@
 # %% [markdown]
 # ---
-# title: GWF workflow
+# title: Making a dataset for GPN 
 # execute:
 #   eval: false
 # ---
 
 # %% [markdown]
-r"""
-
-Example workflow using mapping between intput and output of each target. 
-It is made to show all the ways information may be passed through an workflow.
-
-```plaintext
-                        input_file1.txt                        input_file2.txt
-                                                                                                                
-file label:             'raw_path'                              'raw_path'                                
-                            |                                       |                                  
-                            |                                       |                         
-template:               uppercase_names                         uppercase_names                         
-                            |                                       |                          
-                            |                                       |                         
-file label:            'uppercased_path'                       'uppercased_path'                         
-                            |                                       |                          
-                            |                                       |                         
-template:                divide_names                            divide_names                         
-                         /          \                            /          \                          
-                        /            \                          /            \                         
-file label:    'filt_me_path'  'filt_other_path'      'filt_me_path'  'filt_other_path'                         
-                        \           /                           \           /                         
-                         \         /                             \         /                         
-template:                 unique_names                            unique_names                         
-                           |      |                                |      |  
-                           |      |                                |      |  
-file label:      'uniq_me_path'  'uniq_other_path'       'uniq_me_path'  'uniq_other_path'
-                            \            \                        /           /
-                             \            - - - - - - - - - - - / - - -     /  
-                              \  / - - - - - - - -- - - - - - -         \  /
-                               |                                          |                          
-file label:     (collected) 'uniq_me_paths'              (collected) 'uniq_other_paths'                         
-                               |                                          |
-                               |                                          |
-template:                   merge_names                                merge_names
-                               |                                          |                          
-                               |                                          |                          
-file label:                'output_path'                              'output_path'                         
-```
-
-"""
-
-# %% [markdown]
 """
 ## Imports and utility functions
 """
+
 
 # %%
 import os
@@ -59,6 +17,10 @@ from pathlib import Path
 from gwf import Workflow, AnonymousTarget
 from gwf.workflow import collect
 import glob
+import yaml
+import pandas as pd
+import re
+import time
 
 # %% [markdown]
 """
@@ -67,8 +29,23 @@ Instantiate the workflow with the name of the project folder:
 
 # %%
 # instantiate the workflow
-gwf = Workflow(defaults={'account': 'your-project-folder-name'})
+#gwf = Workflow(defaults={'account': 'baboons'})
+gwf = Workflow(defaults={'account': 'TopicsInBioinformatics'})
 
+
+config = yaml.safe_load(open("snakemake_workflow/workflow.yaml"))
+
+# Define the base directory
+base_dir = "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data"
+
+
+
+## loading data and preparatoin (pandas)
+assemblies = pd.read_csv(config['assemblies_path'], sep='\t')
+assemblies["Assembly Name"] = assemblies["Assembly Name"].str.replace(" ", "_")
+assemblies.set_index("Assembly Accession", inplace=True)
+assemblies["genome_path"] = [f"{base_dir}/steps/tmp/{i}/ncbi_dataset/data/{i}/{i}_{n}_genomic.fna" for i, n in zip(assemblies.index, assemblies["Assembly Name"])]
+assemblies["annotation_path"] = [f"{base_dir}/steps/tmp/{i}/ncbi_dataset/data/{i}/genomic.gff" for i in assemblies.index]
 
 # %% [markdown]
 """
@@ -82,6 +59,7 @@ def modify_path(path, **kwargs):
     Utility function for modifying file paths substituting
     the directory (dir), base name (base), or file suffix (suffix).
     """
+
     for key in ['dir', 'base', 'suffix']:
         kwargs.setdefault(key, None)
     assert len(kwargs) == 3
@@ -100,8 +78,9 @@ def modify_path(path, **kwargs):
         assert len(kwargs['suffix']) == 2
         new_path, nsubs = re.subn(r'{}$'.format(kwargs['suffix'][0]), kwargs['suffix'][1], new_path)
         assert nsubs == 1, nsubs
-    return new_path
+    
 
+    return new_path
 
 # %% [markdown]
 """
@@ -110,227 +89,159 @@ def modify_path(path, **kwargs):
 # %%
 
 # task template function
-def uppercase_names(raw_path): 
-    """
-    Formats names to uppercase.
-    """
-    # dir for files produces by task
-    output_dir = 'steps/upper_cased'
-    # path of output file
-    uppercased_path = modify_path(raw_path, dir=output_dir, suffix='_uppercased.txt')
+def download_genome(assembly):
+    #print(f"Downloading genome for assembly: {assembly}")
 
-    # input specification
-    inputs = [raw_path]
-    # output specification mapping a label to each file
-    outputs = {'uppercased_path': uppercased_path}
-    # resource specification
-    options = {'memory': '8g', 'walltime': '00:10:00'} 
+    tmp_dir = f"{base_dir}/steps/tmp/{assembly}"
+    genome_path = assemblies.loc[assembly, "genome_path"]
+    annotation_path = assemblies.loc[assembly, "annotation_path"]
 
-    # tmporary output file path
-    tmp_uppercased_path = modify_path(raw_path, dir='/tmp')
+    inputs = [config['assemblies_path']]
+    genome_file = f"{base_dir}/steps/genome/{assembly}.fa.gz"
+    annotation_file = f"{base_dir}/steps/annotation/{assembly}.gff.gz"
+    outputs = [genome_file, annotation_file]
+    options = {'memory': '8g', 'walltime': '02:00:00'}
 
-    # commands to run in task (bash script)
-    # we write to a tmp file and move that to the output directory 
-    # only if the command succeds (the && takes care of that)
     spec = f"""
-    mkdir -p {output_dir}
-    cat {raw_path} | tr [:lower:] [:upper:] > {tmp_uppercased_path} &&
-        mv {tmp_uppercased_path} {uppercased_path}
+        orig=$(pwd)
+        mkdir -p {base_dir}/steps/genome && 
+        mkdir -p {base_dir}/steps/annotation && 
+        mkdir -p {tmp_dir} && 
+        cd {tmp_dir} && 
+        datasets download genome accession {assembly} --include genome,gff3 &&
+        unzip -o ncbi_dataset.zip && 
+        cd $orig && 
+        gzip -c {genome_path} > {genome_file} && 
+        gzip -c {annotation_path} > {annotation_file} && rm -r {tmp_dir}
     """
-    # return target
+
+    #print(f"Spec for {assembly}: {spec}")
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-# task template function
-def divide_names(uppercased_path, me=None):
-    """
-    Splits names into two files. One with my name and one with other names.
-    """
-    # uppercased version of the me argument
-    uppercased_me = me.upper()
-
-    # dir for files produces by task
-    output_dir = 'steps/filtered_names'
-    # path of output file with names matching me
-    filt_me_path = modify_path(uppercased_path, dir=output_dir, suffix=f'_{me}.txt')
-    # path of output file with other names
-    filt_other_path = modify_path(uppercased_path, dir=output_dir, suffix=f'_not_{me}.txt')
-
-    # input specification
-    inputs = [uppercased_path]
-    # output specification mapping a label to each file
-    outputs = {'filt_me_path': filt_me_path, 'filt_other_path': filt_other_path}
-    # resource specification
-    options = {'memory': '8g', 'walltime': '00:10:00'} 
-
-    # tmporary output file paths
-    tmp_filt_me_path = modify_path(filt_me_path, dir='/tmp')
-    tmp_filt_other_path = modify_path(filt_other_path, dir='/tmp')
-
-    # commands to run in task (bash script)
-    # we write to tmp files and move them to the output directory 
-    # only if the command succeds (the && takes care of that)
+def make_all_intervals(assembly):
+    inputs = [f"{base_dir}/steps/genome/{assembly}.fa.gz"]
+    outputs = [f"{base_dir}/steps/intervals/{assembly}/all.parquet"]
+    options = {'memory': '8g', 'walltime': '02:00:00'} 
     spec = f"""
-    mkdir -p {output_dir}    
-    grep {uppercased_me} {uppercased_path} > {tmp_filt_me_path} &&  
-        grep -v {uppercased_me} {uppercased_path} > {tmp_filt_other_path} &&  
-        mv {tmp_filt_me_path} {filt_me_path} &&  
-        mv {tmp_filt_other_path} {filt_other_path}
+    mkdir -p {base_dir}/steps/intervals/{assembly} &&
+    python scripts/make_all_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
     """
-    # return target
+    #print(f"Spec for make_all_intervals {assembly}: {spec}")
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-# task template function
-def unique_names(filt_me_path, filt_other_path): 
-    """
-    Extracts unique names from a file.
-    """
-    # dir for files produces by task
-    output_dir = 'steps/unique_names'
-    # path of output file with unique names matching me
-    uniq_me_path = modify_path(filt_me_path, dir=output_dir, suffix='_unique.txt')
-    # path of output file with unique other names
-    uniq_other_path = modify_path(filt_other_path, dir=output_dir, suffix='_unique.txt')
-
-    # input specification
-    inputs = [filt_me_path, filt_other_path]
-    # output specification mapping a label to each file
-    outputs = {'unique_me_path': uniq_me_path, 'unique_other_path': uniq_other_path}
-    # resource specification
-    options = {'memory': '8g', 'walltime': '00:10:00'} 
-
-    # tmporary output file paths
-    tmp_uniq_me_path = modify_path(uniq_me_path, dir='/tmp')
-    tmp_uniq_other_path = modify_path(uniq_other_path, dir='/tmp')
-
-    # commands to run in task (bash script)
-    # we write to tmp files and move them to the output directory 
-    # only if the command succeds (the && takes care of that)
+def make_defined_intervals(assembly): ## does not show up in gwf
+    inputs = [f"{base_dir}/steps/genome/{assembly}.fa.gz"]
+    outputs = [f"{base_dir}/steps/intervals/{assembly}/defined.parquet"]
+    options = {'memory': '8g', 'walltime': '02:00:00'} 
     spec = f"""
-    mkdir -p {output_dir}    
-    sort {filt_me_path} | uniq > {tmp_uniq_me_path} && 
-        sort {filt_other_path} | uniq > {tmp_uniq_other_path} && 
-        mv {tmp_uniq_me_path} {uniq_me_path} && 
-        mv {tmp_uniq_other_path} {uniq_other_path}
+    mkdir -p steps/intervals/{assembly} &&
+    python scripts/make_defined_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
     """
-    # return target
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
 
-# task template function
-def merge_names(paths, output_path): 
-    """
-    Merges names from many files.
-    """
-    # dir for files produces by task
-    output_dir = modify_path(output_path, base='', suffix='')
-
-    # input specification
-    inputs = [paths]
-    # output specification mapping a label to the file
-    outputs = {'path': output_path}
-
-    # tmporary output file path
-    tmp_output_path =  modify_path(output_path, dir='/tmp')
-
-    # resource specification
-    options = {'memory': '8g', 'walltime': '00:10:00'} 
-
-    # commands to run in task (bash script)
-    # we write to tmp files and move them to the output directory 
-    # only if the command succeds (the && takes care of that)
+def make_annotation_intervals(assembly, feature):
+    inputs = [f"{base_dir}/steps/intervals/{assembly}/defined.parquet",
+              f"{base_dir}/steps/genome/{assembly}.fa.gz"]
+    outputs = [f"{base_dir}/steps/intervals/{assembly}/annotation_{feature}.parquet"]
+    options = {'memory': '8g', 'walltime': '02:00:00'} 
+    include_flank = config.get("annotation_features_include_flank", config['window_size'] // 2)
+    add_jiter = config.get("annotation_features_add_jitter", 100)
     spec = f"""
-    mkdir -p {output_dir}
-    cat {' '.join(paths)} > {tmp_output_path} && 
-        mv {tmp_output_path} {output_path}
+    mkdir -p steps/intervals/{assembly} &&
+    python scripts/make_annotation_intervals.py {inputs[0]} {inputs[1]} {outputs[0]} \
+        {config['window_size']} {feature} {include_flank} {add_jiter}
     """
-    # return target
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
-# task template function
-def run_notebook(path, dependencies, memory='8g', walltime='00:10:00', cores=1):    
-    """
-    Executes a notebook inplace and saves the output.
-    """
-    # path of output sentinel file
-    sentinel = modify_path(path, base=f'.{str(Path(path).name)}', suffix='.sentinel')
-    # sentinel = path.parent / f'.{path.name}'
 
-    # input specification
-    inputs = [path] + dependencies
-    # output specification mapping a label to each file
-    outputs = {'sentinel': sentinel}
-    # resource specification
-    options = {'memory': memory, 'walltime': walltime, 'cores': cores} 
-
-    # commands to run in task (bash script)
+def make_balanced_v1_intervals(assembly):  ### maybe not that inmpotent becuase it was the date created for the paper 
+    inputs = [f"{base_dir}/steps/intervals/{assembly}/defined.parquet",
+              f"{base_dir}/steps/annotation/{assembly}.gff.gz"]
+    outputs = [f"{base_dir}/steps/intervals/{assembly}/balanced_v1.parquet"]
+    options = {'memory': '8g', 'walltime': '02:00:00'} 
+    promoter_upstream = config.get("promoter_upstream", 1000)
     spec = f"""
-    jupyter nbconvert --to notebook --execute --inplace {path} && touch {sentinel}
+    mkdir -p steps/intervals/{assembly} &&
+    python scripts/make_defined_intervals.py {inputs[0]} {outputs[0]} \
+        {config['window_size']} {promoter_upstream}
     """
-    # return target
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+
+
+def make_dataset_assembly(assembly):
+    splits = ["train", "validation", "test"]
+    inputs = [f"{base_dir}/steps/intervals/{assembly}/{config['target_intervals']}.parquet",      ### it ask for data in a folder that does not exist
+              f"{base_dir}/steps/genome/{assembly}.fa.gz"]                                        ### it ask for data in a folder that does not exist
+    outputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
+    options = {'memory': '24g', 'walltime': '02:00:00'} 
+    spec = f"""
+    mkdir -p steps/intervals/{assembly} &&    
+    python scripts/make_dataset_assembly.py {' '.join(inputs)} {' '.join(outputs)} \
+        {config['split_proportion']} {config['window_size']} {config['step_size']} {config['add_rc']} \
+        {config['whitelist_validation_chroms']} {config['whitelist_test_chroms']}
+    """
+    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+
+
+download_targets = gwf.map(download_genome, assemblies.index)
+
+
+
+
+
+
+
+from gpn.data import (
+    Genome, load_table, get_balanced_intervals, filter_length,
+    filter_annotation_features,
+)
+
+def merge_datasets(assembly):
+    splits = ["train", "validation", "test"]
+    inputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
+    output_dir = f"{base_dir}/steps/dataset/data/{assembly}"
+    options = {'memory': '32g', 'walltime': '02:00:00'} 
+    spec = f"""
+    mkdir -p {output_dir} &&    
+    python /faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/scripts/make_merge_datasets.py {' '.join(inputs)} {output_dir}
+    """
+    return AnonymousTarget(inputs=inputs, outputs=[output_dir], options=options, spec=spec)
 
 
 # %% [markdown]
 """
-## Workflow:
+## Logic for target intervals defind in the yaml file:
+# Intervals from fasta file used for training:
+# - "all": all positions
+# - "defined": positions with defined nucleotides (not N)
+# - "annotation_{feature}": only <feature> positions from annotation, e.g. CDS, exon
+# - "balanced_v1": recipe used in original paper
 """
+# %%
+
+
+if config['target_intervals'] == 'all':
+    interval_targets = gwf.map(make_all_intervals, assemblies.index)
+elif config['target_intervals'] == 'defined':
+    print("Calling make_defined_intervals")
+    interval_targets = gwf.map(make_defined_intervals, assemblies.index)  
+elif config['target_intervals'].startswith('annotation'):
+    feature = config['target_intervals'].replace('annotation_', '')
+    interval_targets = gwf.map(make_annotation_intervals, assemblies.index, feature)
+elif config['target_intervals'] == 'balanced_v1':
+    interval_targets = gwf.map(make_balanced_v1_intervals, assemblies.index)
+else:
+    assert 0
+
+datasets = gwf.map(make_dataset_assembly, assemblies.index)
+merge_datasets_targets = gwf.map(merge_datasets, assemblies.index)
+
+# # %%
 
 # %%
 
-# instantiate the workflow
-gwf = Workflow(defaults={'account': 'your-project-folder-name'})
-
-# input files for workflow
-input_file_names = ['data/input_file1.txt', 'data/input_file2.txt']
-
-# workflow parameter
-myname = 'Kasper'
-
-# run an uppercase_names task for each input file
-uppercase_names_targets = gwf.map(uppercase_names, input_file_names)
-
-# run an divide_names task for each output file from uppercase_names
-filter_names_targets = gwf.map(divide_names, uppercase_names_targets.outputs, extra=dict(me=myname))
-
-# run an unique_names task for each output file from divide_names
-unique_names_targets = gwf.map(unique_names, filter_names_targets.outputs)
-
-# collect the outputs labelled 'unique_me_path' from all the outputs of unique_names 
-collected_outputs = collect(unique_names_targets.outputs, ['unique_me_path'])
-
-# create a single task to merge all those files into one
-merge_me_target = gwf.target_from_template(
-    'merge_not_me_name_files',
-    merge_names(collected_outputs['unique_me_paths'], "results/merged_me_names.txt")
-    )
-
-# collect the outputs labelled 'unique_other_path' from all the outputs of unique_names 
-collected_outputs = collect(unique_names_targets.outputs, ['unique_other_path'])
-
-# create a single task to merge all those files into one
-merge_other_target = gwf.target_from_template(
-    'merge_me_name_files',
-    merge_names(collected_outputs['unique_other_paths'], "results/merged_not_me_names.txt")
-    )
-
-# make notebooks depend on all output files from workflow
-notebook_dependencies = []
-for x in gwf.targets.values():
-    outputs = x.outputs
-    if type(outputs) is dict:
-        for o in outputs.values():
-            notebook_dependencies.append(o)
-    elif type(outputs) is list:
-        notebook_dependencies.extend(outputs)
-
-#  run notebooks in sorted order nb01_, nb02_, ...
-for path in glob.glob('notebooks/*.ipynb'):
-    target = gwf.target_from_template(
-        os.path.basename(path), run_notebook(path, notebook_dependencies))
-    # make notebooks depend on all previous notebooks
-    notebook_dependencies.append(target.outputs['sentinel'])
 
 
-# %%
