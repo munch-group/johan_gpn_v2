@@ -33,10 +33,10 @@ Instantiate the workflow with the name of the project folder:
 gwf = Workflow(defaults={'account': 'TopicsInBioinformatics'})
 
 
-config = yaml.safe_load(open("snakemake_workflow/workflow.yaml"))
+config = yaml.safe_load(open("scripts/generate_dataset/workflow.yaml"))
 
 # Define the base directory
-base_dir = "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data"
+base_dir = "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn"
 
 
 
@@ -125,7 +125,7 @@ def make_all_intervals(assembly):
     options = {'memory': '8g', 'walltime': '02:00:00'} 
     spec = f"""
     mkdir -p {base_dir}/steps/intervals/{assembly} &&
-    python scripts/make_all_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
+    python scripts/generate_dataset/make_all_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
     """
     #print(f"Spec for make_all_intervals {assembly}: {spec}")
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
@@ -137,7 +137,7 @@ def make_defined_intervals(assembly): ## does not show up in gwf
     options = {'memory': '8g', 'walltime': '02:00:00'} 
     spec = f"""
     mkdir -p steps/intervals/{assembly} &&
-    python scripts/make_defined_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
+    python scripts/generate_dataset/make_defined_intervals.py {inputs[0]} {outputs[0]} {config['window_size']}
     """
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
@@ -151,7 +151,7 @@ def make_annotation_intervals(assembly, feature):
     add_jiter = config.get("annotation_features_add_jitter", 100)
     spec = f"""
     mkdir -p steps/intervals/{assembly} &&
-    python scripts/make_annotation_intervals.py {inputs[0]} {inputs[1]} {outputs[0]} \
+    python scripts/generate_dataset/make_annotation_intervals.py {inputs[0]} {inputs[1]} {outputs[0]} \
         {config['window_size']} {feature} {include_flank} {add_jiter}
     """
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
@@ -165,7 +165,7 @@ def make_balanced_v1_intervals(assembly):  ### maybe not that inmpotent becuase 
     promoter_upstream = config.get("promoter_upstream", 1000)
     spec = f"""
     mkdir -p steps/intervals/{assembly} &&
-    python scripts/make_defined_intervals.py {inputs[0]} {outputs[0]} \
+    python scripts/generate_dataset/make_defined_intervals.py {inputs[0]} {outputs[0]} \
         {config['window_size']} {promoter_upstream}
     """
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
@@ -179,7 +179,7 @@ def make_dataset_assembly(assembly):
     options = {'memory': '24g', 'walltime': '02:00:00'} 
     spec = f"""
     mkdir -p steps/intervals/{assembly} &&    
-    python scripts/make_dataset_assembly.py {' '.join(inputs)} {' '.join(outputs)} \
+    python scripts/generategenerate_dataset_data_set/make_dataset_assembly.py {' '.join(inputs)} {' '.join(outputs)} \
         {config['split_proportion']} {config['window_size']} {config['step_size']} {config['add_rc']} \
         {config['whitelist_validation_chroms']} {config['whitelist_test_chroms']}
     """
@@ -206,7 +206,7 @@ def merge_datasets(assembly):
     options = {'memory': '32g', 'walltime': '02:00:00'} 
     spec = f"""
     mkdir -p {output_dir} &&    
-    python /faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/scripts/make_merge_datasets.py {' '.join(inputs)} {output_dir}
+    python /faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/generate_dataset/make_merge_datasets.py {' '.join(inputs)} {output_dir}
     """
     return AnonymousTarget(inputs=inputs, outputs=[output_dir], options=options, spec=spec)
 
