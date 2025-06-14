@@ -1,0 +1,27 @@
+name: gpn-arv5
+channels:
+  - conda-forge
+  - bioconda
+  - gwforg
+  - defaults
+dependencies:
+  - cudatoolkit=11.1
+  - cyvcf2
+  - h5py
+  - leidenalg
+  - logomaker
+  - more-itertools
+  - ncbi-datasets-cli
+  - pip
+  - python-igraph
+  - python=3.8
+  - scanpy
+  - scikit-learn
+  - scipy
+  - sgkit
+  - snakemake
+  - statsmodels
+  - umap-learn
+  - git-lfs
+  - graphviz
+prefix: /home/johanulstrup/miniconda3/envs/gpn-arv5

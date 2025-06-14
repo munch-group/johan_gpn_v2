@@ -37,7 +37,11 @@ config = yaml.safe_load(open("scripts/generate_dataset/workflow.yaml"))
 
 # Define the base directory
 base_dir = "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn"
+<<<<<<< HEAD
 
+=======
+#base_dir = "/faststorage/project/johan_gpn/people/johanulsrup/johan_gpn"
+>>>>>>> 4d3645e (WIP: save local changes)
 
 
 ## loading data and preparatoin (pandas)
@@ -88,6 +92,9 @@ def modify_path(path, **kwargs):
 """
 # %%
 
+
+
+
 # task template function
 def download_genome(assembly):
     #print(f"Downloading genome for assembly: {assembly}")
@@ -117,6 +124,38 @@ def download_genome(assembly):
 
     #print(f"Spec for {assembly}: {spec}")
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+
+
+
+def convert_fna_and_gff(assembly):
+    """
+    Converts pre-downloaded .fna and .gff files to .fa.gz and .gff.gz
+    so they match the expected workflow input format.
+    """
+    # Paths to pre-downloaded genome & annotation files
+    pre_downloaded_genome_path = "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/ncbi_dataset/data/GCF_000264685.3/GCF_000264685.3_Panu_3.0_genomic.fna"
+    pre_downloaded_annotation_path = "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/ncbi_dataset/data/GCF_000264685.3/genomic.gff"
+
+    # Destination paths
+    genome_file = f"{base_dir}/steps/genome/{assembly}.fa.gz"
+    annotation_file = f"{base_dir}/steps/annotation/{assembly}.gff.gz"
+
+    # Workflow settings
+    inputs = [pre_downloaded_genome_path, pre_downloaded_annotation_path]
+    outputs = [genome_file, annotation_file]
+    options = {'memory': '8g', 'walltime': '00:30:00'}
+
+    # Command to compress both files
+    spec = f"""
+        mkdir -p {base_dir}/steps/genome &&
+        mkdir -p {base_dir}/steps/annotation &&
+        gzip -c {pre_downloaded_genome_path} > {genome_file} &&
+        gzip -c {pre_downloaded_annotation_path} > {annotation_file}
+    """
+
+    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+
+
 
 
 def make_all_intervals(assembly):
@@ -176,22 +215,21 @@ def make_dataset_assembly(assembly):
     inputs = [f"{base_dir}/steps/intervals/{assembly}/{config['target_intervals']}.parquet",      ### it ask for data in a folder that does not exist
               f"{base_dir}/steps/genome/{assembly}.fa.gz"]                                        ### it ask for data in a folder that does not exist
     outputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
-    options = {'memory': '24g', 'walltime': '02:00:00'} 
+    options = {'memory': '32g', 'walltime': '02:00:00'} 
     spec = f"""
     mkdir -p steps/intervals/{assembly} &&    
+<<<<<<< HEAD
     python scripts/generategenerate_dataset_data_set/make_dataset_assembly.py {' '.join(inputs)} {' '.join(outputs)} \
+=======
+    python scripts/generate_dataset/make_dataset_assembly.py {' '.join(inputs)} {' '.join(outputs)} \
+>>>>>>> 4d3645e (WIP: save local changes)
         {config['split_proportion']} {config['window_size']} {config['step_size']} {config['add_rc']} \
         {config['whitelist_validation_chroms']} {config['whitelist_test_chroms']}
     """
     return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
 
-
-download_targets = gwf.map(download_genome, assemblies.index)
-
-
-
-
-
+## download_targets = gwf.map(download_genome, assemblies.index)
+download_targets = gwf.map(convert_fna_and_gff, assemblies.index)
 
 
 from gpn.data import (
@@ -199,6 +237,7 @@ from gpn.data import (
     filter_annotation_features,
 )
 
+<<<<<<< HEAD
 def merge_datasets(assembly):
     splits = ["train", "validation", "test"]
     inputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
@@ -209,6 +248,18 @@ def merge_datasets(assembly):
     python /faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/generate_dataset/make_merge_datasets.py {' '.join(inputs)} {output_dir}
     """
     return AnonymousTarget(inputs=inputs, outputs=[output_dir], options=options, spec=spec)
+=======
+# def merge_datasets(assembly):
+#     splits = ["train", "validation", "test"]
+#     inputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]
+#     output_dir = f"{base_dir}/steps/dataset/data/{assembly}"
+#     options = {'memory': '32g', 'walltime': '02:00:00'} 
+#     spec = f"""
+#     #python /faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/generate_dataset/make_merge_datasets.py {' '.join(inputs)} {output_dir}
+#     python /home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/scripts/generate_dataset/make_merge_datasets.py {' '.join(inputs)} {output_dir}
+#     """
+#     return AnonymousTarget(inputs=inputs, outputs=[output_dir], options=options, spec=spec)
+>>>>>>> 4d3645e (WIP: save local changes)
 
 
 # %% [markdown]
@@ -237,7 +288,7 @@ else:
     assert 0
 
 datasets = gwf.map(make_dataset_assembly, assemblies.index)
-merge_datasets_targets = gwf.map(merge_datasets, assemblies.index)
+#merge_datasets_targets = gwf.map(merge_datasets, assemblies.index)
 
 # # %%
 

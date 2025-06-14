@@ -1,0 +1,327 @@
+W0410 11:25:21.546000 696409 site-packages/torch/distributed/run.py:792] 
+W0410 11:25:21.546000 696409 site-packages/torch/distributed/run.py:792] *****************************************
+W0410 11:25:21.546000 696409 site-packages/torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0410 11:25:21.546000 696409 site-packages/torch/distributed/run.py:792] *****************************************
+/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+04/10/2025 11:25:46 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
+04/10/2025 11:25:46 - INFO - __main__ - Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+average_tokens_across_devices=False,
+batch_eval_metrics=False,
+bf16=True,
+bf16_full_eval=True,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=16,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+dataloader_prefetch_factor=None,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=False,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=True,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_do_concat_batches=True,
+eval_on_start=False,
+eval_steps=10000,
+eval_strategy=IntervalStrategy.STEPS,
+eval_use_gather_object=False,
+evaluation_strategy=steps,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+gradient_checkpointing_kwargs=None,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=None,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_for_metrics=[],
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.001,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/model/runs/Apr10_11-25-42_gn-1001,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=10000,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_kwargs={},
+lr_scheduler_type=SchedulerType.CONSTANT_WITH_WARMUP,
+max_grad_norm=1.0,
+max_steps=120000,
+metric_for_best_model=None,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=OptimizerNames.ADAMW_TORCH,
+optim_args=None,
+optim_target_modules=None,
+output_dir=/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/model,
+overwrite_output_dir=False,
+past_index=-1,
+per_device_eval_batch_size=64,
+per_device_train_batch_size=64,
+prediction_loss_only=True,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=False,
+report_to=['wandb'],
+restore_callback_states_from_checkpoint=False,
+resume_from_checkpoint=None,
+run_name=your_run,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=10000,
+save_strategy=SaveStrategy.STEPS,
+save_total_limit=None,
+seed=42,
+skip_memory_metrics=True,
+split_batches=None,
+tf32=None,
+torch_compile=True,
+torch_compile_backend=inductor,
+torch_compile_mode=None,
+torch_empty_cache_steps=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_liger_kernel=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=1000,
+weight_decay=0.01,
+)
+04/10/2025 11:25:46 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1distributed training: True, 16-bits training: False
+04/10/2025 11:25:46 - WARNING - __main__ - Process rank: 3, device: cuda:3, n_gpu: 1distributed training: True, 16-bits training: False
+04/10/2025 11:25:46 - WARNING - __main__ - Process rank: 2, device: cuda:2, n_gpu: 1distributed training: True, 16-bits training: False
+No config specified, defaulting to the single config: dataset_assembly/default
+04/10/2025 11:25:46 - INFO - datasets.builder - No config specified, defaulting to the single config: dataset_assembly/default
+Using custom data configuration default-31a8eb8e26a3d2e8
+04/10/2025 11:25:46 - INFO - datasets.builder - Using custom data configuration default-31a8eb8e26a3d2e8
+Loading Dataset Infos from /home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/datasets/packaged_modules/parquet
+04/10/2025 11:25:46 - INFO - datasets.info - Loading Dataset Infos from /home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/datasets/packaged_modules/parquet
+IterableDatasetDict({
+    train: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+    validation: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+    test: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+})
+IterableDatasetDict({
+    train: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+    validation: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+    test: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+})IterableDatasetDict({
+    train: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+    validation: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+    test: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+})IterableDatasetDict({
+    train: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+    validation: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+    test: IterableDataset({
+        features: ['assembly', 'chrom', 'start', 'end', 'strand', 'seq'],
+        num_shards: 1
+    })
+})
+
+
+04/10/2025 11:25:46 - WARNING - __main__ - You are instantiating a new config instance from scratch.
+04/10/2025 11:25:46 - WARNING - __main__ - You are instantiating a new config instance from scratch.
+04/10/2025 11:25:46 - WARNING - __main__ - You are instantiating a new config instance from scratch.
+04/10/2025 11:25:46 - WARNING - __main__ - You are instantiating a new config instance from scratch.
+[INFO|tokenization_utils_base.py:2032] 2025-04-10 11:25:46,688 >> loading file tokenizer.json
+[INFO|tokenization_utils_base.py:2032] 2025-04-10 11:25:46,688 >> loading file tokenizer.model
+[INFO|tokenization_utils_base.py:2032] 2025-04-10 11:25:46,688 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:2032] 2025-04-10 11:25:46,688 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:2032] 2025-04-10 11:25:46,688 >> loading file tokenizer_config.json
+[INFO|tokenization_utils_base.py:2032] 2025-04-10 11:25:46,688 >> loading file chat_template.jinja
+04/10/2025 11:25:46 - INFO - __main__ - Training new model from scratch
+[INFO|modeling_utils.py:1582] 2025-04-10 11:25:46,817 >> Instantiating GPNForMaskedLM model under default dtype torch.float32.
+dilation_schedule=[1, 2, 4, 8, 16, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128, 1]
+dilation_schedule=[1, 2, 4, 8, 16, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128, 1]
+dilation_schedule=[1, 2, 4, 8, 16, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128, 1]
+dilation_schedule=[1, 2, 4, 8, 16, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128, 1]
+/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/gpn/ss/run_mlm.py:513: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/gpn/ss/run_mlm.py:513: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/gpn/ss/run_mlm.py:513: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/gpn/ss/run_mlm.py:513: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+04/10/2025 11:25:57 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+[INFO|trainer.py:691] 2025-04-10 11:26:01,659 >> max_steps is given, it will override any value given in num_train_epochs
+[INFO|trainer.py:741] 2025-04-10 11:26:01,659 >> Using auto half precision backend
+[INFO|trainer.py:2369] 2025-04-10 11:26:04,147 >> ***** Running training *****
+[INFO|trainer.py:2370] 2025-04-10 11:26:04,147 >>   Num examples = 30,720,000
+[INFO|trainer.py:2371] 2025-04-10 11:26:04,147 >>   Num Epochs = 9,223,372,036,854,775,807
+[INFO|trainer.py:2372] 2025-04-10 11:26:04,147 >>   Instantaneous batch size per device = 64
+[INFO|trainer.py:2375] 2025-04-10 11:26:04,147 >>   Total train batch size (w. parallel, distributed & accumulation) = 256
+[INFO|trainer.py:2376] 2025-04-10 11:26:04,147 >>   Gradient Accumulation steps = 1
+[INFO|trainer.py:2377] 2025-04-10 11:26:04,147 >>   Total optimization steps = 120,000
+[INFO|trainer.py:2378] 2025-04-10 11:26:04,148 >>   Number of trainable parameters = 93,091,328
+[INFO|integration_utils.py:817] 2025-04-10 11:26:04,149 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank0]:   File "<frozen runpy>", line 88, in _run_code
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/gpn/ss/run_mlm.py", line 591, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/gpn/ss/run_mlm.py", line 529, in main
+[rank0]:     train_result = trainer.train(resume_from_checkpoint=checkpoint)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/trainer.py", line 2171, in train
+[rank0]:     return inner_training_loop(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/trainer.py", line 2437, in _inner_training_loop
+[rank0]:     self.control = self.callback_handler.on_train_begin(args, self.state, self.control)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/trainer_callback.py", line 469, in on_train_begin
+[rank0]:     return self.call_event("on_train_begin", args, state, control)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/trainer_callback.py", line 519, in call_event
+[rank0]:     result = getattr(callback, event)(
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/integrations/integration_utils.py", line 916, in on_train_begin
+[rank0]:     self.setup(args, state, model, **kwargs)
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/transformers/integrations/integration_utils.py", line 843, in setup
+[rank0]:     self._wandb.init(
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1475, in init
+[rank0]:     wandb._sentry.reraise(e)
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/wandb/analytics/sentry.py", line 156, in reraise
+[rank0]:     raise exc.with_traceback(sys.exc_info()[2])
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 1423, in init
+[rank0]:     wi.maybe_login(init_settings)
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/wandb/sdk/wandb_init.py", line 175, in maybe_login
+[rank0]:     wandb_login._login(
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/wandb/sdk/wandb_login.py", line 302, in _login
+[rank0]:     key, key_status = wlogin.prompt_api_key()
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/wandb/sdk/wandb_login.py", line 231, in prompt_api_key
+[rank0]:     raise UsageError("api_key not configured (no-tty). call " + directive)
+[rank0]: wandb.errors.errors.UsageError: api_key not configured (no-tty). call wandb.login(key=[your_api_key])
+Too many dataloader workers: 16 (max is dataset.num_shards=1). Stopping 15 dataloader workers.
+04/10/2025 11:26:04 - WARNING - datasets.iterable_dataset - Too many dataloader workers: 16 (max is dataset.num_shards=1). Stopping 15 dataloader workers.
+Too many dataloader workers: 16 (max is dataset.num_shards=1). Stopping 15 dataloader workers.
+04/10/2025 11:26:04 - WARNING - datasets.iterable_dataset - Too many dataloader workers: 16 (max is dataset.num_shards=1). Stopping 15 dataloader workers.
+Too many dataloader workers: 16 (max is dataset.num_shards=1). Stopping 15 dataloader workers.
+04/10/2025 11:26:04 - WARNING - datasets.iterable_dataset - Too many dataloader workers: 16 (max is dataset.num_shards=1). Stopping 15 dataloader workers.
+[rank0]:[W410 11:26:05.296632808 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0410 11:26:10.058000 696409 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 696432 closing signal SIGTERM
+W0410 11:26:10.060000 696409 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 696433 closing signal SIGTERM
+W0410 11:26:10.086000 696409 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 696434 closing signal SIGTERM
+E0410 11:26:10.451000 696409 site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 696431) of binary: /home/johanulstrup/miniconda3/envs/GPN/bin/python3.12
+Traceback (most recent call last):
+  File "/home/johanulstrup/miniconda3/envs/GPN/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/johanulstrup/miniconda3/envs/GPN/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+gpn.ss.run_mlm FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-10_11:26:10
+  host      : gn-1001.ib.gdk
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 696431)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

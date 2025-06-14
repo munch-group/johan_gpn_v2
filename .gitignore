@@ -136,3 +136,22 @@ _book/
 /.luarc.json
 
 *.sentinel
+
+# Genomic data
+/data/*.gz
+/data/ncbi_dataset/data/**/*.fna
+/data/ncbi_dataset/data/**/*.gff
+
+# Processed datasets
+/steps/**/train.parquet
+/steps/**/test.parquet
+/steps/**/validation.parquet
+
+# Output files
+/steps/**/output/**/*.vcf.gz
+/steps/**/output/**/*.parquet
+/steps/**/output/**/*.hdf5
+/steps/**/output/**/*.bed.gz
+
+# Genotype zip files
+/steps/**/genotype.zip

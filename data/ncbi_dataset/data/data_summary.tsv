@@ -1,0 +1,3 @@
+Organism Scientific Name	Organism Common Name	Organism Qualifier	Taxonomy id	Assembly Name	Assembly Accession	Source	Annotation	Level	Contig N50	Size	Submission Date	Gene Count	BioProject	BioSample
+Papio anubis	olive baboon	isolate: 1X1155, sex: female	9555	Panu_3.0	GCA_000264685.2	GenBank		Chromosome	149817	2959356508	2017-04-20		PRJNA54005	SAMN02981400
+Papio anubis	olive baboon	isolate: 1X1155, sex: female	9555	Panu_3.0	GCF_000264685.3	RefSeq	NCBI Papio anubis Annotation Release 103	Chromosome	149817	2959356508	2017-04-20	35744	PRJNA54005	SAMN02981400

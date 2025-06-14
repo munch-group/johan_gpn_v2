@@ -1,0 +1,20 @@
+FASTA_URL: "file:///home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/ncbi_dataset/data/GCF_000264685.3/GCF_000264685.3_Panu_3.0_genomic.fna"
+GTF_URL: "file:///home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/ncbi_dataset/data/GCF_000264685.3/genomic.gff"
+
+# MLM dataset creation from ncbi
+raw_assemblies_path: "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/babone.tsv"
+assemblies_path: "/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/babone.tsv"  # If you're using the same file for raw and filtered assemblies
+proportion_train: 1.0
+proportion_validation: 0.0
+proportion_test: 0.0
+window_size: 512
+step_size: 256
+add_rc: True
+promoter_upstream: 1000
+target_assembly: "GCF_000264685.3"
+subsample_to_target: True
+whitelist_validation_chroms:
+- "NC_018155.2"  # Panu chr4
+whitelist_test_chroms:
+- "NC_018156.2"  # Panu chr5
+samples_per_file: 500_000
