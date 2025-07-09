@@ -141,6 +141,17 @@ _book/
 /data/*.gz
 /data/ncbi_dataset/data/**/*.fna
 /data/ncbi_dataset/data/**/*.gff
+data/macaca/*
+data/comp_edges.zip
+data/eigentracks.zip
+data/GCF_003339765.1_genome.zip
+data/nestedRepeats.txt
+data/simpleRepeat.txt
+
+# eigen tracks
+/data/eigen_tracks/*
+/data/comp_edges/*
+/data/eigentracks/*
 
 # Processed datasets
 /steps/**/train.parquet
