@@ -11,4 +11,5 @@ project:
   output-dir: ../_book/slides
   render:
     - index.qmd
+    - slide_remapping_using_repeat.qmd
 

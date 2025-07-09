@@ -1,0 +1,12 @@
+{
+  "hash": "02863a52961bb5df49fbe64fa59a0133",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Remapping repeats \"\ndata: today\nauthor: \"Johan Ulstrup\"\n\n---\n\n\n\n## Remapping repeats\n- Nested repeats\n- Simple repeats\n- \n\n## remapping using eigen track (200 kb windows)\ninsert plots\n\n## remapping but we set the edges atound the transition to be 1 bp  \n- nested repeats\ninset plot\n\n## remapping but we set the edges atound the transition to be 1 bp\n- simple repeats\ninsert plot\n## Slide title\n\n::: {.incremental}\n- Eat spaghetti\n- Drink wine\n:::\n\n## Slide title\n\n:::: {.columns}\n\n::: {.column width=\"40%\"}\nLeft column\n:::\n\n::: {.column width=\"60%\"}\n- One\n- Two\n- Three\n:::\n\n::::\n\n## Admixture displacement in each <br>**geographical region** {.smaller}\n\n:::: {.columns}\n\n::: {.column width=\"40%\"}\n\n{{< embed ../notebooks/example.ipynb#doc-formality-correlation echo=false >}}\n\n:::\n\n::: {.column width=\"60%\"}\n\n{{< embed ../notebooks/example.ipynb#fig-danishinteraction >}}\n\n:::\n\n::::\n\n## Slide Title\n\nSlide content\n\n::: aside\nSchumer et al. (2018)\n:::\n\n",
+    "supporting": [
+      "slide_remapping_using_repeat_files/figure-revealjs"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
