@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GWF workflow – projectname</title>
+<title>Making a dataset for GPN – projectname</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4a36765baaa734549b365094a7d8bd05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ecee5da0bf1e22c6fc024630bd1c0583.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflow.html">Workflows</a></li><li class="breadcrumb-item"><a href="./workflow.html"><span class="chapter-title">GWF workflow</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflow.html">Workflows</a></li><li class="breadcrumb-item"><a href="./workflow.html"><span class="chapter-title">Making a dataset for GPN</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./manuscript/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Title of my thesis</span></a>
+  <a href="./manuscript/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notes to paperes</span></a>
   </div>
 </li>
       </ul>
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflow.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">GWF workflow</span></a>
+  <a href="./workflow.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Making a dataset for GPN</span></a>
   </div>
 </li>
       </ul>
@@ -264,16 +264,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#imports-and-utility-functions" id="toc-imports-and-utility-functions" class="nav-link active" data-scroll-target="#imports-and-utility-functions">Imports and utility functions</a></li>
   <li><a href="#template-functions" id="toc-template-functions" class="nav-link" data-scroll-target="#template-functions">Template functions:</a></li>
-  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow:</a></li>
+  <li><a href="#logic-for-target-intervals-defind-in-the-yaml-file" id="toc-logic-for-target-intervals-defind-in-the-yaml-file" class="nav-link" data-scroll-target="#logic-for-target-intervals-defind-in-the-yaml-file">Logic for target intervals defind in the yaml file:</a></li>
+  <li><a href="#intervals-from-fasta-file-used-for-training" id="toc-intervals-from-fasta-file-used-for-training" class="nav-link" data-scroll-target="#intervals-from-fasta-file-used-for-training">Intervals from fasta file used for training:</a></li>
+  <li><a href="#all-all-positions" id="toc-all-all-positions" class="nav-link" data-scroll-target="#all-all-positions">- “all”: all positions</a></li>
+  <li><a href="#defined-positions-with-defined-nucleotides-not-n" id="toc-defined-positions-with-defined-nucleotides-not-n" class="nav-link" data-scroll-target="#defined-positions-with-defined-nucleotides-not-n">- “defined”: positions with defined nucleotides (not N)</a></li>
+  <li><a href="#annotation_feature-only-positions-from-annotation-e.g.-cds-exon" id="toc-annotation_feature-only-positions-from-annotation-e.g.-cds-exon" class="nav-link" data-scroll-target="#annotation_feature-only-positions-from-annotation-e.g.-cds-exon">- “annotation_{feature}”: only <feature> positions from annotation, e.g.&nbsp;CDS, exon</feature></a></li>
+  <li><a href="#balanced_v1-recipe-used-in-original-paper" id="toc-balanced_v1-recipe-used-in-original-paper" class="nav-link" data-scroll-target="#balanced_v1-recipe-used-in-original-paper">- “balanced_v1”: recipe used in original paper</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/munch-group/johan_gpn/edit/main/workflow.py" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/munch-group/johan_gpn/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/munch-group/johan_gpn/blob/main/workflow.py" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflow.html">Workflows</a></li><li class="breadcrumb-item"><a href="./workflow.html"><span class="chapter-title">GWF workflow</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./workflow.html">Workflows</a></li><li class="breadcrumb-item"><a href="./workflow.html"><span class="chapter-title">Making a dataset for GPN</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">GWF workflow</span></h1>
+<h1 class="title"><span class="chapter-title">Making a dataset for GPN</span></h1>
 </div>
 
 
@@ -290,305 +295,281 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>r”“”</p>
-<p>Example workflow using mapping between intput and output of each target. It is made to show all the ways information may be passed through an workflow.</p>
-<pre class="plaintext"><code>                        input_file1.txt                        input_file2.txt
-                                                                                                                
-file label:             'raw_path'                              'raw_path'                                
-                            |                                       |                                  
-                            |                                       |                         
-template:               uppercase_names                         uppercase_names                         
-                            |                                       |                          
-                            |                                       |                         
-file label:            'uppercased_path'                       'uppercased_path'                         
-                            |                                       |                          
-                            |                                       |                         
-template:                divide_names                            divide_names                         
-                         /          \                            /          \                          
-                        /            \                          /            \                         
-file label:    'filt_me_path'  'filt_other_path'      'filt_me_path'  'filt_other_path'                         
-                        \           /                           \           /                         
-                         \         /                             \         /                         
-template:                 unique_names                            unique_names                         
-                           |      |                                |      |  
-                           |      |                                |      |  
-file label:      'uniq_me_path'  'uniq_other_path'       'uniq_me_path'  'uniq_other_path'
-                            \            \                        /           /
-                             \            - - - - - - - - - - - / - - -     /  
-                              \  / - - - - - - - -- - - - - - -         \  /
-                               |                                          |                          
-file label:     (collected) 'uniq_me_paths'              (collected) 'uniq_other_paths'                         
-                               |                                          |
-                               |                                          |
-template:                   merge_names                                merge_names
-                               |                                          |                          
-                               |                                          |                          
-file label:                'output_path'                              'output_path'                         </code></pre>
-<p>““”</p>
 <section id="imports-and-utility-functions" class="level2">
 <h2 class="anchored" data-anchor-id="imports-and-utility-functions">Imports and utility functions</h2>
-<div id="7a9e486e" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gwf <span class="im">import</span> Workflow, AnonymousTarget</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gwf.workflow <span class="im">import</span> collect</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="82d0818d" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gwf <span class="im">import</span> Workflow, AnonymousTarget</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gwf.workflow <span class="im">import</span> collect</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yaml</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Instantiate the workflow with the name of the project folder:</p>
-<div id="f04580fb" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiate the workflow</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>gwf <span class="op">=</span> Workflow(defaults<span class="op">=</span>{<span class="st">'account'</span>: <span class="st">'your-project-folder-name'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="839a2ca6" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiate the workflow</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#gwf = Workflow(defaults={'account': 'baboons'})</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gwf <span class="op">=</span> Workflow(defaults<span class="op">=</span>{<span class="st">'account'</span>: <span class="st">'TopicsInBioinformatics'</span>})</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> yaml.safe_load(<span class="bu">open</span>(<span class="st">"scripts/generate_dataset/workflow.yaml"</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the base directory</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>base_dir <span class="op">=</span> <span class="st">"/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="op">=======</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#base_dir = "/faststorage/project/johan_gpn/people/johanulsrup/johan_gpn"</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="dv">4</span><span class="er">d3645e</span> (WIP: save local changes)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">## loading data and preparatoin (pandas)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>assemblies <span class="op">=</span> pd.read_csv(config[<span class="st">'assemblies_path'</span>], sep<span class="op">=</span><span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>assemblies[<span class="st">"Assembly Name"</span>] <span class="op">=</span> assemblies[<span class="st">"Assembly Name"</span>].<span class="bu">str</span>.replace(<span class="st">" "</span>, <span class="st">"_"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>assemblies.set_index(<span class="st">"Assembly Accession"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>assemblies[<span class="st">"genome_path"</span>] <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/tmp/</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">/ncbi_dataset/data/</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">_genomic.fna"</span> <span class="cf">for</span> i, n <span class="kw">in</span> <span class="bu">zip</span>(assemblies.index, assemblies[<span class="st">"Assembly Name"</span>])]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>assemblies[<span class="st">"annotation_path"</span>] <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/tmp/</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">/ncbi_dataset/data/</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">/genomic.gff"</span> <span class="cf">for</span> i <span class="kw">in</span> assemblies.index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Utility functions:</p>
-<div id="81326da8" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># utility function</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> modify_path(path, <span class="op">**</span>kwargs):</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Utility function for modifying file paths substituting</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">    the directory (dir), base name (base), or file suffix (suffix).</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key <span class="kw">in</span> [<span class="st">'dir'</span>, <span class="st">'base'</span>, <span class="st">'suffix'</span>]:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        kwargs.setdefault(key, <span class="va">None</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(kwargs) <span class="op">==</span> <span class="dv">3</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    par, name <span class="op">=</span> os.path.split(path)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    name_no_suffix, suf <span class="op">=</span> os.path.splitext(name)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(kwargs[<span class="st">'suffix'</span>]) <span class="kw">is</span> <span class="bu">str</span>:</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        suf <span class="op">=</span> kwargs[<span class="st">'suffix'</span>]</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> kwargs[<span class="st">'dir'</span>] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        par <span class="op">=</span> kwargs[<span class="st">'dir'</span>]</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> kwargs[<span class="st">'base'</span>] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        name_no_suffix <span class="op">=</span> kwargs[<span class="st">'base'</span>]</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    new_path <span class="op">=</span> os.path.join(par, name_no_suffix <span class="op">+</span> suf)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(kwargs[<span class="st">'suffix'</span>]) <span class="kw">is</span> <span class="bu">tuple</span>:</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> <span class="bu">len</span>(kwargs[<span class="st">'suffix'</span>]) <span class="op">==</span> <span class="dv">2</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        new_path, nsubs <span class="op">=</span> re.subn(<span class="vs">r'</span><span class="sc">{}</span><span class="vs">$'</span>.<span class="bu">format</span>(kwargs[<span class="st">'suffix'</span>][<span class="dv">0</span>]), kwargs[<span class="st">'suffix'</span>][<span class="dv">1</span>], new_path)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> nsubs <span class="op">==</span> <span class="dv">1</span>, nsubs</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="79106eb5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># utility function</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> modify_path(path, <span class="op">**</span>kwargs):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Utility function for modifying file paths substituting</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    the directory (dir), base name (base), or file suffix (suffix).</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key <span class="kw">in</span> [<span class="st">'dir'</span>, <span class="st">'base'</span>, <span class="st">'suffix'</span>]:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        kwargs.setdefault(key, <span class="va">None</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(kwargs) <span class="op">==</span> <span class="dv">3</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    par, name <span class="op">=</span> os.path.split(path)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    name_no_suffix, suf <span class="op">=</span> os.path.splitext(name)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(kwargs[<span class="st">'suffix'</span>]) <span class="kw">is</span> <span class="bu">str</span>:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        suf <span class="op">=</span> kwargs[<span class="st">'suffix'</span>]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> kwargs[<span class="st">'dir'</span>] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        par <span class="op">=</span> kwargs[<span class="st">'dir'</span>]</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> kwargs[<span class="st">'base'</span>] <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        name_no_suffix <span class="op">=</span> kwargs[<span class="st">'base'</span>]</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    new_path <span class="op">=</span> os.path.join(par, name_no_suffix <span class="op">+</span> suf)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(kwargs[<span class="st">'suffix'</span>]) <span class="kw">is</span> <span class="bu">tuple</span>:</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> <span class="bu">len</span>(kwargs[<span class="st">'suffix'</span>]) <span class="op">==</span> <span class="dv">2</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        new_path, nsubs <span class="op">=</span> re.subn(<span class="vs">r'</span><span class="sc">{}</span><span class="vs">$'</span>.<span class="bu">format</span>(kwargs[<span class="st">'suffix'</span>][<span class="dv">0</span>]), kwargs[<span class="st">'suffix'</span>][<span class="dv">1</span>], new_path)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> nsubs <span class="op">==</span> <span class="dv">1</span>, nsubs</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="template-functions" class="level2">
 <h2 class="anchored" data-anchor-id="template-functions">Template functions:</h2>
-<div id="692d15fc" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># task template function</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> uppercase_names(raw_path): </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Formats names to uppercase.</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dir for files produces by task</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    output_dir <span class="op">=</span> <span class="st">'steps/upper_cased'</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path of output file</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    uppercased_path <span class="op">=</span> modify_path(raw_path, <span class="bu">dir</span><span class="op">=</span>output_dir, suffix<span class="op">=</span><span class="st">'_uppercased.txt'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># input specification</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [raw_path]</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output specification mapping a label to each file</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> {<span class="st">'uppercased_path'</span>: uppercased_path}</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># resource specification</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'00:10:00'</span>} </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># tmporary output file path</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    tmp_uppercased_path <span class="op">=</span> modify_path(raw_path, <span class="bu">dir</span><span class="op">=</span><span class="st">'/tmp'</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># commands to run in task (bash script)</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we write to a tmp file and move that to the output directory </span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># only if the command succeds (the &amp;&amp; takes care of that)</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p </span><span class="sc">{</span>output_dir<span class="sc">}</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    cat </span><span class="sc">{</span>raw_path<span class="sc">}</span><span class="ss"> | tr [:lower:] [:upper:] &gt; </span><span class="sc">{</span>tmp_uppercased_path<span class="sc">}</span><span class="ss"> &amp;&amp;</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="ss">        mv </span><span class="sc">{</span>tmp_uppercased_path<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>uppercased_path<span class="sc">}</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return target</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># task template function</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> divide_names(uppercased_path, me<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co">    Splits names into two files. One with my name and one with other names.</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># uppercased version of the me argument</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    uppercased_me <span class="op">=</span> me.upper()</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dir for files produces by task</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    output_dir <span class="op">=</span> <span class="st">'steps/filtered_names'</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path of output file with names matching me</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    filt_me_path <span class="op">=</span> modify_path(uppercased_path, <span class="bu">dir</span><span class="op">=</span>output_dir, suffix<span class="op">=</span><span class="ss">f'_</span><span class="sc">{</span>me<span class="sc">}</span><span class="ss">.txt'</span>)</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path of output file with other names</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    filt_other_path <span class="op">=</span> modify_path(uppercased_path, <span class="bu">dir</span><span class="op">=</span>output_dir, suffix<span class="op">=</span><span class="ss">f'_not_</span><span class="sc">{</span>me<span class="sc">}</span><span class="ss">.txt'</span>)</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># input specification</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [uppercased_path]</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output specification mapping a label to each file</span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> {<span class="st">'filt_me_path'</span>: filt_me_path, <span class="st">'filt_other_path'</span>: filt_other_path}</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># resource specification</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'00:10:00'</span>} </span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    <span class="co"># tmporary output file paths</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>    tmp_filt_me_path <span class="op">=</span> modify_path(filt_me_path, <span class="bu">dir</span><span class="op">=</span><span class="st">'/tmp'</span>)</span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    tmp_filt_other_path <span class="op">=</span> modify_path(filt_other_path, <span class="bu">dir</span><span class="op">=</span><span class="st">'/tmp'</span>)</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># commands to run in task (bash script)</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we write to tmp files and move them to the output directory </span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    <span class="co"># only if the command succeds (the &amp;&amp; takes care of that)</span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p </span><span class="sc">{</span>output_dir<span class="sc">}</span><span class="ss">    </span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="ss">    grep </span><span class="sc">{</span>uppercased_me<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>uppercased_path<span class="sc">}</span><span class="ss"> &gt; </span><span class="sc">{</span>tmp_filt_me_path<span class="sc">}</span><span class="ss"> &amp;&amp;  </span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="ss">        grep -v </span><span class="sc">{</span>uppercased_me<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>uppercased_path<span class="sc">}</span><span class="ss"> &gt; </span><span class="sc">{</span>tmp_filt_other_path<span class="sc">}</span><span class="ss"> &amp;&amp;  </span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="ss">        mv </span><span class="sc">{</span>tmp_filt_me_path<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>filt_me_path<span class="sc">}</span><span class="ss"> &amp;&amp;  </span></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="ss">        mv </span><span class="sc">{</span>tmp_filt_other_path<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>filt_other_path<span class="sc">}</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return target</span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="co"># task template function</span></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unique_names(filt_me_path, filt_other_path): </span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="co">    Extracts unique names from a file.</span></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dir for files produces by task</span></span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>    output_dir <span class="op">=</span> <span class="st">'steps/unique_names'</span></span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path of output file with unique names matching me</span></span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    uniq_me_path <span class="op">=</span> modify_path(filt_me_path, <span class="bu">dir</span><span class="op">=</span>output_dir, suffix<span class="op">=</span><span class="st">'_unique.txt'</span>)</span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path of output file with unique other names</span></span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>    uniq_other_path <span class="op">=</span> modify_path(filt_other_path, <span class="bu">dir</span><span class="op">=</span>output_dir, suffix<span class="op">=</span><span class="st">'_unique.txt'</span>)</span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>    <span class="co"># input specification</span></span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [filt_me_path, filt_other_path]</span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output specification mapping a label to each file</span></span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> {<span class="st">'unique_me_path'</span>: uniq_me_path, <span class="st">'unique_other_path'</span>: uniq_other_path}</span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>    <span class="co"># resource specification</span></span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'00:10:00'</span>} </span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>    <span class="co"># tmporary output file paths</span></span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>    tmp_uniq_me_path <span class="op">=</span> modify_path(uniq_me_path, <span class="bu">dir</span><span class="op">=</span><span class="st">'/tmp'</span>)</span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>    tmp_uniq_other_path <span class="op">=</span> modify_path(uniq_other_path, <span class="bu">dir</span><span class="op">=</span><span class="st">'/tmp'</span>)</span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>    <span class="co"># commands to run in task (bash script)</span></span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we write to tmp files and move them to the output directory </span></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>    <span class="co"># only if the command succeds (the &amp;&amp; takes care of that)</span></span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p </span><span class="sc">{</span>output_dir<span class="sc">}</span><span class="ss">    </span></span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="ss">    sort </span><span class="sc">{</span>filt_me_path<span class="sc">}</span><span class="ss"> | uniq &gt; </span><span class="sc">{</span>tmp_uniq_me_path<span class="sc">}</span><span class="ss"> &amp;&amp; </span></span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="ss">        sort </span><span class="sc">{</span>filt_other_path<span class="sc">}</span><span class="ss"> | uniq &gt; </span><span class="sc">{</span>tmp_uniq_other_path<span class="sc">}</span><span class="ss"> &amp;&amp; </span></span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="ss">        mv </span><span class="sc">{</span>tmp_uniq_me_path<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>uniq_me_path<span class="sc">}</span><span class="ss"> &amp;&amp; </span></span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="ss">        mv </span><span class="sc">{</span>tmp_uniq_other_path<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>uniq_other_path<span class="sc">}</span></span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return target</span></span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="co"># task template function</span></span>
-<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge_names(paths, output_path): </span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="co">    Merges names from many files.</span></span>
-<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dir for files produces by task</span></span>
-<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a>    output_dir <span class="op">=</span> modify_path(output_path, base<span class="op">=</span><span class="st">''</span>, suffix<span class="op">=</span><span class="st">''</span>)</span>
-<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>    <span class="co"># input specification</span></span>
-<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [paths]</span>
-<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output specification mapping a label to the file</span></span>
-<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> {<span class="st">'path'</span>: output_path}</span>
-<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>    <span class="co"># tmporary output file path</span></span>
-<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>    tmp_output_path <span class="op">=</span>  modify_path(output_path, <span class="bu">dir</span><span class="op">=</span><span class="st">'/tmp'</span>)</span>
-<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>    <span class="co"># resource specification</span></span>
-<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'00:10:00'</span>} </span>
-<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>    <span class="co"># commands to run in task (bash script)</span></span>
-<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we write to tmp files and move them to the output directory </span></span>
-<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>    <span class="co"># only if the command succeds (the &amp;&amp; takes care of that)</span></span>
-<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
-<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p </span><span class="sc">{</span>output_dir<span class="sc">}</span></span>
-<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a><span class="ss">    cat </span><span class="sc">{</span><span class="st">' '</span><span class="sc">.</span>join(paths)<span class="sc">}</span><span class="ss"> &gt; </span><span class="sc">{</span>tmp_output_path<span class="sc">}</span><span class="ss"> &amp;&amp; </span></span>
-<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a><span class="ss">        mv </span><span class="sc">{</span>tmp_output_path<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>output_path<span class="sc">}</span></span>
-<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
-<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return target</span></span>
-<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
-<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a><span class="co"># task template function</span></span>
-<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_notebook(path, dependencies, memory<span class="op">=</span><span class="st">'8g'</span>, walltime<span class="op">=</span><span class="st">'00:10:00'</span>, cores<span class="op">=</span><span class="dv">1</span>):    </span>
-<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a><span class="co">    Executes a notebook inplace and saves the output.</span></span>
-<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path of output sentinel file</span></span>
-<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>    sentinel <span class="op">=</span> modify_path(path, base<span class="op">=</span><span class="ss">f'.</span><span class="sc">{</span><span class="bu">str</span>(Path(path).name)<span class="sc">}</span><span class="ss">'</span>, suffix<span class="op">=</span><span class="st">'.sentinel'</span>)</span>
-<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sentinel = path.parent / f'.{path.name}'</span></span>
-<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a>    <span class="co"># input specification</span></span>
-<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [path] <span class="op">+</span> dependencies</span>
-<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>    <span class="co"># output specification mapping a label to each file</span></span>
-<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> {<span class="st">'sentinel'</span>: sentinel}</span>
-<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>    <span class="co"># resource specification</span></span>
-<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: memory, <span class="st">'walltime'</span>: walltime, <span class="st">'cores'</span>: cores} </span>
-<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>    <span class="co"># commands to run in task (bash script)</span></span>
-<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
-<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="ss">    jupyter nbconvert --to notebook --execute --inplace </span><span class="sc">{</span>path<span class="sc">}</span><span class="ss"> &amp;&amp; touch </span><span class="sc">{</span>sentinel<span class="sc">}</span></span>
-<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
-<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return target</span></span>
-<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ff6478ca" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># task template function</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download_genome(assembly):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(f"Downloading genome for assembly: {assembly}")</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    tmp_dir <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/tmp/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    genome_path <span class="op">=</span> assemblies.loc[assembly, <span class="st">"genome_path"</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    annotation_path <span class="op">=</span> assemblies.loc[assembly, <span class="st">"annotation_path"</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [config[<span class="st">'assemblies_path'</span>]]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    genome_file <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/genome/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.fa.gz"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    annotation_file <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/annotation/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.gff.gz"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> [genome_file, annotation_file]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'02:00:00'</span>}</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="ss">        orig=$(pwd)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ss">        mkdir -p </span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/genome &amp;&amp; </span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ss">        mkdir -p </span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/annotation &amp;&amp; </span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ss">        mkdir -p </span><span class="sc">{</span>tmp_dir<span class="sc">}</span><span class="ss"> &amp;&amp; </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ss">        cd </span><span class="sc">{</span>tmp_dir<span class="sc">}</span><span class="ss"> &amp;&amp; </span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ss">        datasets download genome accession </span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss"> --include genome,gff3 &amp;&amp;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="ss">        unzip -o ncbi_dataset.zip &amp;&amp; </span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="ss">        cd $orig &amp;&amp; </span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="ss">        gzip -c </span><span class="sc">{</span>genome_path<span class="sc">}</span><span class="ss"> &gt; </span><span class="sc">{</span>genome_file<span class="sc">}</span><span class="ss"> &amp;&amp; </span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ss">        gzip -c </span><span class="sc">{</span>annotation_path<span class="sc">}</span><span class="ss"> &gt; </span><span class="sc">{</span>annotation_file<span class="sc">}</span><span class="ss"> &amp;&amp; rm -r </span><span class="sc">{</span>tmp_dir<span class="sc">}</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(f"Spec for {assembly}: {spec}")</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_fna_and_gff(assembly):</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co">    Converts pre-downloaded .fna and .gff files to .fa.gz and .gff.gz</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co">    so they match the expected workflow input format.</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Paths to pre-downloaded genome &amp; annotation files</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    pre_downloaded_genome_path <span class="op">=</span> <span class="st">"/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/ncbi_dataset/data/GCF_000264685.3/GCF_000264685.3_Panu_3.0_genomic.fna"</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    pre_downloaded_annotation_path <span class="op">=</span> <span class="st">"/home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/data/ncbi_dataset/data/GCF_000264685.3/genomic.gff"</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Destination paths</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    genome_file <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/genome/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.fa.gz"</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    annotation_file <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/annotation/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.gff.gz"</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Workflow settings</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [pre_downloaded_genome_path, pre_downloaded_annotation_path]</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> [genome_file, annotation_file]</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'00:30:00'</span>}</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Command to compress both files</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="ss">        mkdir -p </span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/genome &amp;&amp;</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="ss">        mkdir -p </span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/annotation &amp;&amp;</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="ss">        gzip -c </span><span class="sc">{</span>pre_downloaded_genome_path<span class="sc">}</span><span class="ss"> &gt; </span><span class="sc">{</span>genome_file<span class="sc">}</span><span class="ss"> &amp;&amp;</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="ss">        gzip -c </span><span class="sc">{</span>pre_downloaded_annotation_path<span class="sc">}</span><span class="ss"> &gt; </span><span class="sc">{</span>annotation_file<span class="sc">}</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_all_intervals(assembly):</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/genome/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.fa.gz"</span>]</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/all.parquet"</span>]</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'02:00:00'</span>} </span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p </span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss"> &amp;&amp;</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="ss">    python scripts/generate_dataset/make_all_intervals.py </span><span class="sc">{</span>inputs[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>outputs[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>config[<span class="st">'window_size'</span>]<span class="sc">}</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(f"Spec for make_all_intervals {assembly}: {spec}")</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_defined_intervals(assembly): <span class="co">## does not show up in gwf</span></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/genome/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.fa.gz"</span>]</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/defined.parquet"</span>]</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'02:00:00'</span>} </span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss"> &amp;&amp;</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="ss">    python scripts/generate_dataset/make_defined_intervals.py </span><span class="sc">{</span>inputs[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>outputs[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>config[<span class="st">'window_size'</span>]<span class="sc">}</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_annotation_intervals(assembly, feature):</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/defined.parquet"</span>,</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/genome/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.fa.gz"</span>]</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/annotation_</span><span class="sc">{</span>feature<span class="sc">}</span><span class="ss">.parquet"</span>]</span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'02:00:00'</span>} </span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>    include_flank <span class="op">=</span> config.get(<span class="st">"annotation_features_include_flank"</span>, config[<span class="st">'window_size'</span>] <span class="op">//</span> <span class="dv">2</span>)</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>    add_jiter <span class="op">=</span> config.get(<span class="st">"annotation_features_add_jitter"</span>, <span class="dv">100</span>)</span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss"> &amp;&amp;</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="ss">    python scripts/generate_dataset/make_annotation_intervals.py </span><span class="sc">{</span>inputs[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>inputs[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>outputs[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="ss">        </span><span class="sc">{</span>config[<span class="st">'window_size'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>feature<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>include_flank<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>add_jiter<span class="sc">}</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_balanced_v1_intervals(assembly):  <span class="co">### maybe not that inmpotent becuase it was the date created for the paper </span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/defined.parquet"</span>,</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/annotation/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.gff.gz"</span>]</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/balanced_v1.parquet"</span>]</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'8g'</span>, <span class="st">'walltime'</span>: <span class="st">'02:00:00'</span>} </span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    promoter_upstream <span class="op">=</span> config.get(<span class="st">"promoter_upstream"</span>, <span class="dv">1000</span>)</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss"> &amp;&amp;</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="ss">    python scripts/generate_dataset/make_defined_intervals.py </span><span class="sc">{</span>inputs[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>outputs[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="ss">        </span><span class="sc">{</span>config[<span class="st">'window_size'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>promoter_upstream<span class="sc">}</span></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_dataset_assembly(assembly):</span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>    splits <span class="op">=</span> [<span class="st">"train"</span>, <span class="st">"validation"</span>, <span class="st">"test"</span>]</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>config[<span class="st">'target_intervals'</span>]<span class="sc">}</span><span class="ss">.parquet"</span>,      <span class="co">### it ask for data in a folder that does not exist</span></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/genome/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">.fa.gz"</span>]                                        <span class="co">### it ask for data in a folder that does not exist</span></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/dataset_assembly/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>split<span class="sc">}</span><span class="ss">.parquet"</span> <span class="cf">for</span> split <span class="kw">in</span> splits]</span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'32g'</span>, <span class="st">'walltime'</span>: <span class="st">'02:00:00'</span>} </span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p steps/intervals/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss"> &amp;&amp;    </span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="ss">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="ss">    python scripts/generategenerate_dataset_data_set/make_dataset_assembly.py </span><span class="sc">{</span><span class="st">' '</span><span class="sc">.</span>join(inputs)<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="st">' '</span><span class="sc">.</span>join(outputs)<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="ss">=======</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="ss">    python scripts/generate_dataset/make_dataset_assembly.py </span><span class="sc">{</span><span class="st">' '</span><span class="sc">.</span>join(inputs)<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="st">' '</span><span class="sc">.</span>join(outputs)<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="ss">&gt;&gt;&gt;&gt;&gt;&gt;&gt; 4d3645e (WIP: save local changes)</span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="ss">        </span><span class="sc">{</span>config[<span class="st">'split_proportion'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>config[<span class="st">'window_size'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>config[<span class="st">'step_size'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>config[<span class="st">'add_rc'</span>]<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="ss">        </span><span class="sc">{</span>config[<span class="st">'whitelist_validation_chroms'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>config[<span class="st">'whitelist_test_chroms'</span>]<span class="sc">}</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="co">## download_targets = gwf.map(download_genome, assemblies.index)</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>download_targets <span class="op">=</span> gwf.<span class="bu">map</span>(convert_fna_and_gff, assemblies.index)</span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gpn.data <span class="im">import</span> (</span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>    Genome, load_table, get_balanced_intervals, filter_length,</span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>    filter_annotation_features,</span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> merge_datasets(assembly):</span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>    splits <span class="op">=</span> [<span class="st">"train"</span>, <span class="st">"validation"</span>, <span class="st">"test"</span>]</span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/dataset_assembly/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>split<span class="sc">}</span><span class="ss">.parquet"</span> <span class="cf">for</span> split <span class="kw">in</span> splits]</span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>    output_dir <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_dir<span class="sc">}</span><span class="ss">/steps/dataset/data/</span><span class="sc">{</span>assembly<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>    options <span class="op">=</span> {<span class="st">'memory'</span>: <span class="st">'32g'</span>, <span class="st">'walltime'</span>: <span class="st">'02:00:00'</span>} </span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a><span class="ss">    mkdir -p </span><span class="sc">{</span>output_dir<span class="sc">}</span><span class="ss"> &amp;&amp;    </span></span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="ss">    python /faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/generate_dataset/make_merge_datasets.py </span><span class="sc">{</span><span class="st">' '</span><span class="sc">.</span>join(inputs)<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>output_dir<span class="sc">}</span></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> AnonymousTarget(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>[output_dir], options<span class="op">=</span>options, spec<span class="op">=</span>spec)</span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a><span class="op">=======</span></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a><span class="co"># def merge_datasets(assembly):</span></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="co">#     splits = ["train", "validation", "test"]</span></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="co">#     inputs = [f"{base_dir}/steps/dataset_assembly/{assembly}/{split}.parquet" for split in splits]</span></span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a><span class="co">#     output_dir = f"{base_dir}/steps/dataset/data/{assembly}"</span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="co">#     options = {'memory': '32g', 'walltime': '02:00:00'} </span></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a><span class="co">#     spec = f"""</span></span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a><span class="co">#     #python /faststorage/project/johan_gpn/people/johanulsrup/johan_gpn/scripts/generate_dataset/make_merge_datasets.py {' '.join(inputs)} {output_dir}</span></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="co">#     python /home/johanulstrup/johan_gpn/people/johanulsrup/johan_gpn/scripts/generate_dataset/make_merge_datasets.py {' '.join(inputs)} {output_dir}</span></span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a><span class="co">#     """</span></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="co">#     return AnonymousTarget(inputs=inputs, outputs=[output_dir], options=options, spec=spec)</span></span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="dv">4</span><span class="er">d3645e</span> (WIP: save local changes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="workflow" class="level2">
-<h2 class="anchored" data-anchor-id="workflow">Workflow:</h2>
-<div id="d6d251e8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiate the workflow</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>gwf <span class="op">=</span> Workflow(defaults<span class="op">=</span>{<span class="st">'account'</span>: <span class="st">'your-project-folder-name'</span>})</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># input files for workflow</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>input_file_names <span class="op">=</span> [<span class="st">'data/input_file1.txt'</span>, <span class="st">'data/input_file2.txt'</span>]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># workflow parameter</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>myname <span class="op">=</span> <span class="st">'Kasper'</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># run an uppercase_names task for each input file</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>uppercase_names_targets <span class="op">=</span> gwf.<span class="bu">map</span>(uppercase_names, input_file_names)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># run an divide_names task for each output file from uppercase_names</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>filter_names_targets <span class="op">=</span> gwf.<span class="bu">map</span>(divide_names, uppercase_names_targets.outputs, extra<span class="op">=</span><span class="bu">dict</span>(me<span class="op">=</span>myname))</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># run an unique_names task for each output file from divide_names</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>unique_names_targets <span class="op">=</span> gwf.<span class="bu">map</span>(unique_names, filter_names_targets.outputs)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># collect the outputs labelled 'unique_me_path' from all the outputs of unique_names </span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>collected_outputs <span class="op">=</span> collect(unique_names_targets.outputs, [<span class="st">'unique_me_path'</span>])</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># create a single task to merge all those files into one</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>merge_me_target <span class="op">=</span> gwf.target_from_template(</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">'merge_not_me_name_files'</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    merge_names(collected_outputs[<span class="st">'unique_me_paths'</span>], <span class="st">"results/merged_me_names.txt"</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># collect the outputs labelled 'unique_other_path' from all the outputs of unique_names </span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>collected_outputs <span class="op">=</span> collect(unique_names_targets.outputs, [<span class="st">'unique_other_path'</span>])</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># create a single task to merge all those files into one</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>merge_other_target <span class="op">=</span> gwf.target_from_template(</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'merge_me_name_files'</span>,</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    merge_names(collected_outputs[<span class="st">'unique_other_paths'</span>], <span class="st">"results/merged_not_me_names.txt"</span>)</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co"># make notebooks depend on all output files from workflow</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>notebook_dependencies <span class="op">=</span> []</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> gwf.targets.values():</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> x.outputs</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(outputs) <span class="kw">is</span> <span class="bu">dict</span>:</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> o <span class="kw">in</span> outputs.values():</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>            notebook_dependencies.append(o)</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">type</span>(outputs) <span class="kw">is</span> <span class="bu">list</span>:</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>        notebook_dependencies.extend(outputs)</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co">#  run notebooks in sorted order nb01_, nb02_, ...</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> path <span class="kw">in</span> glob.glob(<span class="st">'notebooks/*.ipynb'</span>):</span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    target <span class="op">=</span> gwf.target_from_template(</span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>        os.path.basename(path), run_notebook(path, notebook_dependencies))</span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># make notebooks depend on all previous notebooks</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    notebook_dependencies.append(target.outputs[<span class="st">'sentinel'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="logic-for-target-intervals-defind-in-the-yaml-file" class="level2">
+<h2 class="anchored" data-anchor-id="logic-for-target-intervals-defind-in-the-yaml-file">Logic for target intervals defind in the yaml file:</h2>
+</section>
+<section id="intervals-from-fasta-file-used-for-training" class="level1">
+<h1>Intervals from fasta file used for training:</h1>
+</section>
+<section id="all-all-positions" class="level1">
+<h1>- “all”: all positions</h1>
+</section>
+<section id="defined-positions-with-defined-nucleotides-not-n" class="level1">
+<h1>- “defined”: positions with defined nucleotides (not N)</h1>
+</section>
+<section id="annotation_feature-only-positions-from-annotation-e.g.-cds-exon" class="level1">
+<h1>- “annotation_{feature}”: only <feature> positions from annotation, e.g.&nbsp;CDS, exon</feature></h1>
+</section>
+<section id="balanced_v1-recipe-used-in-original-paper" class="level1">
+<h1>- “balanced_v1”: recipe used in original paper</h1>
+<div id="e6d6e6bc" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> config[<span class="st">'target_intervals'</span>] <span class="op">==</span> <span class="st">'all'</span>:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    interval_targets <span class="op">=</span> gwf.<span class="bu">map</span>(make_all_intervals, assemblies.index)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> config[<span class="st">'target_intervals'</span>] <span class="op">==</span> <span class="st">'defined'</span>:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Calling make_defined_intervals"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    interval_targets <span class="op">=</span> gwf.<span class="bu">map</span>(make_defined_intervals, assemblies.index)  </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> config[<span class="st">'target_intervals'</span>].startswith(<span class="st">'annotation'</span>):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    feature <span class="op">=</span> config[<span class="st">'target_intervals'</span>].replace(<span class="st">'annotation_'</span>, <span class="st">''</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    interval_targets <span class="op">=</span> gwf.<span class="bu">map</span>(make_annotation_intervals, assemblies.index, feature)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> config[<span class="st">'target_intervals'</span>] <span class="op">==</span> <span class="st">'balanced_v1'</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    interval_targets <span class="op">=</span> gwf.<span class="bu">map</span>(make_balanced_v1_intervals, assemblies.index)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="dv">0</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>datasets <span class="op">=</span> gwf.<span class="bu">map</span>(make_dataset_assembly, assemblies.index)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#merge_datasets_targets = gwf.map(merge_datasets, assemblies.index)</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># # %%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
