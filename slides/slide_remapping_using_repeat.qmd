@@ -29,46 +29,7 @@ inset plot
 ## remapping but we set the edges atound the transition to be 1 bp
 - simple repeats
 insert plot
-## Slide title
 
-::: {.incremental}
-- Eat spaghetti
-- Drink wine
-:::
-
-## Slide title
-
-:::: {.columns}
-
-::: {.column width="40%"}
-Left column
-:::
-
-::: {.column width="60%"}
-- One
-- Two
-- Three
-:::
-
-::::
-
-## Admixture displacement in each <br>**geographical region** {.smaller}
-
-:::: {.columns}
-
-::: {.column width="40%"}
-{{< embed ../notebooks/example.ipynb#doc-formality-correlation echo=false >}}
-:::
-
-::: {.column width="60%"}
-{{< embed ../notebooks/example.ipynb#fig-danishinteraction >}}
-:::
-
-::::
-
-## Slide Title
-
-Slide content
 
 ::: aside
 Schumer et al. (2018)
