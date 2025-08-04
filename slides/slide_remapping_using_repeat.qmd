@@ -19,18 +19,60 @@ params = load_params('../global_params.yml')
 - Simple repeats
 - 
 
-## remapping using eigen track (200 kb windows)
-insert plots
+## Remapping using comp_edges (200 kb windows) 
+:::: {.columns}
 
-## remapping but we set the edges atound the transition to be 1 bp  
-- nested repeats
-inset plot
-
-## remapping but we set the edges atound the transition to be 1 bp
-- simple repeats
-insert plot
-
-
-::: aside
-Schumer et al. (2018)
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#nested-repeat-eigentrack-start >}}
 :::
+
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#nested-repeat-eigentrack-mid >}}
+:::
+
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#nested-repeat-eigentrack-absmid >}}
+:::
+
+::::
+
+## Remapping but we set the edges atound the transition to be 1 bp  
+
+**Nested repeats**
+
+:::: {.columns}
+
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#nested-repeat-edge-1bp-start >}}
+:::
+
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#nested-repeat-edge-1bp-mid >}}
+:::
+
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#nested-repeat-edge-1bp-absmid >}}
+:::
+
+::::
+
+## Remapping but we set the edges atound the transition to be 1 bp
+
+**simple repeats**
+
+:::: {.columns}
+
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#simple-repeat-edge-1bp-start >}}
+:::
+
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#simple-repeat-edge-1bp-mid >}}
+:::
+
+::: {.column width="33%"}
+{{< embed ../notebooks/03_edged.ipynb#simple-repeat-edge-1bp-absmid >}}
+:::
+
+::::
+

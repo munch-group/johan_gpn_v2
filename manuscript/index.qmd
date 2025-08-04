@@ -38,6 +38,234 @@ After passing through the 25 layers, the model produces a contextual embedding w
 
 The GPN variant effect prediction score is calculated as the log-likelihood ratio between the alternate (ALT) and reference (REF) alleles. Here, L represents the window length in base pairs, and D denotes the embedding dimension.
 
+# cromatin structure and regulatiopn of genes
+2. Regulation of Gene Expression
+The chromatin state influences gene accessibility:
+
+Open chromatin is associated with active gene transcription.
+
+Closed chromatin represses gene activity.
+Repetitive elements near regulatory genes can shift chromatin structure, acting as silencers or enhancers depending on the epigenetic landscape (Venkatesh & Workman, 2015).
+
+Venkatesh & Workman (2015) – Histone exchange, chromatin structure and transcription regulation
+Nature Reviews Molecular Cell Biology
+Highlights the plasticity of chromatin around repeats and its impact on transcription.
+
+
+# repeats sorunding  edges
+
+1. Genome Stability and Repression of Transposable Elements
+Repetitive sequences, such as LINEs, SINEs, and satellite DNA, are often silenced via heterochromatin formation. This closed chromatin state is essential to suppress transposable elements, which can otherwise mobilize and disrupt genome integrity (Moazed, 2011).
+
+Makova & Hardison (2015) – The effects of chromatin organization on variation in mutation rates
+Nature Reviews Genetics
+Discusses how heterochromatin protects repeats but also contributes to mutational heterogeneity.
+
+
+4. Development and Cell Differentiation
+During development, regions with repetitive DNA undergo reconfiguration. The switch from euchromatin to heterochromatin is essential for cell lineage specification, and misregulation can cause developmental disorders (Gelato & Fischle, 2008).
+
+Ghosh & Woodcock (2010) – Chromatin higher-order structure and dynamics
+Cold Spring Harbor Perspectives
+Explains how chromatin compaction is governed by nucleosome positioning and repeat regions.
+
+
+### Three-dimensional genome reorganization during mouse spermatogenesis
+- Highlights how A/B compartment transitions coincide with major cell state transitions during spermatogenesis.
+- Found TF motifs and simple repeats enriched in switching regions.
+- Sheds light on regulatory elements linked to chromatin phase switching.
+
+ Core Findings
+This study investigates how the 3D organization of the genome changes across seven sequential stages of mouse spermatogenesis, using Hi-C technology. The work specifically focuses on topologically associating domains (TADs), chromatin loops, and A/B compartments, revealing highly dynamic reorganization events.
+
+🧩 1. TAD and Loop Dynamics
+Present in Type A spermatogonia (early stage).
+
+Disappear at pachytene stage (meiosis I prophase).
+
+Reappear in mature spermatozoa.
+
+This pattern indicates that TADs are not static during development and may not be essential for transcription at all stages.
+
+🧷 2. CTCF Binding
+CTCF remains bound at TAD boundary regions even when TADs are absent (e.g., in pachytene spermatocytes).
+
+This suggests CTCF binding is not sufficient by itself to maintain 3D structure.
+
+🔥 3. Enhancers, Promoters, and Active Transcription
+Despite the absence of TADs at pachytene, enhancers and promoters retain open chromatin.
+
+Transcription continues, implying that gene expression can occur independently of higher-order chromatin loops.
+
+🧭 4. A/B Compartment Changes
+A/B compartments are largely conserved on autosomes throughout spermatogenesis.
+
+However, specific A ↔ B switching events are correlated with changes in gene activity.
+
+The X chromosome loses its A/B compartment structure during stages like pachytene spermatocytes (pacSC), round spermatids (rST), and elongating spermatids (eST).
+
+ Repeats and Chromatin Compartment Transitions
+TF motif enrichment was analyzed in differentially active chromatin regions, which also included repetitive DNA content.
+
+During A/B compartment switching, particularly in regions transitioning from B (closed) to A (open), some simple and low-complexity repeats were enriched, suggesting a role in:
+
+Regulatory rewiring during cell fate transition.
+
+Chromatin accessibility and transcription activation.
+
+The X chromosome, which undergoes massive reorganization and loss of A/B compartment structure during specific stages (pacSC, rST, eST), may exhibit a distinct repeat signature, though this was only briefly hinted at in the paper.
+
+@article{Luo2019, 
+  year = {2019}, 
+  title = {{Three-dimensional genome reorganization during mouse spermatogenesis}}, 
+  author = {Luo, Zhen and Wang, Xin and Wang, Rui and Chen, Jie and Chen, Yan and Xu, Qing and Cao, Jun}, 
+  journal = {bioRxiv}, 
+  doi = {10.1101/585281}, 
+  abstract = {{Dynamic changes in chromatin architecture accompany spermatogenesis. Using Hi-C and ATAC-seq, this study reveals A/B compartment transitions and transcription factor motif enrichments that align with germ cell stage-specific chromatin changes.}}, 
+  pages = {}, 
+  number = {}, 
+  volume = {}, 
+  pmid = {}, 
+  pmcid = {}, 
+  issn = {}, 
+  keywords = {}, 
+  local-url = {https://www.biorxiv.org/content/10.1101/585281v1}
+}
+
+
+### Single-cell long-read Hi-C, scNanoHi-C2
+- Uses single-cell Hi-C to resolve chromatin changes in early germ cells.
+- Finds TE subfamilies enriched differently in A/B compartments, suggesting a regulatory function of repeat elements.
+
+🔬 Key Findings Summary
+Development of scNanoHi-C2
+
+The authors introduce scNanoHi-C2, a novel single-cell long-read Hi-C technique.
+
+It overcomes limitations of standard Hi-C by capturing long-range, multi-contact chromatin interactions in individual cells.
+
+3D Genome Dynamics in Germ Cells
+
+Applied to embryonic germline cells, the technique reveals:
+
+Stage-specific topological reorganization of the genome.
+
+Highly dynamic A/B compartment transitions, even at early embryonic stages.
+
+Repeat Element Profiling
+
+The study shows distinct enrichment patterns of transposable elements (TEs) in A and B compartments.
+
+LINEs and SINEs were differentially represented, correlating with developmental chromatin remodeling.
+
+These repeats may contribute to insulation, compartmental identity, or nuclear architecture.
+
+Chromatin Rewiring during Primordial Germ Cell (PGC) Development
+
+Early embryonic germ cells exhibit weaker TAD boundaries and less stable compartments compared to somatic cells.
+
+As differentiation progresses, compartment strength increases, indicating a progressive maturation of 3D genome organization.
+
+X Chromosome Inactivation Patterns
+
+The paper provides high-resolution views of X chromosome organization, noting changes in compartmental asymmetry and pairing during early germ cell development.
+
+@article{Lu2025, 
+  year = {2025}, 
+  title = {{Single-cell long-read Hi-C, scNanoHi-C2, details 3D genome reorganization in embryonic-stage germ cells}}, 
+  author = {Lu, Jiawei and Li, Wen and Tang, Fuchou}, 
+  journal = {Nature Structural & Molecular Biology}, 
+  doi = {10.1038/s41594-025-01604-7}, 
+  issn = {1545-9985}, 
+  abstract = {{This study applies scNanoHi-C2 to reveal high-resolution single-cell 3D chromatin structure changes during germline development. Transposable elements and repeat families were differentially enriched in A/B compartments, impacting developmental regulation.}}, 
+  pages = {}, 
+  number = {}, 
+  volume = {}, 
+  pmid = {}, 
+  pmcid = {}, 
+  keywords = {}, 
+  local-url = {https://www.nature.com/articles/s41594-025-01604-7}
+}
+
+### 3D genome remodeling and homologous pairing during meiotic prophase
+- Simple and LINE repeats enriched in B compartments, involved in meiotic structural integrity.
+
+
+Key Findings Summary
+This study integrates Hi-C chromatin conformation capture with super-resolution microscopy to uncover how 3D genome architecture is remodeled during meiotic prophase I in both male and female germlines (spermatogenesis and oogenesis) in mice.
+
+Homologous Chromosome Pairing
+Chromosomes exhibit precise and progressive pairing during prophase I.
+
+The study captures early pairing events in spermatocytes and oocytes, using high-resolution contact maps.
+
+Contact frequency increases significantly in homologous regions during zygotene and pachytene stages.
+
+2. Chromatin Compartment Remodeling
+A/B compartments are weakened or restructured during prophase.
+
+Specific B compartments, enriched in LINE elements and heterochromatin, show elevated pairing dynamics.
+
+Suggests B compartment flexibility supports pairing more than A.
+
+3. Role of Repeat Elements
+Repeat-rich regions, especially LINEs and LTRs, are preferentially localized to B compartments and correlate with stronger interhomolog interactions.
+
+Repeats may play a structural role in mediating nuclear architecture during meiosis.
+
+4. Sex Differences in Chromosome Pairing
+The authors find distinct dynamics between male and female germ cells, including:
+
+Differences in compartment switching speed.
+
+Asynchronous timing in homolog pairing progression.
+
+Oocytes retain more stable open chromatin than spermatocytes during mid-prophase.
+
+@article{He2023, 
+  year = {2023}, 
+  title = {{3D genome remodeling and homologous pairing during meiotic prophase of mouse oogenesis and spermatogenesis}}, 
+  author = {He, Jianrong and Yan, Ao and Chen, Bohan and Huang, Jin and Kee, Kehkooi}, 
+  journal = {Developmental Cell}, 
+  doi = {10.1016/j.devcel.2023.07.004}, 
+  issn = {1534-5807}, 
+  abstract = {{By applying Hi-C and super-resolution microscopy, this study tracks chromatin compartment transitions and homolog pairing in meiosis. Repeat-enriched B compartments show increased pairing dynamics and regulate meiotic architecture.}}, 
+  pages = {}, 
+  number = {}, 
+  volume = {}, 
+  pmid = {}, 
+  pmcid = {}, 
+  keywords = {}, 
+  local-url = {https://www.cell.com/developmental-cell/abstract/S1534-5807(23)00553-1}
+}
+
+
+### DICER regulates repeat RNA and chromosome segregation (maybe???)
+- Satellite repeats involved in chromatin architecture, A/B compartment boundary insulation via RNA-based silencing pathways.
+
+@article{He2023, 
+  year = {2023}, 
+  title = {{3D genome remodeling and homologous pairing during meiotic prophase of mouse oogenesis and spermatogenesis}}, 
+  author = {He, Jianrong and Yan, Ao and Chen, Bohan and Huang, Jin and Kee, Kehkooi}, 
+  journal = {Developmental Cell}, 
+  doi = {10.1016/j.devcel.2023.07.004}, 
+  issn = {1534-5807}, 
+  abstract = {{By applying Hi-C and super-resolution microscopy, this study tracks chromatin compartment transitions and homolog pairing in meiosis. Repeat-enriched B compartments show increased pairing dynamics and regulate meiotic architecture.}}, 
+  pages = {}, 
+  number = {}, 
+  volume = {}, 
+  pmid = {}, 
+  pmcid = {}, 
+  keywords = {}, 
+  local-url = {https://www.cell.com/developmental-cell/abstract/S1534-5807(23)00553-1}
+}
+
+
+# whats next 
+can we show this
+3. Mutation Rate Variation and Evolution
+Repetitive DNA in closed chromatin accumulates mutations at different rates compared to open regions, contributing to genomic variation and evolution (Makova & Hardison, 2015).
+
 
 ::: {#fig-fig_1_kantorovitz}
 ![](illustrations/fig_1_kantorovitz.png){width="50%"}
