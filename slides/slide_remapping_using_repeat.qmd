@@ -66,9 +66,7 @@ params = load_params('../global_params.yml')
 {{< embed ../notebooks/03_edged.ipynb#simple-repeat-edge-1bp-start >}}
 :::
 
-::: {.column width="33%"}
-{{< embed ../notebooks/03_edged.ipynb#simple-repeat-edge-1bp-mid >}}
-:::
+
 
 ::: {.column width="33%"}
 {{< embed ../notebooks/03_edged.ipynb#simple-repeat-edge-1bp-absmid >}}
