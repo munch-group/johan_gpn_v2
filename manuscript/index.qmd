@@ -203,6 +203,19 @@ For chromosome 8, the A compartment consistently showed higher GC content than t
  ![](illustrations/CPG_islands_chrx_normalized_poisson_CI_AB_BA.png){width="100%"} 
 :::
 
+## chr 8
+::: {#fig-CPG_not_normalized }
+ ![](illustrations/CPG_islands_chr8_not_normalized.png){width="100%"} 
+:::
+
+::: {#fig-CPG_normalized }
+ ![](illustrations/CPG_islands_chr8_normalized_poisson_CI.png){width="100%"} 
+:::
+
+::: {#fig-CPG_normalized }
+ ![](illustrations/CPG_islands_chr8_normalized_poisson_CI_AB_BA.png){width="100%"} 
+:::
+
 # repeat
 
 
