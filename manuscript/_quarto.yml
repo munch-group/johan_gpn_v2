@@ -13,6 +13,7 @@ format:
   pdf:
     # latex-clean: false
     documentclass: scrbook
+    classoption: openany
     pdf-engine: pdflatex
     papersize: A4
     toc: true
