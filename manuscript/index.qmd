@@ -22,21 +22,7 @@ degree: Master of Science in Bioinformatics
 
 ---
 # index
-# DNA language models are powerful predictors of genome-wide variant effects
 
-The idea for this project was to evaluate the Genome-Pretrained Network (GPN) introduced in [@Kantorovitz2024] and determine whether it could achieve greater accuracy than traditional methods in predicting genome-wide variant effects.
-
-The model is designed as a convolutional neural network (CNN) and takes input sequences with a window size of 512. During training, 15% of the positions within each window are masked to enable the model to learn meaningful representations.
-
-The architecture consists of 25 layers, each structured as follows: a dilated convolution layer, followed by an add-and-norm layer with a skip connection from before the dilated convolution. This is followed by a feedforward layer, another add-and-norm layer, and additional skip connections.
-
-A feedforward layer is a fundamental component of neural networks, where inputs pass through one or more fully connected layers with activation functions, transforming data without looping back. This structure helps the model learn complex representations by applying weighted transformations and non-linearities.
-
-A dilated convolution expands the receptive field of a convolutional layer without increasing the number of parameters or reducing resolution. By spacing kernel elements apart, it captures long-range dependencies in sequences, making it particularly useful in genomic data analysis. When combined, dilated convolutions and feedforward layers enhance a model’s ability to recognize patterns across different scales efficiently.
-
-After passing through the 25 layers, the model produces a contextual embedding with a dimension of 512 (D=512), followed by classification layers. The final layer outputs the probabilities of the four nucleotides at each masked position.
-
-The GPN variant effect prediction score is calculated as the log-likelihood ratio between the alternate (ALT) and reference (REF) alleles. Here, L represents the window length in base pairs, and D denotes the embedding dimension.
 
 ## evolution on X
 The production of gametes in sexually reproducing organisms is a complex, tightly regulated process involving numerous cellular and molecular mechanisms. In males, spermatogenesis—the process by which sperm are formed—progresses through four main stages of differentiation: from germ cells to spermatogonia, then to pachytene spermatocytes, round spermatids, and finally to mature spermatozoa \cite{Wang2019}(Wang et al. 2019). This process is fundamental to male fertility. Meiosis, a specialized form of cell division, ensures the proper pairing, recombination, and segregation of homologous chromosomes, thereby maintaining genetic integrity and promoting variation. A deep understanding of these molecular events is essential for comprehending inheritance, speciation, population genetics, and the biological causes of infertility.
@@ -54,12 +40,6 @@ The X chromosome, in particular, appears to be subject to strong and unique sele
 Regions under strong selection across primate species—including humans and baboons—are consistently found on the X chromosome, spanning megabase-scale genomic areas. As previously noted, factors such as chromosomal architecture and structural rearrangements may play crucial roles in enabling, regulating, or insulating these regions from selective pressures.
 
 Understanding genome organization and variation is therefore essential for uncovering the mechanisms behind selection. Chromatin has long been recognized as central to gene regulation and cellular function (Lieberman-Aiden et al. 2009), in part because the 3D structure of chromosomes brings distant genomic elements into close contact. Disruption of this spatial organization can lead to developmental abnormalities \cite{Dixon2015} (Dixon et al. 2015). Chromatin is organized hierarchically, with multiple levels of structure nested within one another (see Figure 2). At the broadest level, chromatin compartments can span several megabases \cite{LiebermanAiden2009} (Lieberman-Aiden et al. 2009), while at finer scales, even 500 base pairs can contribute to subgenic structural organization. Structures such as topologically associating domains (TADs) and chromatin loops, which operate at sub-megabase scales, further help partition regulatory elements and maintain proper genomic function \cite{Ramirez2018}\cite{Zuo2021}(Ramírez et al. 2018; Zuo et al. 2021).
-
-kigger på cromatin overgange
-er der noget der er anderledens i de områder
-konseveret 
-er der noge specifikke motiver 
-diversiteten 
 
 Chromatin, the complex of DNA wrapped around histone proteins and associated with various regulatory factors, plays a central role in the spatial and temporal control of gene expression, as well as in maintaining the structural integrity and stability of the genome. Far from being a static scaffold, chromatin is a highly dynamic entity, subject to extensive remodeling in response to cellular signals, developmental cues, and environmental stimuli. Its organization within the nucleus is hierarchical, ranging from nucleosomes to higher-order domains, and this architecture can differ substantially across cell types, developmental stages, and even between closely related species. One of the key features of chromatin organization is its division into functionally distinct states—broadly classified as euchromatin, which is generally open and transcriptionally active, and heterochromatin, which is compacted and repressive. Transitions between these states, whether developmentally programmed or evolutionarily emergent, are often tightly coupled to shifts in gene regulatory activity and cellular identity.
 
@@ -105,17 +85,25 @@ However, CNNs also come with limitations. They tend to focus on local features, 
 These challenges have inspired researchers to explore alternative architectures, most notably Transformer models. Unlike CNNs, Transformers are designed to model global relationships more naturally, though often at the expense of requiring more data and computational resources.
 
 
+## miosis 
+
+## X Chromosome Compartments and GC Content
+
+On autosomes, A/B compartments follow a well-established pattern: A compartments are GC-rich, gene-dense, and transcriptionally active, while B compartments are AT-rich, gene-poor, and heterochromatic (Lieberman-Aiden et al. 2009). Multiple studies have confirmed this relationship, with correlations between compartment identity and GC content often exceeding r = 0.8. Surprisingly, however, this principle has never been quantitatively assessed for the X chromosome, despite extensive work on its compartmental organization.
+
+## CPG islands 
+
+CpG islands (CGIs) are typically unmethylated DNA regions that are closely associated with gene promoters and play a crucial role in regulating chromatin accessibility and three-dimensional genome organization. Accumulating evidence demonstrates that changes in CGI methylation, histone modifications, or chromatin-binding proteins can drive or accompany transitions between chromatin compartments, shifting from active A compartments to repressive B compartments or vice versa. Such transitions are frequently observed in developmental processes, cancer progression, X-chromosome inactivation, and transcriptional regulation. In many cases, CGIs act as anchors or boundaries that help define chromatin domains, and their epigenetic state can strongly influence large-scale compartmental reorganization.
+
+Recent research on meiotic chromatin architecture provides insights that support this broader view of CGI function. A study by Wang *et al.* (2019) examined spermatogenesis in rhesus monkeys and mice using low-input Hi-C and found that canonical topologically associating domains (TADs) dissolve during the pachytene stage of meiosis, even while transcription continues. This observation suggests that TAD integrity is not strictly required for gene expression at this stage. Instead of the standard large-scale A/B compartmentalization, the study identified the emergence of smaller, refined A/B compartments that alternate between transcriptionally active and inactive domains. The formation of these fine-scale compartments was shown to depend on the synaptonemal complex (SC). In SC-defective mutants, canonical TADs reappeared, indicating that the SC suppresses TADs while enabling this unique compartmental structure. Notably, this reorganization of 3D chromatin architecture was conserved between monkeys and mice, suggesting a mammalian-wide regulatory principle (Wang *et al.*, 2019).
+
+Although CpG islands were not the central focus of this study, the findings are consistent with the hypothesis that CGIs contribute to compartmental organization by functioning as boundary or anchoring elements. Because refined compartment transitions align with transcriptional activity, and CGIs are commonly associated with active transcription start sites, it is likely that they play a role in stabilizing the boundaries between alternating compartments. In this way, CGIs may provide local chromatin insulation while also influencing higher-order genome organization. ( skriv om)
+
+## repeat 
+### simple nested repeats  
+
+
 # Materials and Methods
-
-
-Data Sources: Baboon genome datasets, known hybridization cases, population size data.
-
-Model and Tools: GPN model architecture and usage.
-
-Preprocessing: Alignment, feature extraction, and data cleaning.
-
-Entropy Calculation: Methodology for genome-wide entropy measurement.
-
 ## GPN arcitecture
 The idea for this project was to evaluate the Genome-Pretrained Network (GPN) introduced in \cite{Kantorovitz2024} and determine whether it could achieve greater accuracy than traditional methods in predicting genome-wide variant effects.
 
@@ -130,6 +118,10 @@ A dilated convolution expands the receptive field of a convolutional layer witho
 After passing through the 25 layers, the model produces a contextual embedding with a dimension of 512 (D=512), followed by classification layers. The final layer outputs the probabilities of the four nucleotides at each masked position.
 
 The GPN variant effect prediction score is calculated as the log-likelihood ratio between the alternate (ALT) and reference (REF) alleles. Here, L represents the window length in base pairs, and D denotes the embedding dimension.
+
+::: {#fig-fig_1_kantorovitz}
+![](illustrations/fig_1_kantorovitz.png){width="50%"}
+:::
 
 ## Data Preparation and Pretraining Workflow
 To evaluate the Genome-Pretrained Network (GPN), the initial step involved reproducing the pretraining workflow provided in the original publication. This workflow outlines the procedure for generating a dataset compatible with the model, specifically for masked language modeling over genomic sequences.
@@ -167,16 +159,70 @@ However, due to time constraints near the conclusion of the project timeline, th
 
 ## using HIC to extract transtion areas 
 
-## distance between the edges 
+
+## DATA 
+
+The dataset used in this study was generated from Macaca (rhesus macaque) samples, covering five distinct stages of spermatogenesis, as well as fibroblasts for comparison. These stages represent the continuum of male germ cell development from undifferentiated precursors to mature gametes.
+
+Spermatogonia are the mitotically active stem and progenitor cells located at the basal layer of the seminiferous tubules. They serve as the foundation of spermatogenesis by both self-renewing to maintain the stem cell pool and differentiating to give rise to spermatocytes. This stage is characterized by robust proliferative activity and the initiation of gene expression programs that prepare cells for meiosis.
+
+Pachytene spermatocytes are primary spermatocytes in the prolonged pachytene stage of meiotic prophase I. During this phase, homologous chromosomes are fully synapsed and undergo genetic recombination through crossing-over, ensuring genetic diversity in gametes. These cells also exhibit high levels of transcriptional activity, producing RNAs that will be used later during spermatid development, as transcription becomes reduced after meiosis.
+
+Following meiosis II, round spermatids are formed as haploid germ cells. At this point, the cells no longer divide but instead undergo extensive remodeling during spermiogenesis. Chromatin begins to compact, transcriptional activity decreases, and transcripts stored earlier are translated to support structural changes. Morphologically, the cells remain spherical at this stage.
+
+Through spermiogenesis, round spermatids differentiate into elongated spermatids and ultimately mature spermatozoa. This process involves dramatic nuclear condensation, replacement of histones with protamines, formation of the acrosome, and development of the flagellum for motility. Mature sperm are transcriptionally silent and highly specialized for fertilization.
+
+Finally, fibroblasts, isolated from connective tissue, were included as a non-germline somatic control. Unlike germ cells, fibroblasts are not involved in reproduction but maintain structural and extracellular matrix functions. Their inclusion allows for distinguishing germline-specific molecular signatures from general cellular processes.
+
+Together, these samples provide a comprehensive view of germ cell differentiation across spermatogenesis, with fibroblasts serving as a reference point for somatic baseline comparisons.
+
+## Datahandeling of the data befor analysisi 
+To load the data we use the function parse_compartment_data(file_name), which transforms the raw eigenvector track into meaningful genomic segments. The function begins by reading a CSV file that contains at least one column, e1, representing eigenvector values at 100 kb resolution.
+
+The eigenvector track (E1) marks A/B compartments along the genome. During its generation, some bins may contain NaN values. If these are left in the dataset, each missing value is treated as a break and produces false edges, creating compartment transitions that do not actually exist. To avoid this problem, we remove all rows containing NaN values before proceeding:
+
+``` python
+     e1_100kb.dropna(inplace=True)
+```
+This step ensures that the sign changes in the eigenvector reflect only genuine compartment transitions.
+
+After cleaning, the function calculates genomic coordinates by assigning each bin a start and end position based on its index and the fixed bin size of 100 kb. With these coordinates in place, it determines the sign of each eigenvector value and assigns segment IDs whenever the sign changes, so that continuous stretches of positive or negative values are grouped into compartments.
+
+Each compartment is then summarized by calculating the mean and sum of its eigenvector values and recording the minimum start and maximum end positions. Segments with a positive mean are classified as compartment A, while those with a negative mean are classified as compartment B. To prevent artifacts caused by missing bins, the function also checks segment borders to ensure that gaps do not create artificial extents.
+
+The function produces two outputs. The first is a tidy data frame of compartments that includes chromosome, start and end positions, mean eigenvector value, segment ID, sign, and compartment label. The second is a sorted list of all unique segment boundaries, which represent the genomic positions of compartment transitions.
+
+To separate the data into A and B compartments, we applied a simple filtering step. For each genomic interval, we compared the compartment label (A or B) with the sign of its position relative to the nearest transition. Intervals that matched the expected direction were collected into one set, while those that fell on the opposite side were collected into another. In practice, this was done with the following code:
+``` python 
+    A_val = result[
+        ((result['comp'] == 'A') & (result['start'] < 0)) |
+        ((result['comp'] == 'B') & (result['start'] > 0))
+    ].copy()
+    B_val = result[
+        ((result['comp'] == 'A') & (result['start'] > 0)) |
+        ((result['comp'] == 'B') & (result['start'] < 0))
+    ].copy()
+```
+This logic ensures that the data is consistently separated into values supporting the A compartment and values supporting the B compartment, based on both the compartment label and the position relative to the transition point.
+
+
+
+
+## Distance between the edges 
 To evaluate the availability of data across genomic distances and mitigate potential bias in downstream analyses, we calculated reverse cumulative counts of compartment edge half-distances. First, edges were identified at compartment transitions between A and B (in either direction). For each consecutive pair of such edges, we measured the genomic distance between their start positions and divided it by two, yielding the half-distance between edges.
 
 We then binned these half-distances and computed the reverse cumulative count for each bin, which represents the number of edges with half-distances greater than or equal to that bin. This approach effectively measures the number of edges capable of contributing data at a given spatial scale. Using this metric allows us to normalize other measurements by the available data density, reducing the risk that apparent trends are driven by varying numbers of contributing edges at different distances rather than true biological effects. Counts were calculated up to 2 Mb to encompass the maximum observed separation.
 
-::: {#fig-edge fig-cap="Reverse cumulative counts of compartment edge half-distances. Distances were calculated by first identifying sequential transitions between compartments A and B (or B and A). For each pair of transitions, the genomic distance between their start positions was measured and halved, producing the “half-distance” metric. The reverse cumulative count at a given bin shows the number of edges with half-distances greater than or equal to that bin’s center, representing the number of edges that could contribute data to measurements at that spatial scale. Extending the plot to 2 Mb captures the full range of half-distances observed."}
-![](illustrations/reverse_cumulative_count_v2.png){width="100%" }
+::: {#fig-edge fig-cap="Reverse cumulative counts of compartment edge half-distances.."}
+![](illustrations/reverse_cumulative_count_total.png){width="100%" }
 :::
 
 
+
+## compare GC conent to transition in macaca 
+
+
+# result 
 
 ## compare GC conent to transition in macaca 
 
@@ -188,129 +234,123 @@ For chromosome 8, the A compartment consistently showed higher GC content than t
  ![](illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png){width="100%"} 
 :::
 
-### CLAUDE NOTES
-## X chromosome compartments and GC content: An unexplored frontier
-The well-established pattern of higher GC content in A compartments versus B compartments on autosomes has *not been quantitatively investigated for the X chromosome*, despite extensive research on X chromosome compartmentalization. This represents a significant and surprising gap in our understanding of 3D genome organization, particularly given recent discoveries about the unique compartmental architecture of the X chromosome.
-## Studies confirm extensive X chromosome compartment research
-Research on X chromosome compartmentalization has advanced dramatically, particularly with the 2021 discovery that even the inactive X chromosome contains hidden A/B-like compartments. Studies have mapped approximately *75 A/B-like compartments on the inactive X* and *90 compartments on the active X* in neural precursor cells,  revealing a complex organizational structure previously thought to be absent. The original compartment discovery by Lieberman-Aiden and colleagues in 2009 established that A compartments are gene-rich, GC-rich, and transcriptionally active, while B compartments are gene-poor, AT-rich, and heterochromatic.  This principle has been consistently validated across autosomal chromosomes, with studies showing strong correlations (r = 0.80) between compartment identity and GC content.
-## The missing comparative analysis
-Despite extensive searching through major scientific databases and journals, *no studies provide quantitative GC content percentages for A versus B compartments specifically on the X chromosome*, nor do any offer comparative statistics between X chromosomal and autosomal compartment GC content. A 2017 structural modeling study confirmed that A and B compartments “are found to be associated with GC rich and AT rich sequences, respectively,”  but provided no X chromosome-specific data. This gap is particularly striking given that researchers have characterized numerous other aspects of X chromosome compartmentalization, including epigenetic signatures, replication timing, and structural features.
-The absence of this fundamental comparison likely stems from several factors. X chromosome analysis presents unique technical challenges due to X-inactivation in females and hemizygosity in males, leading many genome-wide studies to exclude sex chromosomes from their analyses. Additionally, the discovery that inactive X chromosomes possess compartmental organization is very recent (2021), suggesting this area requires further investigation.
-## X chromosome compartments display unique organizational features
-The X chromosome exhibits several distinctive compartmental characteristics that could affect GC content patterns differently than autosomes.   During X-inactivation, standard A/B compartments undergo remodeling into specialized *S1/S2 compartments*, where S1 compartments are Xist-rich and correspond to gene-dense regions, while S2 compartments are Xist-poor and correspond to gene-poor regions.  These then merge to create the characteristic “compartment-less” superstructure of the inactive X. The inactive X’s A-like compartments differ fundamentally from classical A compartments – they’re enriched in Xist RNA and H3K27me3 repressive marks rather than the active transcription marks (H3K4me3) typical of autosomal A compartments.
-Recent advances using micro-C and single-cell Hi-C technologies have revealed that the X chromosome maintains distinct *bipartite megadomain structures* separated by the Dxz4 boundary element,  a configuration not seen in autosomes.  These megadomains form stepwise during development through cohesin-dependent mechanisms, creating a unique architectural framework that could influence local GC content evolution patterns.  Studies in 2024 demonstrated that X-megadomains appear transiently in extraembryonic lineages before establishing the final inactive X structure, representing a developmental trajectory unique to sex chromosomes.
-## X-inactivation creates complex relationships with GC content
-The relationship between X-inactivation and compartment organization adds layers of complexity to potential GC content patterns. *Escape genes*, which maintain expression from the inactive X, preferentially localize to specific subcompartments and can comprise up to 30% of genes in escape-rich clusters.  These genes tend to reside in regions that retain some characteristics of A-type compartments, remaining at the periphery of or outside the Xist RNA domain.   SINE elements are enriched near promoters of escape genes, potentially facilitating their resistance to inactivation and creating local environments with distinct sequence composition.
-The mechanistic pathway of X-inactivation – involving Xist recruitment of HNRNPK, PRC1, and SMCHD1 – drives compartment formation through protein self-association, likely via liquid-liquid phase separation.  This process creates spatial segregation between different types of heterochromatin on the inactive X, with S1 compartments enriched in Polycomb marks and S2 compartments enriched in H3K9me2/3-associated proteins. This unique heterochromatin organization could create GC content distributions that differ from the standard active/inactive dichotomy seen in autosomal compartments.
-## Comparative analyses reveal broader evolutionary patterns
-While direct X chromosome compartment GC content data remains absent, comparative genomic studies provide relevant context. Research has demonstrated that *X chromosomes show unique recombination suppression patterns* that affect GC-biased gene conversion differently than autosomes.  The reduced recombination on sex chromosomes influences the efficacy of selection on GC content evolution, potentially creating different equilibrium GC levels in compartments.   Analysis across placental mammals revealed that genomic architecture constrains X chromosome evolution, with unique 3D folding patterns conserved across species despite extensive sequence divergence.
-The X chromosome maintains distinct superloop formations involving escapee loci, which may influence local GC content patterns through altered mutational processes or selection pressures.  Studies have shown that active domains on the X localize to territory boundaries where GC content patterns may be influenced by transcriptional accessibility and DNA repair mechanisms that differ from those in autosomal compartments.
-## Conclusion
-The lack of quantitative data comparing GC content between X chromosomal and autosomal A/B compartments represents a significant gap in our understanding of 3D genome organization. While the general principle that A compartments are GC-rich and B compartments are AT-rich is well-established for autosomes,   *whether this pattern holds equally on the X chromosome remains undemonstrated*. Given the X chromosome’s unique architectural features – including specialized compartment types during inactivation, escape gene clustering, and distinctive evolutionary constraints – this comparison would provide crucial insights into the fundamental relationship between chromosome structure, sequence composition, and gene regulation. This unexplored frontier presents an important opportunity for future research to quantitatively characterize how sex chromosome compartmentalization relates to the GC content patterns so well documented in autosomes.
+## CPS islands 
 
+To investigate chromatin dynamics during spermatogenesis in Macaca, we analyzed genome-wide changes in accessibility across successive developmental stages. We focused on genomic regions undergoing transitions from open to closed chromatin states and vice versa, as these sites represent potential regulatory hotspots that may contribute to germ cell differentiation. To explore the relationship between these transitions and CpG-rich elements, we obtained a genome-wide track of CpG islands and mapped their positions relative to the transition regions. Each transition was further annotated according to its placement within A or B compartments, with compartment A typically associated with transcriptionally active euchromatin and compartment B corresponding to transcriptionally repressed heterochromatin. By integrating chromatin transitions, CpG island mapping, and compartmentalization, we generated a stage-specific view of genome organization across spermatogenesis.
 
-## CPG islands 
+Figure @fig-CPG_islands_side_by_side illustrates the distribution of CpG island–associated transitions in fibroblasts on chromosome 8. At distances up to ~0.5 Mb, transition counts were comparable between A and B compartments, but beyond this range the A compartment exhibited substantially higher counts. This enrichment persisted until ~1.5 Mb, after which both compartments declined toward zero. The drop at larger distances likely reflects technical constraints: to measure a transition at 1.5 Mb, the minimum spacing between sites must be 3 Mb, which is relatively rare across the genome. This limitation is evident even though counts were normalized to account for the number of possible contributing sites. By contrast, chromosome X showed no compartment-specific differences in fibroblasts, with A and B compartments displaying similar counts across all distances.
 
-CpG islands (CGIs) are typically unmethylated DNA regions that are closely associated with gene promoters and play a crucial role in regulating chromatin accessibility and three-dimensional genome organization. Accumulating evidence demonstrates that changes in CGI methylation, histone modifications, or chromatin-binding proteins can drive or accompany transitions between chromatin compartments, shifting from active A compartments to repressive B compartments or vice versa. Such transitions are frequently observed in developmental processes, cancer progression, X-chromosome inactivation, and transcriptional regulation. In many cases, CGIs act as anchors or boundaries that help define chromatin domains, and their epigenetic state can strongly influence large-scale compartmental reorganization.
+In spermatogonia, no compartment-specific differences were observed on either chromosome 8 or chromosome X. Transition counts remained comparable between A and B compartments across all distances, in contrast to the fibroblast profile where chromosome 8 showed A-compartment enrichment.
 
-Recent research on meiotic chromatin architecture provides insights that support this broader view of CGI function. A study by Wang *et al.* (2019) examined spermatogenesis in rhesus monkeys and mice using low-input Hi-C and found that canonical topologically associating domains (TADs) dissolve during the pachytene stage of meiosis, even while transcription continues. This observation suggests that TAD integrity is not strictly required for gene expression at this stage. Instead of the standard large-scale A/B compartmentalization, the study identified the emergence of smaller, refined A/B compartments that alternate between transcriptionally active and inactive domains. The formation of these fine-scale compartments was shown to depend on the synaptonemal complex (SC). In SC-defective mutants, canonical TADs reappeared, indicating that the SC suppresses TADs while enabling this unique compartmental structure. Notably, this reorganization of 3D chromatin architecture was conserved between monkeys and mice, suggesting a mammalian-wide regulatory principle (Wang *et al.*, 2019).
+In pachytene spermatocytes, chromosome 8 displayed a distinct compartmental pattern. Between 0 and ~1.25 Mb, transition counts were higher in the A compartment compared to the B compartment, but at longer distances the two converged. On chromosome X, however, A and B compartments remained similar, showing no evidence of compartment-specific enrichment.
 
-Although CpG islands were not the central focus of this study, the findings are consistent with the hypothesis that CGIs contribute to compartmental organization by functioning as boundary or anchoring elements. Because refined compartment transitions align with transcriptional activity, and CGIs are commonly associated with active transcription start sites, it is likely that they play a role in stabilizing the boundaries between alternating compartments. In this way, CGIs may provide local chromatin insulation while also influencing higher-order genome organization.
+In round spermatids, chromosome 8 again showed a bias toward the A compartment, with more transitions observed from 0 to ~1.1 Mb. A comparable, though slightly shifted, pattern was seen on chromosome X, where enrichment in the A compartment was detected between ~0.25 and 1.3 Mb.
 
-we investigatet how the CPG islands where locakedm compared to the compartment transition. this was done by remapping the compartment trasition to CPG islands location on the genome. the outgoing data where then filteret acording to the filter below
-``` python 
-    A_val = result[
-        ((result['comp'] == 'A') & (result['start'] < 0)) |
-        ((result['comp'] == 'B') & (result['start'] > 0))
-    ].copy()
-    B_val = result[
-        ((result['comp'] == 'A') & (result['start'] > 0)) |
-        ((result['comp'] == 'B') & (result['start'] < 0))
-    ].copy()
-```
+Finally, in mature sperm, chromosome 8 exhibited consistent A-compartment enrichment from 0 to ~1.5 Mb. On chromosome X, the effect was more modest, with only a slight increase in A-compartment counts between ~1.0 and 1.75 Mb.
 
+Together, these results reveal stage-specific differences in the relationship between chromatin transitions, CpG islands, and genome compartmentalization. Fibroblasts and spermatogonia lack strong compartmental biases, while later spermatogenic stages, particularly pachytene spermatocytes, round spermatids, and mature sperm, display pronounced enrichment of CpG island–associated transitions in the A compartment, especially on chromosome 8.
 
-In this section, we restricted the analysis to chromosome X (chrX). We separated the data into A and B compartments and computed the absolute distance of each CpG island to the nearest compartment edge. The resulting distributions are shown in Figure @fig-CPG_normalized_chrx. The figure contains five panels—fibroblast, spermatogonia, pachytene spermatocyte, round spermatid, and sperm. In fibroblast, compartments A and B are similar up to ~0.8–1.0 Mb, after which the B compartment shows higher CpG-island counts. In spermatogonia and pachytene spermatocyte, A and B remain similar across distances. In round spermatid, we observe a divergence between compartments with higher counts between ~0.3 and 1.2 Mb. In sperm, A and B are similar up to ~1 Mb; beyond this distance there is little to no additional signal in the B compartment.
+::: {#fig-CPG_islands_side_by_side}
+![](illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes.png){width=100%}
 
-
-Applying the same analysis to chromosome 8 (@fig-CPG_normalized_chr8), fibroblast shows elevated CpG-island counts in compartment A from ~0.6 to 1.4 Mb. In spermatogonia, A and B remain similar. In pachytene spermatocyte and round spermatid, counts are higher in compartment A from ~0 to 1.0 Mb compared with compartment B. The same pattern is observed in sperm, with substantially higher counts in compartment A than in compartment B.
+**Figure:** cpgislands
+:::
 
 
 
 
- #fig-CPG_normalized_chrx
-
-#
-#fig-CPG_normalized_chr_ab
-
-## notes for cpg islands
-
-CpG islands, which are typically unmethylated and associated with gene promoters, play a pivotal role in chromatin accessibility and 3D genome organization. Multiple studies have demonstrated that chromatin compartment transitions (A to B or vice versa) can be driven or accompanied by changes in CpG island methylation, histone modifications, or chromatin-binding proteins. These changes are often observed in development, cancer progression, X-chromosome inactivation, and transcriptional regulation. CGIs frequently serve as anchors or boundaries for chromatin domains and their epigenetic status can correlate with large-scale compartment reorganization, particularly between transcriptionally active A compartments and repressive B compartments.
-
-### artikler
-Reprogramming of Meiotic Chromatin Architecture during Spermatogenesis (6)
-Key Findings Summary
-This paper investigates how 3D chromatin architecture is reorganized during spermatogenesis—specifically in rhesus monkey and mouse models—using low-input Hi-C (a chromosome conformation capture method).
-
-Major Contributions:
-Loss and Re-establishment of TADs (Topologically Associating Domains):
-
-During meiosis, particularly in pachytene spermatocytes, most canonical TADs dissolve even though transcription continues. This suggests that TAD structure is not strictly required for active gene expression at this stage.
-
-Emergence of Refined Local A/B Compartments:
-
-- Instead of standard large-scale A/B compartmentalization, fine-grained compartmental structures emerge. These “refined-A/B compartments” alternate between transcriptionally active and inactive domains.
-
-- hese compartments are smaller, and their emergence implies a compartmental organization decoupled from transcription activity.- 
-
-Synaptonemal Complex Dependency:
-
-- These refined compartments require a functional synaptonemal complex (SC). In SC-defective mutants, canonical TADs are restored, suggesting that the SC actively suppresses TADs while enabling fine-scale compartmentalization.
-
-- This is a novel role for the SC in 3D genome reorganization, beyond its known mechanical role in chromosome pairing and crossover formation.
-
-Conservation Across Species:
-
-- The unique meiotic chromatin organization found in rhesus monkeys is conserved in mice, suggesting this is a mammalian-wide regulatory principle during gametogenesis.
-
-
-##### Implication for CpG Islands:
-While CpG islands (CGIs) are not the primary focus of this paper, the study supports the broader hypothesis that CGIs may serve as boundary or anchoring elements in fine-scale compartment formation during meiosis:
-
-The refined-A/B structure shows domain transitions that correlate with transcription activity, a feature often influenced by CGI presence at promoter regions.
-
-Since CGIs are associated with active transcription start sites, they likely anchor boundaries between alternating compartments, effectively contributing to local chromatin insulation or regulation.
-
-@article{Wang2019,
-  year = {2019},
-  title = {{Reprogramming of Meiotic Chromatin Architecture during Spermatogenesis}},
-  author = {Wang, Yu and Wang, Hui and Zhang, Yixiao and Du, Zheng and Si, Wei and Fan, Shuhan and Qin, Dong and Liu, Yuliang and Liu, Yuhan and Xu, Shiyuan and others},
-  journal = {Molecular Cell},
-  issn = {1097-4164},
-  doi = {10.1016/j.molcel.2018.11.019},
-  abstract = {{Chromatin organization undergoes drastic reconfiguration during gametogenesis. However, the molecular reprogramming of three-dimensional chromatin structure in this process remains poorly understood for mammals, including primates. Here, we examined three-dimensional chromatin architecture during spermatogenesis in rhesus monkey using low-input Hi-C. Interestingly, we found that topologically associating domains (TADs) undergo dissolution and reestablishment in spermatogenesis. Strikingly, pachytene spermatocytes, where synapsis occurs, are strongly depleted for TADs despite their active transcription state but uniquely show highly refined local compartments that alternate between transcribing and non-transcribing regions (refined-A/B). Importantly, such chromatin organization is conserved in mouse, where it remains largely intact upon transcription inhibition. Instead, it is attenuated in mutant spermatocytes, where the synaptonemal complex failed to be established. Intriguingly, this is accompanied by the restoration of TADs, suggesting that the synaptonemal complex may restrict TADs and promote local compartments. Thus, these data revealed extensive reprogramming of higher-order meiotic chromatin architecture during mammalian gametogenesis.}},
-  volume = {73},
-  number = {3},
-  pages = {547--561.e6},
-  pmid = {30686580},
-  local-url = {https://www.cell.com/molecular-cell/fulltext/S1097-2765(18)30989-4}
-}
 
 
 
-##### maybe  relevant articles:
 
-Reconstructing A/B compartments as revealed by Hi-C using long-range correlations in epigenetic data (3)
+## simple repeat 
+We next examined the relationship between chromatin transitions and simple repeats using the same strategy as for CpG islands. The genomic positions of simple repeats were remapped relative to transition sites, and the counts in each distance bin were normalized by the number of transition sites that could contribute to that bin. This approach allowed us to determine whether simple repeats are enriched near transition regions and whether their distribution differs between A and B compartments.
 
-Smchd1-Dependent and -Independent Pathways Determine Developmental Dynamics of CpG Island Methylation on the Inactive X Chromosome (4)
+In fibroblasts, chromosome 8 showed a slight enrichment of simple repeats in the B compartment compared to the A compartment. On chromosome X, however, the opposite pattern was observed, with more simple repeats detected in the A compartment. Across both chromosomes, simple repeats were generally more abundant close to transition sites, with their frequency declining as distance increased.
+
+In spermatogonia, chromosome 8 did not display any clear compartment-specific differences, as simple repeat counts were comparable between A and B compartments across all distances. On chromosome X, simple repeats were evenly distributed between compartments up to ~0.5 Mb, but from ~0.5 to 2 Mb the A compartment contained higher counts. Similar to fibroblasts, spermatogonia also showed strong enrichment of simple repeats near transition sites, with counts decreasing at greater distances.
+
+In pachytene spermatocytes, chromosome 8 again showed more simple repeats in the B compartment than in the A compartment, with a strong enrichment close to transition sites. On chromosome X, an A-compartment bias emerged beyond ~0.75 Mb, where more simple repeats were observed in A compared to B.
+
+In round spermatids, chromosome 8 displayed a consistent bias toward the B compartment, with more simple repeats present there than in the A compartment. By contrast, chromosome X showed the opposite trend, with higher counts of simple repeats in the A compartment.
+
+Finally, in mature sperm, chromosome 8 continued to show an enrichment of simple repeats in the B compartment, while chromosome X again displayed more simple repeats in the A compartment.
+
+
+::: {#fig-simpel_repeat_side_by_side}
+![](illustrations/simple_repeat/simple_repeat_chr8_vs_chrx_normalized_poisson_CI_allaxes.png){width=100%}
+
+**Distribution of simple repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages.**  
+Chromosome 8 is shown on the left and chromosome X on the right. Rows represent different cell types: fibroblasts, spermatogonia, pachytene spermatocytes, round spermatids, and mature sperm. In each panel, simple repeat counts were mapped relative to transition sites, and values in each distance bin were normalized by the number of transition sites that could contribute to that bin.  
+
+:::
+
+
+
+
+
+
+
+## nested repeat 
+We also analyzed the distribution of nested repeats relative to chromatin transitions using the same mapping and normalization strategy applied to CpG islands and simple repeats. The results for nested repeats closely paralleled those observed for simple repeats.
+
+In fibroblasts, chromosome 8 showed more nested repeats in the B compartment, while chromosome X displayed a bias toward the A compartment. In spermatogonia, chromosome 8 showed no compartment-specific differences, whereas chromosome X exhibited an A-compartment enrichment beyond ~0.5 Mb. Pachytene spermatocytes, round spermatids, and mature sperm followed the same overall trends: chromosome 8 consistently contained more repeats in the B compartment, while chromosome X showed enrichment in the A compartment. Across all stages and both chromosomes, nested repeats were most abundant near transition sites, with counts decreasing at larger distances.
+
+::: {#fig-nested_repeat}
+![](illustrations/nested_repeat/nested_repeat_chr8_vs_chrx_normalized_poisson_CI.png){width=100%}
+
+**Distribution of nested repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages.**  
+Chromosome 8 is shown on the left and chromosome X on the right. Rows represent different cell types: fibroblasts, spermatogonia, pachytene spermatocytes, round spermatids, and mature sperm. In each panel, nested repeat counts were mapped relative to transition sites, and values in each distance bin were normalized by the number of transition sites that could contribute to that bin.  
+
+:::
+
+
+
+
+
+
+# Dissusion 
+
+## repeats 
+
+
+# Conclussion 
+
+
+# maybe artikler 
+::: {#fig-GC fig-cap="Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment."}
+ ![](illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png){width="100%"} 
+:::
+
+::: {#fig-CPG_islands_overlay}
+![](illustrations/cpgislands/cpgislands_chr8_plus_chrx_overlay_grid3x2_allaxes_newdata.png){width=100%}
+
+**Figure:** cpgislands 
+:::
+
+
+::: {#fig-simple_repeat_combined}
+ ![](illustrations/simple_repeat/simple_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png){width="100%"} 
+
+**Figure:** simple_repeat repeat
+:::
+
+
+::: {#fig-nested_repeat_combined }
+ ![](illustrations/nested_repeat/nested_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png){width="100%"} 
+
+**Figure:** nested repeat
+:::
+
+# suppelementery 
 
 ::: {#fig-CPG_not_normalized fig-cap= "chrX"}
  ![](illustrations/CPG_islands_chrx_not_normalized.png){width="100%"} 
 :::
 
-::: {#fig-CPG_normalized_chrx fig-cap= "chrX"}
+<!-- ::: {#fig-CPG_normalized_chrx fig-cap= "chrX"}
  ![](illustrations/CPG_islands_chrx_normalized_poisson_CI.png){width="100%"} 
-:::
+::: -->
 
 ::: {#fig-CPG_normalized_ab_chr_x fig-cap= "chrX"}
  ![](illustrations/CPG_islands_chrx_normalized_poisson_CI_AB_BA.png){width="100%"} 
@@ -321,30 +361,15 @@ Smchd1-Dependent and -Independent Pathways Determine Developmental Dynamics of C
  ![](illustrations/CPG_islands_chr8_not_normalized.png){width="100%"} 
 :::
 
-::: {#fig-CPG_normalized_chr8 fig-cap= "chr8" }
+<!-- ::: {#fig-CPG_normalized_chr8 fig-cap= "chr8" }
  ![](illustrations/CPG_islands_chr8_normalized_poisson_CI.png){width="100%"} 
-:::
+::: -->
 
 ::: {#fig-CPG_normalized_chr_ab fig-cap= "chr8"}
  ![](illustrations/CPG_islands_chr8_normalized_poisson_CI_AB_BA.png){width="100%"} 
 
 
 :::
-
-# repeat
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # notes
@@ -573,30 +598,25 @@ Oocytes retain more stable open chromatin than spermatocytes during mid-prophase
 }
 
 
-# whats next 
-can we show this
-3. Mutation Rate Variation and Evolution
-Repetitive DNA in closed chromatin accumulates mutations at different rates compared to open regions, contributing to genomic variation and evolution (Makova & Hardison, 2015).
 
 
-::: {#fig-fig_1_kantorovitz}
-![](illustrations/fig_1_kantorovitz.png){width="50%"}
-:::
- 
-# Genome-wide coancestry reveals details of ancient and recent male-driven reticulation in baboons
-
-[@knuth84] 
-
-```python
-# Here is example python code
-print("Hello world")
-print("i need to make a update")
-```
-
-Here is a reference [@NielsenSlatkin2016]
 
 
-# References
-::: {#refs}  
-:::
+# Aknowledgements
+## People
+I would like to extend my sincere gratitude to my supervisor, Kasper Munch, for his guidance and support throughout this project. His sparring and scientific literacy have been invaluable in refining my ideas and shaping the direction of this work. I am especially thankful for Kasper’s enthusiasm, which has been a source of motivation during this process. His expertise and insights were instrumental in setting up the Quarto templates and providing support for the discussion. His constructive feedback on the manuscript has greatly improved its quality. I feel fortunate to have had the opportunity to learn from and work with such a knowledgeable and dedicated mentor.
+
+I would also like to thank alberte peithersen for the help correcting the report 
+
+## Compute
+All computations were performed on GenomeDK (GDK), an HPC cluster located on Aarhus Uninversity, and most of the processing of the data was handled by a gwf workflow (GenomeDK 2023), a workflow manager developed at GDK. Developing the manuscript and all associated writing, editing, and rendering the project was also performed on GDK so work seemlesly with the analysis. I would like to thank GDK and Aarhus University for providing computational resources and support that contributed to these research results. None of this would have been possible on my own laptop from 2013.
+
+Use of Generative Artificial Intelligence
+As per Aarhus University guidelines (IT n.d.), I hereby disclose my use of Generative Artificial Intelligence (GAI) tools during the preparation of this thesis. All usage was conducted critically and responsibly, ensuring that the final work remained my own and adhered to academic integrity standards. These tools supplemented my expertise and accelerated routine tasks, but all creative, analytical, and scientific contributions are my own.
+
+## Copilot
+I used Copilot for code completion and debugging, as well as modifying existing code to reflect updated variables and experimental needs.
+
+## ChatGPT
+ChatGPT provided syntax support, to accelerate my learning of new programming languages. it also help me with proof reading.
 
