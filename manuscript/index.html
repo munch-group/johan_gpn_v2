@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-20">
+<meta name="dcterms.date" content="2025-09-23">
 <meta name="keywords" content="Vestibulum, Nunc ac dignissim, Proin feugiat">
 
 <title>Notes to paperes</title>
@@ -96,14 +96,43 @@ div.csl-indent {
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta name="citation_title" content="Notes to paperes">
 <meta name="citation_keywords" content="Vestibulum,Nunc ac dignissim,Proin feugiat">
 <meta name="citation_author" content="Johan Ulstrup">
-<meta name="citation_publication_date" content="2025-09-20">
-<meta name="citation_cover_date" content="2025-09-20">
+<meta name="citation_publication_date" content="2025-09-23">
+<meta name="citation_cover_date" content="2025-09-23">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-09-20">
+<meta name="citation_online_date" content="2025-09-23">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=An introduction to population genetics: Theory and applications;,citation_author=Rasmgb Nielsen;,citation_author=Montgomery Slatkin;,citation_publication_date=2016;,citation_cover_date=2016;,citation_year=2016;">
 <meta name="citation_reference" content="citation_title=Strong Selective Sweeps on the X Chromosome in the Human-Chimpanzee Ancestor Explain Its Low Divergence;,citation_abstract=The human and chimpanzee X chromosomes are less divergent than expected based on autosomal divergence. We study incomplete lineage sorting patterns between humans, chimpanzees and gorillas to show that this low divergence can be entirely explained by megabase-sized regions comprising one-third of the X chromosome, where polymorphism in the human-chimpanzee ancestral species was severely reduced. We show that background selection can explain at most 10% of this reduction of diversity in the ancestor. Instead, we show that several strong selective sweeps in the ancestral species can explain it. We also report evidence of population specific sweeps in extant humans that overlap the regions of low diversity in the ancestral species. These regions further correspond to chromosomal sections shown to be devoid of Neanderthal introgression into modern humans. This suggests that the same X-linked regions that undergo selective sweeps are among the first to form reproductive barriers between diverging species. We hypothesize that meiotic drive is the underlying mechanism causing these two observations.;,citation_author=Julien Y Dutheil;,citation_author=Kasper Munch;,citation_author=Kiwoong Nam;,citation_author=Thomas Mailund;,citation_author=Mikkel H Schierup;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_issue=8;,citation_doi=10.1371/journal.pgen.1005451;,citation_issn=1553-7390;,citation_pmid=26274919;,citation_volume=11;,citation_journal_title=PLOS Genetics;">
@@ -122,7 +151,6 @@ div.csl-indent {
 <meta name="citation_reference" content="citation_title=Sex ratio and unisexual sterility in hybrid animals;,citation_author=J. B. S. Haldane;,citation_publication_date=1922;,citation_cover_date=1922;,citation_year=1922;,citation_issue=2;,citation_doi=10.1007/BF02983075;,citation_volume=12;,citation_journal_title=Journal of Genetics;">
 <meta name="citation_reference" content="citation_title=100 years of haldane’s rule;,citation_author=Finn Cowell;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_issue=2;,citation_doi=10.1111/jeb.14112;,citation_volume=36;,citation_journal_title=Journal of Evolutionary Biology;">
 <meta name="citation_reference" content="citation_title=The ecology and evolutionary dynamics of meiotic drive;,citation_author=Anna K. Lindholm;,citation_author=Kelly A. Dyer;,citation_author=Renée C. Firman;,citation_author=Lila Fishman;,citation_author=Wolfgang Forstmeier;,citation_author=Luke Holman;,citation_author=Hanna Johannesson;,citation_author=Ulf Köhler;,citation_author=John F. B. Mitchell;,citation_author=Heidi M. Morgan;,citation_author=Christopher P. Pennell;,citation_author=Nobuo Pomiankowski;,citation_author=Amanda A. Ritchie;,citation_author=Jessica L. Shuker;,citation_author=Tanya R. Snook;,citation_author=Sarah L. Spottiswoode;,citation_author=Russell Bonduriansky;,citation_publication_date=2016;,citation_cover_date=2016;,citation_year=2016;,citation_issue=4;,citation_doi=10.1016/j.tree.2016.02.001;,citation_volume=31;,citation_journal_title=Trends in Ecology &amp;amp;amp; Evolution;">
-<meta name="citation_reference" content="citation_title=Reprogramming of Meiotic Chromatin Architecture during Spermatogenesis;,citation_abstract=Chromatin organization undergoes drastic reconfiguration during gametogenesis. However, the molecular reprogramming of three-dimensional chromatin structure in this process remains poorly understood for mammals, including primates. Here, we examined three-dimensional chromatin architecture during spermatogenesis in rhesus monkey using low-input Hi-C. Interestingly, we found that topologically associating domains (TADs) undergo dissolution and reestablishment in spermatogenesis. Strikingly, pachytene spermatocytes, where synapsis occurs, are strongly depleted for TADs despite their active transcription state but uniquely show highly refined local compartments that alternate between transcribing and non-transcribing regions (refined-A/B). Importantly, such chromatin organization is conserved in mouse, where it remains largely intact upon transcription inhibition. Instead, it is attenuated in mutant spermatocytes, where the synaptonemal complex failed to be established. Intriguingly, this is accompanied by the restoration of TADs, suggesting that the synaptonemal complex may restrict TADs and promote local compartments. Thus, these data revealed extensive reprogramming of higher-order meiotic chromatin architecture during mammalian gametogenesis.;,citation_author=Yu Wang;,citation_author=Hui Wang;,citation_author=Yixiao Zhang;,citation_author=Zheng Du;,citation_author=Wei Si;,citation_author=Shuhan Fan;,citation_author=Dong Qin;,citation_author=Yuliang Liu;,citation_author=Yuhan Liu;,citation_author=Shiyuan Xu;,citation_author=others;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_issue=3;,citation_doi=10.1016/j.molcel.2018.11.019;,citation_issn=1097-4164;,citation_pmid=30686580;,citation_volume=73;,citation_journal_title=Molecular Cell;">
 <meta name="citation_reference" content="citation_title=Reprogramming of meiotic chromatin architecture during spermatogenesis;,citation_author=Yao Wang;,citation_author=Hanben Wang;,citation_author=Yu Zhang;,citation_author=Zhenhai Du;,citation_author=Wei Si;,citation_author=Suixing Fan;,citation_author=Dongdong Qin;,citation_author=others;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://doi.org/10.1016/j.molcel.2018.11.019;,citation_issue=3;,citation_doi=10.1016/j.molcel.2018.11.019;,citation_volume=73;,citation_journal_title=Molecular Cell;">
 <meta name="citation_reference" content="citation_title=Database resources of the national center for biotechnology information;,citation_author=Eric W Sayers;,citation_author=Evan E Bolton;,citation_author=J Rodney Brister;,citation_author=Kathi Canese;,citation_author=Jessica Chan;,citation_author=Donald C Comeau;,citation_author=Ryan Connor;,citation_author=others;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://doi.org/10.1093/nar/gkab1112;,citation_issue=D1;,citation_doi=10.1093/nar/gkab1112;,citation_volume=50;,citation_journal_title=Nucleic Acids Research;">
 <meta name="citation_reference" content="citation_title=Biochemistry;,citation_author=Jeremy M. Berg;,citation_author=John L. Tymoczko;,citation_author=Gregory J. Gatto;,citation_author=Lubert Stryer;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_fulltext_html_url=https://www.macmillanlearning.com/college/us/product/Biochemistry/p/1464126100;,citation_isbn=9781464126109;">
@@ -130,6 +158,27 @@ div.csl-indent {
 <meta name="citation_reference" content="citation_title=Organization and function of the 3D genome;,citation_author=Boyan Bonev;,citation_author=Giacomo Cavalli;,citation_publication_date=2016;,citation_cover_date=2016;,citation_year=2016;,citation_fulltext_html_url=https://doi.org/10.1038/nrg.2016.104;,citation_issue=11;,citation_doi=10.1038/nrg.2016.104;,citation_volume=17;,citation_journal_title=Nature Reviews Genetics;">
 <meta name="citation_reference" content="citation_title=Variable tandem repeats accelerate evolution of coding and regulatory sequences;,citation_author=Rami Gemayel;,citation_author=Marcelo D. Vinces;,citation_author=Marc Legendre;,citation_author=Kevin J. Verstrepen;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_fulltext_html_url=https://doi.org/10.1146/annurev-genet-072610-155046;,citation_doi=10.1146/annurev-genet-072610-155046;,citation_volume=44;,citation_journal_title=Annual Review of Genetics;">
 <meta name="citation_reference" content="citation_title=Ten things you should know about transposable elements;,citation_author=Guillaume Bourque;,citation_author=Kathleen H. Burns;,citation_author=Mary Gehring;,citation_author=Vera Gorbunova;,citation_author=Andrei Seluanov;,citation_author=Molly Hammell;,citation_author=Maïa Imbeault;,citation_author=Zsuzsanna Izsvák;,citation_author=Henry L. Levin;,citation_author=Todd S. Macfarlan;,citation_author=Dixie L. Mager;,citation_author=Cédric Feschotte;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.1186/s13059-018-1577-z;,citation_issue=1;,citation_doi=10.1186/s13059-018-1577-z;,citation_volume=19;,citation_journal_title=Genome Biology;">
+<meta name="citation_reference" content="citation_title=SRA toolkit;,citation_author=DevTeam, SRA Toolkit;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_publisher=https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit;">
+<meta name="citation_reference" content="citation_title=Interplay between epigenome and 3D chromatin structure;,citation_author=Han, M.H.;,citation_author=Issagulova, D.;,citation_author=Park, M.;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_publisher=https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10761748/;">
+<meta name="citation_reference" content="citation_title=Extensive chromatin structure-function associations revealed by accurate 3D compartmentalization characterization;,citation_author=Wen, Z.;,citation_author=Zhang, W.;,citation_author=Zhong, Q.;,citation_author=Xu, J.;,citation_author=Hou, C.;,citation_author=others;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_publisher=https://www.frontiersin.org/articles/10.3389/fcell.2022.845118/full;">
+<meta name="citation_reference" content="citation_title=Homotypic clustering of L1 and B1/alu repeats compartmentalizes the 3D genome;,citation_author=Lu, J.Y.;,citation_author=Chang, L.;,citation_author=Li, T.;,citation_author=Wang, T.;,citation_author=Yin, Y.;,citation_author=Zhan, G.;,citation_author=Han, X.;,citation_author=Zhou, Y.;,citation_author=Zhang, H.;,citation_author=Hong, Y.;,citation_author=others;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_publisher=https://www.nature.com/articles/s41422-020-00466-6;">
+<meta name="citation_reference" content="citation_title=Simultaneous epigenetic perturbation and genome imaging reveal distinct roles of H3K9me3 in chromatin architecture and transcription;,citation_author=Feng, Y.;,citation_author=Wang, Y.;,citation_author=Wang, X.;,citation_author=He, X.;,citation_author=Yang, C.;,citation_author=Naseri, A.;,citation_author=Zhou, L.;,citation_author=Zhang, H.;,citation_author=Chen, X.;,citation_author=Xu, Y.;,citation_author=others;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_publisher=https://link.springer.com/article/10.1186/s13059-020-02201-1;">
+<meta name="citation_reference" content="citation_title=Biochemical properties of chromatin domains define genome compartmentalization;,citation_author=Lucini, F.;,citation_author=Petrini, C.;,citation_author=Salviato, E.;,citation_author=Pal, K.;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_publisher=https://academic.oup.com/nar/article/52/12/e54/7684597;">
+<meta name="citation_reference" content="citation_title=The loss of heterochromatin is associated with multiscale three-dimensional genome reorganization and aberrant transcription during cellular senescence;,citation_author=Zhang, X.;,citation_author=Liu, X.;,citation_author=Du, Z.;,citation_author=Wei, L.;,citation_author=Fang, H.;,citation_author=Dong, Q.;,citation_author=others;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_publisher=https://genome.cshlp.org/content/31/7/1121;">
+<meta name="citation_reference" content="citation_title=Chromatin remodelers in the 3D nuclear compartment;,citation_author=Valadez-Graham, V.;,citation_author=Magaña-Acosta, M.;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_publisher=https://www.frontiersin.org/articles/10.3389/fgene.2020.600615/full;">
+<meta name="citation_reference" content="citation_title=Ten principles of heterochromatin formation and function;,citation_author=R. C. Allshire;,citation_author=H. D. Madhani;,citation_publication_date=2016;,citation_cover_date=2016;,citation_year=2016;,citation_publisher=https://www.cell.com/fulltext/S0092-8674(16)31503-3;">
+<meta name="citation_reference" content="citation_title=Regulation of chromatin by histone modifications;,citation_author=A. J. Bannister;,citation_author=T. Kouzarides;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_publisher=https://www.cell.com/fulltext/S0092-8674(11)00438-9;">
+<meta name="citation_reference" content="citation_title=Dynamic chromatin organization without the 30-nm fiber;,citation_author=K. Maeshima;,citation_author=S. Tamura;,citation_author=J. C. Hansen;,citation_author=Y. Itoh;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_publisher=https://doi.org/10.1016/j.tcb.2020.05.006;">
+<meta name="citation_reference" content="citation_title=Organizational principles of 3D genome architecture;,citation_author=M. J. Rowley;,citation_author=V. G. Corces;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_publisher=https://www.nature.com/articles/s41580-018-0060-8;">
+<meta name="citation_reference" content="citation_title=Organization and function of the 3D genome;,citation_author=B. Bonev;,citation_author=G. Cavalli;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_publisher=https://www.nature.com/articles/nrm.2017.11;">
+<meta name="citation_reference" content="citation_title=Heterochromatin revisited;,citation_author=S. I. S. Grewal;,citation_author=S. Jia;,citation_publication_date=2007;,citation_cover_date=2007;,citation_year=2007;,citation_publisher=https://www.nature.com/articles/nrg2008;">
+<meta name="citation_reference" content="citation_title=Genome architecture: Domain organization of interphase chromosomes;,citation_author=W. A. Bickmore;,citation_author=B. Steensel;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;,citation_publisher=https://www.cell.com/fulltext/S0092-8674(13)01445-4;">
+<meta name="citation_reference" content="citation_title=The language of chromatin: Interdisciplinary decoding of epigenomic communication;,citation_author=C. D. Arnold;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_publisher=https://www.nature.com/articles/s41588-022-01065-4;">
+<meta name="citation_reference" content="citation_title=The human epigenome browser at washington university;,citation_author=X. Zhou;,citation_author=B. Maricque;,citation_author=M. Xie;,citation_author=D. Li;,citation_author=V. Sundaram;,citation_author=E. A. Martin;,citation_author=B. C. Koebbe;,citation_author=C. Nielsen;,citation_author=M. Hirst;,citation_author=P. Farnham;,citation_author=others;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_publisher=https://www.nature.com/articles/nmeth.1772;">
+<meta name="citation_reference" content="citation_title=Mapping and analysis of chromatin state dynamics in nine human cell types;,citation_author=J. Ernst;,citation_author=M. Kellis;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_publisher=https://www.nature.com/articles/nature09906;">
+<meta name="citation_reference" content="citation_title=Integrative analysis of 111 reference human epigenomes;,citation_author=A. Kundaje;,citation_author=W. Meuleman;,citation_author=J. Ernst;,citation_author=M. Bilenky;,citation_author=A. Yen;,citation_author=A. Heravi-Moussavi;,citation_author=P. Kheradpour;,citation_author=Z. Zhang;,citation_author=J. Wang;,citation_author=M. J. Ziller;,citation_author=others;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_publisher=https://www.nature.com/articles/nature14248;">
+<meta name="citation_reference" content="citation_title=Method of the year: Single-cell multimodal omics;,citation_author=V. Marx;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_publisher=https://www.nature.com/articles/d41586-020-00110-6;">
+<meta name="citation_reference" content="citation_title=ATAC‐seq: A method for assaying chromatin accessibility genome‐wide;,citation_author=J. D. Buenrostro;,citation_author=B. Wu;,citation_author=H. Y. Chang;,citation_author=W. J. Greenleaf;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_publisher=https://onlinelibrary.wiley.com/doi/full/10.1002/0471142727.mb2129s109;">
 </head>
 
 <body class="quarto-light">
@@ -164,7 +213,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">September 20, 2025</p>
+              <p class="date">September 23, 2025</p>
             </div>
           </div>
           
@@ -211,18 +260,21 @@ div.csl-indent {
   <li><a href="#gpn-arcitecture" id="toc-gpn-arcitecture" class="nav-link" data-scroll-target="#gpn-arcitecture">GPN arcitecture</a></li>
   <li><a href="#data-preparation-and-pretraining-workflow" id="toc-data-preparation-and-pretraining-workflow" class="nav-link" data-scroll-target="#data-preparation-and-pretraining-workflow">Data Preparation and Pretraining Workflow</a></li>
   <li><a href="#model-execution-workflow-and-hardware-constraints" id="toc-model-execution-workflow-and-hardware-constraints" class="nav-link" data-scroll-target="#model-execution-workflow-and-hardware-constraints">Model Execution Workflow and Hardware Constraints</a></li>
-  <li><a href="#using-hic-to-extract-transtion-areas" id="toc-using-hic-to-extract-transtion-areas" class="nav-link" data-scroll-target="#using-hic-to-extract-transtion-areas">using HIC to extract transtion areas</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">DATA</a></li>
+  <li><a href="#fecting-the-raw-data" id="toc-fecting-the-raw-data" class="nav-link" data-scroll-target="#fecting-the-raw-data">Fecting the raw data</a>
+  <ul class="collapse">
+  <li><a href="#data-generation-and-processing" id="toc-data-generation-and-processing" class="nav-link" data-scroll-target="#data-generation-and-processing">Data Generation and Processing</a></li>
+  </ul></li>
   <li><a href="#datahandeling-of-the-data-befor-analysisi" id="toc-datahandeling-of-the-data-befor-analysisi" class="nav-link" data-scroll-target="#datahandeling-of-the-data-befor-analysisi">Datahandeling of the data befor analysisi</a></li>
   <li><a href="#distance-between-the-edges" id="toc-distance-between-the-edges" class="nav-link" data-scroll-target="#distance-between-the-edges">Distance between the edges</a></li>
-  <li><a href="#compare-gc-conent-to-transition-in-macaca" id="toc-compare-gc-conent-to-transition-in-macaca" class="nav-link" data-scroll-target="#compare-gc-conent-to-transition-in-macaca">compare GC conent to transition in macaca</a></li>
+  <li><a href="#error-bars-calculation" id="toc-error-bars-calculation" class="nav-link" data-scroll-target="#error-bars-calculation">Error bars calculation</a></li>
   </ul></li>
-  <li><a href="#result" id="toc-result" class="nav-link" data-scroll-target="#result">result</a>
+  <li><a href="#result" id="toc-result" class="nav-link" data-scroll-target="#result">Result</a>
   <ul class="collapse">
-  <li><a href="#compare-gc-conent-to-transition-in-macaca-1" id="toc-compare-gc-conent-to-transition-in-macaca-1" class="nav-link" data-scroll-target="#compare-gc-conent-to-transition-in-macaca-1">compare GC conent to transition in macaca</a></li>
+  <li><a href="#compare-gc-conent-to-transition-in-macaca" id="toc-compare-gc-conent-to-transition-in-macaca" class="nav-link" data-scroll-target="#compare-gc-conent-to-transition-in-macaca">Compare GC conent to transition in macaca</a></li>
   <li><a href="#cps-islands" id="toc-cps-islands" class="nav-link" data-scroll-target="#cps-islands">CPS islands</a></li>
   <li><a href="#simple-repeat" id="toc-simple-repeat" class="nav-link" data-scroll-target="#simple-repeat">simple repeat</a></li>
   <li><a href="#nested-repeat" id="toc-nested-repeat" class="nav-link" data-scroll-target="#nested-repeat">nested repeat</a></li>
+  <li><a href="#control-to-with-a-andf-b-compartment" id="toc-control-to-with-a-andf-b-compartment" class="nav-link" data-scroll-target="#control-to-with-a-andf-b-compartment">control to with A andf b compartment</a></li>
   </ul></li>
   <li><a href="#dissusion" id="toc-dissusion" class="nav-link" data-scroll-target="#dissusion">Dissusion</a>
   <ul class="collapse">
@@ -266,26 +318,29 @@ div.csl-indent {
 <h1>index</h1>
 <section id="evolution-on-x" class="level2">
 <h2 class="anchored" data-anchor-id="evolution-on-x">evolution on X</h2>
-<p>The production of gametes in sexually reproducing organisms is a complex, tightly regulated process involving numerous cellular and molecular mechanisms. In males, spermatogenesis—the process by which sperm are formed—progresses through four main stages of differentiation: from germ cells to spermatogonia, then to pachytene spermatocytes, round spermatids, and finally to mature spermatozoa (Wang et al.&nbsp;2019). This process is fundamental to male fertility. Meiosis, a specialized form of cell division, ensures the proper pairing, recombination, and segregation of homologous chromosomes, thereby maintaining genetic integrity and promoting variation. A deep understanding of these molecular events is essential for comprehending inheritance, speciation, population genetics, and the biological causes of infertility.</p>
+<p>The production of gametes in sexually reproducing organisms is a complex, tightly regulated process involving numerous cellular and molecular mechanisms. In males, spermatogenesis—the process by which sperm are formed—progresses through four main stages of differentiation: from germ cells to spermatogonia, then to pachytene spermatocytes, round spermatids, and finally to mature spermatozoa <a href="Wang%20et%20al.%202019"><span class="citation" data-cites="Wang2019">Wang et al. (<span>2019</span>)</span></a>. This process is fundamental to male fertility. Meiosis, a specialized form of cell division, ensures the proper pairing, recombination, and segregation of homologous chromosomes, thereby maintaining genetic integrity and promoting variation. A deep understanding of these molecular events is essential for comprehending inheritance, speciation, population genetics, and the biological causes of infertility.</p>
 <p>Sex chromosomes differ from autosomes in several key ways due to their distinct patterns of inheritance and copy number. The Y chromosome is found only in males and exists as a single copy. In contrast, the X chromosome follows a more complex inheritance pattern: females carry two copies, while males carry only one. Consequently, the X chromosome resides two-thirds of the time in females and one-third in males, a distribution that influences how selection acts upon it. In males, the hemizygous nature of the X chromosome means that any mutations or deleterious alleles are fully exposed, without a second copy to mask their effects.</p>
-<p>This feature is central to Haldane’s rule (Haldane 1922), which posits that in hybrids between two species, the heterogametic sex (e.g., XY in mammals or ZW in birds) is more likely to be inviable or sterile. While widely observed, the precise causes of this pattern remain a subject of ongoing debate. Several hypotheses have been proposed to explain it. One suggests that incompatibilities involving the Y chromosome can arise if it fails to remain compatible with the X chromosome or autosomes. Another centers on dosage compensation, proposing that hybridization may disrupt the regulatory mechanisms that balance gene expression between sex chromosomes. The dominance hypothesis argues that recessive deleterious alleles may be unmasked in the heterogametic sex, leading to sterility. Additional ideas include the faster evolution of male-biased reproductive genes, which can result in functional mismatches, and the accelerated divergence of X-linked loci compared to autosomes, known as faster-X evolution. Lastly, meiotic drive—genetic conflicts between selfish elements on sex chromosomes—has also been implicated in hybrid sterility.</p>
-<p>These hypotheses underscore the complex interplay between sex chromosomes, selection, and hybridization (Cowell 2023). Although Haldane’s rule is consistently observed across diverse taxa—and even across kingdoms—the underlying mechanisms are not universally agreed upon. In many cases, multiple processes may act together (Lindholm et al.&nbsp;2016).</p>
+<p>This feature is central to Haldane’s rule <span class="citation" data-cites="Haldane1922">(<a href="#ref-Haldane1922" role="doc-biblioref">Haldane 1922</a>)</span> (Haldane 1922), which posits that in hybrids between two species, the heterogametic sex (e.g., XY in mammals or ZW in birds) is more likely to be inviable or sterile. While widely observed, the precise causes of this pattern remain a subject of ongoing debate. Several hypotheses have been proposed to explain it. One suggests that incompatibilities involving the Y chromosome can arise if it fails to remain compatible with the X chromosome or autosomes. Another centers on dosage compensation, proposing that hybridization may disrupt the regulatory mechanisms that balance gene expression between sex chromosomes. The dominance hypothesis argues that recessive deleterious alleles may be unmasked in the heterogametic sex, leading to sterility. Additional ideas include the faster evolution of male-biased reproductive genes, which can result in functional mismatches, and the accelerated divergence of X-linked loci compared to autosomes, known as faster-X evolution. Lastly, meiotic drive—genetic conflicts between selfish elements on sex chromosomes—has also been implicated in hybrid sterility.</p>
+<p>These hypotheses underscore the complex interplay between sex chromosomes, selection, and hybridization <span class="citation" data-cites="Cowell2023">(<a href="#ref-Cowell2023" role="doc-biblioref">Cowell 2023</a>)</span> (Cowell 2023). Although Haldane’s rule is consistently observed across diverse taxa—and even across kingdoms—the underlying mechanisms are not universally agreed upon. In many cases, multiple processes may act together <span class="citation" data-cites="Lindholm2016">(<a href="#ref-Lindholm2016" role="doc-biblioref">Lindholm et al. 2016</a>)</span> (Lindholm et al.&nbsp;2016).</p>
 <p>The X chromosome, in particular, appears to be subject to strong and unique selective pressures, especially in primates. This topic is explored in greater depth in the following sections.</p>
 </section>
 <section id="chromatin-structure" class="level2">
 <h2 class="anchored" data-anchor-id="chromatin-structure">Chromatin structure</h2>
 <p>Regions under strong selection across primate species—including humans and baboons—are consistently found on the X chromosome, spanning megabase-scale genomic areas. As previously noted, factors such as chromosomal architecture and structural rearrangements may play crucial roles in enabling, regulating, or insulating these regions from selective pressures.</p>
-<p>Understanding genome organization and variation is therefore essential for uncovering the mechanisms behind selection. Chromatin has long been recognized as central to gene regulation and cellular function (Lieberman-Aiden et al.&nbsp;2009), in part because the 3D structure of chromosomes brings distant genomic elements into close contact. Disruption of this spatial organization can lead to developmental abnormalities (Dixon et al.&nbsp;2015). Chromatin is organized hierarchically, with multiple levels of structure nested within one another (see Figure 2). At the broadest level, chromatin compartments can span several megabases (Lieberman-Aiden et al.&nbsp;2009), while at finer scales, even 500 base pairs can contribute to subgenic structural organization. Structures such as topologically associating domains (TADs) and chromatin loops, which operate at sub-megabase scales, further help partition regulatory elements and maintain proper genomic function (Ramírez et al.&nbsp;2018; Zuo et al.&nbsp;2021).</p>
-<p>Chromatin, the complex of DNA wrapped around histone proteins and associated with various regulatory factors, plays a central role in the spatial and temporal control of gene expression, as well as in maintaining the structural integrity and stability of the genome. Far from being a static scaffold, chromatin is a highly dynamic entity, subject to extensive remodeling in response to cellular signals, developmental cues, and environmental stimuli. Its organization within the nucleus is hierarchical, ranging from nucleosomes to higher-order domains, and this architecture can differ substantially across cell types, developmental stages, and even between closely related species. One of the key features of chromatin organization is its division into functionally distinct states—broadly classified as euchromatin, which is generally open and transcriptionally active, and heterochromatin, which is compacted and repressive. Transitions between these states, whether developmentally programmed or evolutionarily emergent, are often tightly coupled to shifts in gene regulatory activity and cellular identity.</p>
-<p>In this study, we focus on characterizing these chromatin state transitions, with a particular interest in understanding how they are distributed across the genome and whether they exhibit predictable patterns linked to specific sequence features or regulatory elements. We ask whether certain genomic regions are more prone to undergoing structural reorganization and whether such regions harbor conserved sequence motifs, epigenetic signatures, or binding sites for key regulatory proteins. Furthermore, we investigate whether particular chromatin configurations are disproportionately associated with genes involved in critical biological processes or with regions of the genome that show signatures of evolutionary constraint or adaptation.</p>
-<p>By examining the diversity of chromatin states and transitions across individuals and lineages, we also aim to uncover broader principles governing chromatin architecture and its functional consequences. These insights may inform our understanding of how chromatin organization evolves, how it contributes to phenotypic diversity, and how its dysregulation may underlie disease states. Ultimately, this work contributes to a growing body of knowledge on the interplay between genome structure, function, and evolution.</p>
+<p>Understanding genome organization and variation is therefore essential for uncovering the mechanisms behind selection. Chromatin has long been recognized as central to gene regulation and cellular function <span class="citation" data-cites="LiebermanAiden2009">(<a href="#ref-LiebermanAiden2009" role="doc-biblioref">Lieberman-Aiden et al. 2009</a>)</span> (Lieberman-Aiden et al.&nbsp;2009), in part because the 3D structure of chromosomes brings distant genomic elements into close contact. Disruption of this spatial organization can lead to developmental abnormalities <span class="citation" data-cites="Dixon2015">(<a href="#ref-Dixon2015" role="doc-biblioref">Dixon et al. 2015</a>)</span> (Dixon et al.&nbsp;2015). Chromatin is organized hierarchically, with multiple levels of structure nested within one another (see Figure 2). At the broadest level, chromatin compartments can span several megabases <span class="citation" data-cites="LiebermanAiden2009">(<a href="#ref-LiebermanAiden2009" role="doc-biblioref">Lieberman-Aiden et al. 2009</a>)</span> (Lieberman-Aiden et al.&nbsp;2009), while at finer scales, even 500 base pairs can contribute to subgenic structural organization. Structures such as topologically associating domains (TADs) and chromatin loops, which operate at sub-megabase scales, further help partition regulatory elements and maintain proper genomic function [<span class="citation" data-cites="Ramirez2018">Ramírez et al. (<a href="#ref-Ramirez2018" role="doc-biblioref">2018</a>)</span>]<span class="citation" data-cites="Zuo2021">(<a href="#ref-Zuo2021" role="doc-biblioref">Zuo et al. 2021</a>)</span>(Ramírez et al.&nbsp;2018; Zuo et al.&nbsp;2021).</p>
+<p>Chromatin, the complex of DNA wrapped around histone proteins and associated with various regulatory factors, plays a central role in the spatial and temporal control of gene expression, as well as in maintaining the structural integrity and stability of the genome <span class="citation" data-cites="allshire2016epigenetics bannister2011histone">(<a href="#ref-allshire2016epigenetics" role="doc-biblioref">Allshire and Madhani 2016</a>; <a href="#ref-bannister2011histone" role="doc-biblioref">Bannister and Kouzarides 2011</a>)</span>. Far from being a static scaffold, chromatin is a highly dynamic entity, subject to extensive remodeling in response to cellular signals, developmental cues, and environmental stimuli <span class="citation" data-cites="maeshima2020dynamic">(<a href="#ref-maeshima2020dynamic" role="doc-biblioref">Maeshima et al. 2020</a>)</span>. Its organization within the nucleus is hierarchical, ranging from nucleosomes to higher-order domains, and this architecture can differ substantially across cell types, developmental stages, and even between closely related species <span class="citation" data-cites="rowley2018organizational bonev2017organization">(<a href="#ref-rowley2018organizational" role="doc-biblioref">Rowley and Corces 2018</a>; <a href="#ref-bonev2017organization" role="doc-biblioref">B. Bonev and Cavalli 2017</a>)</span>.</p>
+<p>One of the key features of chromatin organization is its division into functionally distinct states—broadly classified as euchromatin, which is generally open and transcriptionally active, and heterochromatin, which is compacted and repressive <span class="citation" data-cites="grewal2007heterochromatin bickmore2013euchromatin">(<a href="#ref-grewal2007heterochromatin" role="doc-biblioref">Grewal and Jia 2007</a>; <a href="#ref-bickmore2013euchromatin" role="doc-biblioref">Bickmore and Steensel 2013</a>)</span>. Transitions between these states, whether developmentally programmed or evolutionarily emergent, are often tightly coupled to shifts in gene regulatory activity and cellular identity <span class="citation" data-cites="arnold2022chromatin">(<a href="#ref-arnold2022chromatin" role="doc-biblioref">Arnold 2022</a>)</span>.</p>
+<p>In this study, we focus on characterizing these chromatin state transitions, with a particular interest in understanding how they are distributed across the genome and whether they exhibit predictable patterns linked to specific sequence features or regulatory elements. We ask whether certain genomic regions are more prone to undergoing structural reorganization and whether such regions harbor conserved sequence motifs, epigenetic signatures, or binding sites for key regulatory proteins <span class="citation" data-cites="zhou2011dna ernst2011mapping">(<a href="#ref-zhou2011dna" role="doc-biblioref">Zhou et al. 2011</a>; <a href="#ref-ernst2011mapping" role="doc-biblioref">Ernst and Kellis 2011</a>)</span>. Furthermore, we investigate whether particular chromatin configurations are disproportionately associated with genes involved in critical biological processes or with regions of the genome that show signatures of evolutionary constraint or adaptation <span class="citation" data-cites="kundaje2015integrative">(<a href="#ref-kundaje2015integrative" role="doc-biblioref">Kundaje et al. 2015</a>)</span>.</p>
+<p>By examining the diversity of chromatin states and transitions across individuals and lineages, we also aim to uncover broader principles governing chromatin architecture and its functional consequences <span class="citation" data-cites="marx2019singlecell">(<a href="#ref-marx2019singlecell" role="doc-biblioref">Marx 2019</a>)</span>. These insights may inform our understanding of how chromatin organization evolves, how it contributes to phenotypic diversity, and how its dysregulation may underlie disease states <span class="citation" data-cites="buenrostro2015atacseq">(<a href="#ref-buenrostro2015atacseq" role="doc-biblioref">Buenrostro et al. 2015</a>)</span>. Ultimately, this work contributes to a growing body of knowledge on the interplay between genome structure, function, and evolution.</p>
 </section>
 <section id="ab-configurations" class="level2">
 <h2 class="anchored" data-anchor-id="ab-configurations">A/B configurations</h2>
-<p>One widely studied aspect of chromatin architecture is its partitioning into A and B compartments, as revealed by Hi-C and other genome conformation capture techniques. These compartments represent large-scale topological domains of the genome that differ markedly in their regulatory environment and functional output. A compartments are typically associated with euchromatic regions—open, accessible chromatin that is rich in actively transcribed genes, regulatory elements like enhancers and promoters, and active histone marks such as H3K4me3 and H3K27ac. In contrast, B compartments correspond to heterochromatic, transcriptionally repressive regions characterized by reduced accessibility, fewer active genes, and enrichment of repressive epigenetic marks like H3K9me3 and DNA methylation.</p>
-<p>This spatial segregation of the genome into A and B compartments plays a critical role in regulating which genes are expressed in a given cell or context. Genes located in A compartments are more likely to be in close physical proximity to other regulatory elements, transcriptional machinery, and nuclear compartments that promote gene activation, such as nuclear speckles. Conversely, genes embedded in B compartments are more isolated from such transcriptional hubs and may be sequestered near the nuclear lamina, where gene silencing is reinforced.</p>
-<p>Importantly, the assignment of a genomic region to either an A or B compartment is not fixed; it can shift in response to developmental signals, environmental stress, or disease states. Such compartment switching is a powerful mechanism of gene regulation. For example, when a gene or regulatory locus moves from a B to an A compartment, it may become transcriptionally activated due to its new, more permissive chromatin environment. Likewise, genes that transition into B compartments often show downregulation or complete silencing. These dynamic shifts allow the cell to orchestrate complex gene expression programs with spatial precision, integrating structural and regulatory layers of genome function.</p>
-<p>Moreover, comparative studies across species and populations suggest that A/B compartmentalization is both conserved and evolutionarily flexible. Certain compartments—particularly those associated with developmental and housekeeping genes—are stably maintained across evolutionary time, reflecting strong selective pressure to preserve core regulatory networks. Other regions, especially those involved in species-specific traits or environmental responses, exhibit greater compartmental plasticity. By studying the distribution and dynamics of A/B compartments, especially in non-model organisms and hybrid genomes, we can gain novel insights into how chromatin structure evolves and how it contributes to phenotypic diversity and adaptation.</p>
+<p>One of the most fundamental and widely studied features of three-dimensional genome organization is its partitioning into A and B compartments, originally revealed by high-throughput chromosome conformation capture techniques such as Hi-C <span class="citation" data-cites="LiebermanAiden2009">(<a href="#ref-LiebermanAiden2009" role="doc-biblioref">Lieberman-Aiden et al. 2009</a>)</span>. These compartments represent megabase-scale regions of the genome that differ significantly in their epigenetic state, transcriptional activity, nuclear positioning, and physical interaction profiles. The identification of compartments via principal component analysis (PCA) of Hi-C matrices has become a cornerstone in mapping chromatin architecture across species and cell types.</p>
+<p>The A compartment is typically associated with euchromatin—open, accessible chromatin that supports active gene expression. Regions within A compartments are enriched with transcriptionally active histone modifications, including H3K27ac, H3K4me3, and H3K36me3, as well as high levels of DNase I hypersensitivity, RNA polymerase II occupancy, and active transcription <span class="citation" data-cites="han2023epigenome3d wen2022compartmentalization lu2021homotypic">(<a href="#ref-han2023epigenome3d" role="doc-biblioref">Han, M.H., Issagulova, D., and Park, M. 2023</a>; <a href="#ref-wen2022compartmentalization" role="doc-biblioref">Wen, Z. et al. 2022</a>; <a href="#ref-lu2021homotypic" role="doc-biblioref">Lu, J.Y. et al. 2021</a>)</span>. In contrast, B compartments correspond to heterochromatic domains, which are transcriptionally silent or repressed. These regions are often localized near the nuclear lamina, marked by H3K9me3, H3K27me3, Lamin B1 association, and DNA methylation, and exhibit low transcriptional activity <span class="citation" data-cites="han2023epigenome3d lu2021homotypic feng2020h3k9me3architecture">(<a href="#ref-han2023epigenome3d" role="doc-biblioref">Han, M.H., Issagulova, D., and Park, M. 2023</a>; <a href="#ref-lu2021homotypic" role="doc-biblioref">Lu, J.Y. et al. 2021</a>; <a href="#ref-feng2020h3k9me3architecture" role="doc-biblioref">Feng, Y. et al. 2020</a>)</span>. The biochemical and physical segregation of chromatin into A and B compartments reinforces a higher-order regulatory framework for genome function <span class="citation" data-cites="lucini2024biochemical">(<a href="#ref-lucini2024biochemical" role="doc-biblioref">Lucini, F. et al. 2024</a>)</span>.</p>
+<p>Importantly, A/B compartment identity is not fixed but can undergo dynamic switching in response to developmental cues, environmental stimuli, cell differentiation, aging, or disease states such as cancer and senescence. This process, referred to as compartment switching, entails a region transitioning from a repressive B compartment to an active A compartment (or vice versa), often accompanied by changes in chromatin accessibility, histone modification landscapes, and gene expression profiles <span class="citation" data-cites="zhang2021senescence lucini2024biochemical wen2022compartmentalization">(<a href="#ref-zhang2021senescence" role="doc-biblioref">Zhang, X. et al. 2021</a>; <a href="#ref-lucini2024biochemical" role="doc-biblioref">Lucini, F. et al. 2024</a>; <a href="#ref-wen2022compartmentalization" role="doc-biblioref">Wen, Z. et al. 2022</a>)</span>. For instance, during lineage specification or upon activation of certain signaling pathways, genes or regulatory loci may shift from a transcriptionally repressive nuclear environment to one permissive for gene activation. This spatial repositioning allows cells to coordinate complex transcriptional programs in a spatiotemporally regulated manner.</p>
+<p>At the structural level, compartmental identity correlates with nuclear topography: A compartments tend to localize to the nuclear interior and are often associated with nuclear speckles—subnuclear domains involved in transcriptional and RNA processing. B compartments, on the other hand, are frequently found near the nuclear lamina, where gene silencing is promoted through anchoring and phase-separated heterochromatin domains <span class="citation" data-cites="lu2021homotypic feng2020h3k9me3architecture">(<a href="#ref-lu2021homotypic" role="doc-biblioref">Lu, J.Y. et al. 2021</a>; <a href="#ref-feng2020h3k9me3architecture" role="doc-biblioref">Feng, Y. et al. 2020</a>)</span>.</p>
+<p>From an evolutionary perspective, comparative Hi-C and epigenomic studies across species have revealed that certain A and B compartmental domains are highly conserved, especially those involving developmental genes, housekeeping genes, and essential regulatory networks <span class="citation" data-cites="valadezgraham2020chromatin">(<a href="#ref-valadezgraham2020chromatin" role="doc-biblioref">Valadez-Graham, V. and Magaña-Acosta, M. 2020</a>)</span>. However, other regions—particularly those involved in immune response, sensory perception, or species-specific traits—exhibit compartmental plasticity, reflecting their role in adaptive evolution and phenotypic diversity. For example, chromatin compartments in plants, mammals, and even non-model organisms show patterns of both conservation and innovation in their compartmental structures, highlighting the flexibility of genome organization mechanisms in accommodating species-specific regulatory needs <span class="citation" data-cites="wen2022compartmentalization">(<a href="#ref-wen2022compartmentalization" role="doc-biblioref">Wen, Z. et al. 2022</a>)</span>.</p>
+<p>The study of A/B compartment dynamics not only offers insights into basic principles of genome function but also provides a framework for understanding disease-associated epigenetic reprogramming, evolutionary divergence, and the mechanistic underpinnings of cell identity.</p>
 </section>
 <section id="gpn" class="level2">
 <h2 class="anchored" data-anchor-id="gpn">GPN</h2>
@@ -312,14 +367,14 @@ div.csl-indent {
 <p>Spermatogonia are the mitotically active germline stem and progenitor cells at the basal compartment of the seminiferous tubules. Although they themselves do not undergo meiosis, they form the essential starting population that differentiates into spermatocytes, committing cells to the meiotic program<span class="citation" data-cites="Berg2019">(<a href="#ref-Berg2019" role="doc-biblioref">Berg et al. 2019</a>)</span>.</p>
 <p>Pachytene spermatocytes represent a central point in meiosis, specifically prophase I. During this prolonged phase, homologous chromosomes are fully synapsed through the synaptonemal complex, and crossing-over ensures genetic recombination. This is a transcriptionally active stage, producing RNAs that will later support spermatid development when transcription decreases<span class="citation" data-cites="Berg2019">(<a href="#ref-Berg2019" role="doc-biblioref">Berg et al. 2019</a>)</span>.</p>
 <p>Round spermatids are the direct products of the two meiotic divisions. They are haploid cells that no longer divide but instead undergo spermiogenesis, a process of dramatic morphological and chromatin remodeling. Although post-meiotic, they carry the molecular signatures of meiotic recombination and genome reduction<span class="citation" data-cites="Berg2019">(<a href="#ref-Berg2019" role="doc-biblioref">Berg et al. 2019</a>)</span>.</p>
-<p>During spermatogenesis, large-scale reprogramming of three-dimensional (3D) chromatin organization is required to enable meiosis and germ cell differentiation. Recent studies using low-input Hi-C in both rhesus monkeys and mice have revealed that the higher-order chromatin landscape is far from static. Instead, it undergoes stage-specific remodeling in which topologically associating domains (TADs), normally stable units of genome folding, become progressively dissolved as germ cells enter meiotic prophase. This disruption reaches its peak in pachytene spermatocytes, where TADs are almost entirely absent despite the presence of widespread transcriptional activity <span class="citation" data-cites="wang2019">(<a href="#ref-wang2019" role="doc-biblioref"><strong>wang2019?</strong></a>)</span>.</p>
-<p>Interestingly, the loss of TADs at this stage is accompanied by the emergence of refined A/B compartments. These compartments alternate between transcriptionally active and inactive regions, providing a new level of chromatin organization that correlates more directly with gene expression than classical TAD structures. Such reorganization suggests that the meiotic genome adopts a unique 3D folding principle optimized for homologous recombination and transcriptional control <span class="citation" data-cites="wang2019">(<a href="#ref-wang2019" role="doc-biblioref"><strong>wang2019?</strong></a>)</span>.</p>
-<p>A key driver of this transition appears to be the synaptonemal complex (SC), a protein scaffold that aligns homologous chromosomes during meiosis. Wang and colleagues demonstrated that in spermatocytes lacking proper SC formation, refined compartments fail to develop, and TAD-like structures re-emerge prematurely. This finding indicates that the SC does not merely stabilize chromosome pairing, but also actively contributes to global chromatin architecture by suppressing TADs and promoting compartmentalization <span class="citation" data-cites="wang2019">(<a href="#ref-wang2019" role="doc-biblioref"><strong>wang2019?</strong></a>)</span>.</p>
-<p>Overall, this work highlights that spermatogenesis involves not only dynamic transcriptional and epigenetic changes but also profound reprogramming of chromatin folding. The discovery that such architectural shifts are conserved between primates and rodents underscores their biological importance. Furthermore, it raises the possibility that defects in these processes could contribute to infertility or other germline disorders, linking 3D genome organization to reproductive health <span class="citation" data-cites="wang2019">(<a href="#ref-wang2019" role="doc-biblioref"><strong>wang2019?</strong></a>)</span>.</p>
+<p>During spermatogenesis, large-scale reprogramming of three-dimensional (3D) chromatin organization is required to enable meiosis and germ cell differentiation. Recent studies using low-input Hi-C in both rhesus monkeys and mice have revealed that the higher-order chromatin landscape is far from static. Instead, it undergoes stage-specific remodeling in which topologically associating domains (TADs), normally stable units of genome folding, become progressively dissolved as germ cells enter meiotic prophase. This disruption reaches its peak in pachytene spermatocytes, where TADs are almost entirely absent despite the presence of widespread transcriptional activity <span class="citation" data-cites="Wang2019">(<a href="#ref-Wang2019" role="doc-biblioref">Wang et al. 2019</a>)</span>.</p>
+<p>Interestingly, the loss of TADs at this stage is accompanied by the emergence of refined A/B compartments. These compartments alternate between transcriptionally active and inactive regions, providing a new level of chromatin organization that correlates more directly with gene expression than classical TAD structures. Such reorganization suggests that the meiotic genome adopts a unique 3D folding principle optimized for homologous recombination and transcriptional control <span class="citation" data-cites="Wang2019">(<a href="#ref-Wang2019" role="doc-biblioref">Wang et al. 2019</a>)</span>.</p>
+<p>A key driver of this transition appears to be the synaptonemal complex (SC), a protein scaffold that aligns homologous chromosomes during meiosis. Wang and colleagues demonstrated that in spermatocytes lacking proper SC formation, refined compartments fail to develop, and TAD-like structures re-emerge prematurely. This finding indicates that the SC does not merely stabilize chromosome pairing, but also actively contributes to global chromatin architecture by suppressing TADs and promoting compartmentalization <span class="citation" data-cites="Wang2019">(<a href="#ref-Wang2019" role="doc-biblioref">Wang et al. 2019</a>)</span>.</p>
+<p>Overall, this work highlights that spermatogenesis involves not only dynamic transcriptional and epigenetic changes but also profound reprogramming of chromatin folding. The discovery that such architectural shifts are conserved between primates and rodents underscores their biological importance. Furthermore, it raises the possibility that defects in these processes could contribute to infertility or other germline disorders, linking 3D genome organization to reproductive health <span class="citation" data-cites="Wang2019">(<a href="#ref-Wang2019" role="doc-biblioref">Wang et al. 2019</a>)</span>.</p>
 </section>
 <section id="x-chromosome-compartments-and-gc-content" class="level2">
 <h2 class="anchored" data-anchor-id="x-chromosome-compartments-and-gc-content">X Chromosome Compartments and GC Content</h2>
-<p>One of the defining molecular features of A/B chromatin compartments is their GC content, which reflects and reinforces their functional states. A compartments are generally GC-rich and correspond to gene-dense, euchromatic regions. These areas are transcriptionally active, marked by high RNA polymerase II occupancy and enriched in active histone modifications such as H3K4me3 and H3K27ac. Their open chromatin conformation also renders them accessible to DNase I and other chromatin accessibility assays [<span class="citation" data-cites="LiebermanAiden2009">Lieberman-Aiden et al. (<a href="#ref-LiebermanAiden2009" role="doc-biblioref">2009</a>)</span>]<span class="citation" data-cites="Bonev2016">(<a href="#ref-Bonev2016" role="doc-biblioref">Bonev and Cavalli 2016</a>)</span>.</p>
+<p>One of the defining molecular features of A/B chromatin compartments is their GC content, which reflects and reinforces their functional states. A compartments are generally GC-rich and correspond to gene-dense, euchromatic regions. These areas are transcriptionally active, marked by high RNA polymerase II occupancy and enriched in active histone modifications such as H3K4me3 and H3K27ac. Their open chromatin conformation also renders them accessible to DNase I and other chromatin accessibility assays [<span class="citation" data-cites="LiebermanAiden2009">Lieberman-Aiden et al. (<a href="#ref-LiebermanAiden2009" role="doc-biblioref">2009</a>)</span>]<span class="citation" data-cites="Bonev2016">(<a href="#ref-Bonev2016" role="doc-biblioref">Boyan Bonev and Cavalli 2016</a>)</span>.</p>
 <p>In contrast, B compartments tend to be AT-rich, gene-poor, and heterochromatic. These regions are associated with repressive histone marks like H3K9me3, delayed replication timing, and frequent localization near the nuclear periphery, particularly within lamina-associated domains (LADs). The compositional contrast between A and B compartments is not only a reflection of gene content but also contributes to chromatin folding, nucleosome positioning, and transcription factor binding patterns<span class="citation" data-cites="LiebermanAiden2009">(<a href="#ref-LiebermanAiden2009" role="doc-biblioref">Lieberman-Aiden et al. 2009</a>)</span>.</p>
 <p>Importantly, GC content remains a stable genomic feature, even as compartment identity can shift in response to developmental or environmental changes. For example, during cell differentiation or meiotic prophase, such as the pachytene stage, there is widespread chromatin reorganization, and architectural domains like TADs may temporarily dissolve. Yet, GC-rich regions consistently align with active compartments, suggesting that GC content serves as an intrinsic guide for nuclear organization, independent of dynamic epigenetic changes <span class="citation" data-cites="Wang2019">(<a href="#ref-Wang2019" role="doc-biblioref">Wang et al. 2019</a>)</span>.</p>
 <p>This stability makes GC content a robust predictor of A/B compartment identity across cell types and developmental stages, underscoring its fundamental role in genome architecture<span class="citation" data-cites="Wang2019">(<a href="#ref-Wang2019" role="doc-biblioref">Wang et al. 2019</a>)</span>.</p>
@@ -381,18 +436,82 @@ Figure&nbsp;1
 <p>This approach proved successful. When processing a single chromosome at a time, the GPN model was able to execute without encountering memory-related failures. As a result, contextual embeddings were successfully generated for individual chromosomes of the Anatoptis genome.</p>
 <p>However, due to time constraints near the conclusion of the project timeline, the extracted embeddings were not subjected to further downstream analysis. Although they were successfully retrieved and stored, no additional modeling, interpretation, or evaluation steps were completed within the project scope.</p>
 </section>
-<section id="using-hic-to-extract-transtion-areas" class="level2">
-<h2 class="anchored" data-anchor-id="using-hic-to-extract-transtion-areas">using HIC to extract transtion areas</h2>
+<section id="fecting-the-raw-data" class="level2">
+<h2 class="anchored" data-anchor-id="fecting-the-raw-data">Fecting the raw data</h2>
+<p>The original sequencing data was obtained by a colleague in our research group in order to reproduce the results reported by Wang et al.&nbsp;(2019) <span class="citation" data-cites="Wang2019">(<a href="#ref-Wang2019" role="doc-biblioref">Wang et al. 2019</a>)</span>. The raw data was downloaded from the SRA portal <span class="citation" data-cites="Sayers2022">(<a href="#ref-Sayers2022" role="doc-biblioref">Sayers et al. 2022</a>)</span> and subsequently filtered to include only paired-end Hi-C reads from macaque samples.</p>
+<p>To provide an overview of the material, a summary of the SRA runtable is presented in <a href="#tbl-cell-data" class="quarto-xref">Table&nbsp;1</a>. This table lists the accession numbers alongside key metadata for each sample. Altogether, the dataset amounts to approximately 1 TB of compressed FASTQ files, comprising ~9.5 billion reads distributed roughly evenly across five tissue types.</p>
+<div id="tbl-cell-data" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cell-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Summary of Hi-C sequencing data across five macaque cell types, retrieved from the NCBI SRA portal for initial data exploration.
+</figcaption>
+<div aria-describedby="tbl-cell-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>source_name</th>
+<th>GB</th>
+<th>Bases</th>
+<th>Reads</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fibroblast</td>
+<td>211.403275</td>
+<td>553,968,406,500</td>
+<td>1,846,561,355</td>
+</tr>
+<tr class="even">
+<td>pachytene spermatocyte</td>
+<td>274.835160</td>
+<td>715,656,614,700</td>
+<td>2,385,522,049</td>
+</tr>
+<tr class="odd">
+<td>round spermatid</td>
+<td>243.128044</td>
+<td>655,938,457,200</td>
+<td>2,186,461,524</td>
+</tr>
+<tr class="even">
+<td>sperm</td>
+<td>164.131640</td>
+<td>428,913,635,400</td>
+<td>1,429,712,118</td>
+</tr>
+<tr class="odd">
+<td>spermatogonia</td>
+<td>192.794420</td>
+<td>518,665,980,300</td>
+<td>1,728,886,601</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="data-generation-and-processing" class="level3">
+<h3 class="anchored" data-anchor-id="data-generation-and-processing">Data Generation and Processing</h3>
+<p>The Hi-C sequencing data analyzed in this study was not generated or processed by myself, but by another member of our research group. What follows is a condensed description of their workflow, included here for clarity and reproducibility.</p>
+<p>The data were processed using the Open2C pipeline, implemented as a GWF workflow. This framework allowed each sequencing accession (i.e., paired-end read sets) to be handled independently and in parallel, improving efficiency and scalability. The raw reads were retrieved directly from the NCBI SRA <span class="citation" data-cites="devteam2024sratoolkit">(<a href="#ref-devteam2024sratoolkit" role="doc-biblioref">DevTeam, SRA Toolkit 2024</a>)</span> using the SRA Toolkit, run in a containerized environment for consistency. Downloads were saved as compressed FASTQ files, ensuring a standardized input format for downstream analysis.</p>
+<p>Read alignment was carried out against the rheMac10 reference genome using bwa-mem in paired-end mode, following the recommended parameters provided by the Open2C team. The resulting alignments were then parsed into ligation events with pairtools, which not only distinguishes valid Hi-C contacts but also applies essential preprocessing steps such as sorting, removal of PCR duplicates, and exclusion of reads mapping to unplaced scaffolds. This filtering ensured that only informative, high-confidence pairs were retained for analysis.</p>
+<p>The resulting valid pairs were aggregated into cooler files, the standard data structure for Hi-C contact matrices. To maximize coverage, biological replicates were merged at the cell-type level into a single matrix. These contact matrices were then “zoomified” into multiple resolutions (10 kb to 500 kb bins), enabling both fine-scale and large-scale chromatin features to be studied within the same dataset. To correct for technical biases, each matrix was subsequently normalized using iterative correction, producing balanced matrices suitable for quantitative comparison.</p>
+<p>To identify higher-order chromatin organization, eigendecomposition of the contact matrices was performed. The first eigenvector (E1) was phased using GC content, ensuring consistent orientation of A/B compartments across chromosomes. While eigenvectors were computed at multiple resolutions during intermediate steps, all final analyses and compartment calls were performed at a uniform resolution of 100 kilobases (kb) to ensure consistency across datasets. The eigentrack shown in <a href="#fig-eigentrack" class="quarto-xref">Figure&nbsp;2</a> illustrates a representative example of the first eigenvector at this resolution.</p>
+<p>Finally, visualization of contact matrices and compartments was conducted within the Open2C ecosystem using matplotlib and seaborn, which enabled efficient data access and flexible plotting. These tools allowed for side-by-side comparison of balanced versus unbalanced matrices, as well as detailed compartment tracks at 100 kb resolution.</p>
+<p>Together, this workflow produced a high-quality, reproducible dataset. The combination of containerized processing, rigorous filtering, normalization, and replicate merging ensured that the resulting chromatin contact maps were reliable and well-suited for downstream compartment analysis.</p>
+<div id="fig-eigentrack" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eigentrack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="illustrations/eigentrack.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Example of the first eigenvector (“eigentrack”) used in A/B chromatin compartment analysis. This track represents the first principal component (PC1) of the Hi-C contact matrix at a resolution of 100 kilobases (kb), with eigenvector values ranging from –1 to +1. Genomic regions with positive eigenvector values (colored red) are assigned to A compartments, typically associated with open, transcriptionally active euchromatin. Conversely, negative values (colored blue) correspond to B compartments, generally representing condensed, transcriptionally repressive heterochromatin. This eigentrack provides a quantitative basis for segmenting the genome into large-scale chromatin domains based on spatial interaction patterns."><img src="illustrations/eigentrack.png" class="img-fluid figure-img" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eigentrack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: <strong>Example of the first eigenvector (“eigentrack”) used in A/B chromatin compartment analysis.</strong><br>
+This track represents the first principal component (PC1) of the Hi-C contact matrix at a resolution of 100 kilobases (kb), with eigenvector values ranging from –1 to +1. Genomic regions with positive eigenvector values (colored red) are assigned to A compartments, typically associated with open, transcriptionally active euchromatin. Conversely, negative values (colored blue) correspond to B compartments, generally representing condensed, transcriptionally repressive heterochromatin. This eigentrack provides a quantitative basis for segmenting the genome into large-scale chromatin domains based on spatial interaction patterns.
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">DATA</h2>
-<p>The dataset used in this study was generated from Macaca (rhesus macaque) samples, covering five distinct stages of spermatogenesis, as well as fibroblasts for comparison. These stages represent the continuum of male germ cell development from undifferentiated precursors to mature gametes.</p>
-<p>Spermatogonia are the mitotically active stem and progenitor cells located at the basal layer of the seminiferous tubules. They serve as the foundation of spermatogenesis by both self-renewing to maintain the stem cell pool and differentiating to give rise to spermatocytes. This stage is characterized by robust proliferative activity and the initiation of gene expression programs that prepare cells for meiosis.</p>
-<p>Pachytene spermatocytes are primary spermatocytes in the prolonged pachytene stage of meiotic prophase I. During this phase, homologous chromosomes are fully synapsed and undergo genetic recombination through crossing-over, ensuring genetic diversity in gametes. These cells also exhibit high levels of transcriptional activity, producing RNAs that will be used later during spermatid development, as transcription becomes reduced after meiosis.</p>
-<p>Following meiosis II, round spermatids are formed as haploid germ cells. At this point, the cells no longer divide but instead undergo extensive remodeling during spermiogenesis. Chromatin begins to compact, transcriptional activity decreases, and transcripts stored earlier are translated to support structural changes. Morphologically, the cells remain spherical at this stage.</p>
-<p>Through spermiogenesis, round spermatids differentiate into elongated spermatids and ultimately mature spermatozoa. This process involves dramatic nuclear condensation, replacement of histones with protamines, formation of the acrosome, and development of the flagellum for motility. Mature sperm are transcriptionally silent and highly specialized for fertilization.</p>
-<p>Finally, fibroblasts, isolated from connective tissue, were included as a non-germline somatic control. Unlike germ cells, fibroblasts are not involved in reproduction but maintain structural and extracellular matrix functions. Their inclusion allows for distinguishing germline-specific molecular signatures from general cellular processes.</p>
-<p>Together, these samples provide a comprehensive view of germ cell differentiation across spermatogenesis, with fibroblasts serving as a reference point for somatic baseline comparisons.</p>
 </section>
 <section id="datahandeling-of-the-data-befor-analysisi" class="level2">
 <h2 class="anchored" data-anchor-id="datahandeling-of-the-data-befor-analysisi">Datahandeling of the data befor analysisi</h2>
@@ -421,31 +540,41 @@ Figure&nbsp;1
 <div id="fig-edge" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-edge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/reverse_cumulative_count_total.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Reverse cumulative counts of compartment edge half-distances.."><img src="illustrations/reverse_cumulative_count_total.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/reverse_cumulative_count_total.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Reverse cumulative counts of compartment edge half-distances.."><img src="illustrations/reverse_cumulative_count_total.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-edge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Reverse cumulative counts of compartment edge half-distances..
+Figure&nbsp;3: Reverse cumulative counts of compartment edge half-distances..
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="compare-gc-conent-to-transition-in-macaca" class="level2">
-<h2 class="anchored" data-anchor-id="compare-gc-conent-to-transition-in-macaca">compare GC conent to transition in macaca</h2>
+<section id="error-bars-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="error-bars-calculation">Error bars calculation</h2>
+<p>To estimate uncertainty around the binned values in the plot, 95% confidence intervals (CIs) were calculated using a normal approximation to the binomial distribution. For each bin, the standard deviation was computed as:</p>
+<p><span class="math display">\[
+\text{SD} = \sqrt{\frac{c}{n}}
+\]</span></p>
+<p>where c is the observed count of events (e.g., repeat instances), and n is the number of positions (or sites) that could potentially contribute to that bin, derived from a reverse cumulative count. To avoid division by zero, a minimum denominator of 1 was enforced.</p>
+<p>The error bars represent 95% confidence intervals, calculated as:</p>
+<p><span class="math display">\[
+\text{CI}_{95} = 1.96 \times \text{SD}
+\]</span></p>
+<p>This approach accounts for the decreasing number of possible sites at increasing distances from the reference point and provides a conservative estimate of variation across bins.</p>
 </section>
 </section>
 <section id="result" class="level1">
-<h1>result</h1>
-<section id="compare-gc-conent-to-transition-in-macaca-1" class="level2">
-<h2 class="anchored" data-anchor-id="compare-gc-conent-to-transition-in-macaca-1">compare GC conent to transition in macaca</h2>
+<h1>Result</h1>
+<section id="compare-gc-conent-to-transition-in-macaca" class="level2">
+<h2 class="anchored" data-anchor-id="compare-gc-conent-to-transition-in-macaca">Compare GC conent to transition in macaca</h2>
 <p>We compared GC content between A and B chromatin compartments for chromosome 8 and chromosome X across five Macaca cell types: fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. Chromatin compartments were defined from A–B and B–A structural transitions, and GC content was measured separately for each compartment.</p>
-<p>For chromosome 8, the A compartment consistently showed higher GC content than the B compartment in all cell types, which aligns with expected genomic organization. In chromosome X, however, the differences between compartments were smaller. In round spermatids, GC content was nearly identical between A and B compartments, while in pachytene spermatocytes, spermatogonia, and sperm, A and B compartments had closely overlapping GC values. Interestingly, in fibroblasts the pattern was reversed, with the B compartment displaying higher GC content than the A compartment see <a href="#fig-GC" class="quarto-xref">Figure&nbsp;7</a>.</p>
+<p>For chromosome 8, the A compartment consistently showed higher GC content than the B compartment in all cell types, which aligns with expected genomic organization. In chromosome X, however, the differences between compartments were smaller. In round spermatids, GC content was nearly identical between A and B compartments, while in pachytene spermatocytes, spermatogonia, and sperm, A and B compartments had closely overlapping GC values. Interestingly, in fibroblasts the pattern was reversed, with the B compartment displaying higher GC content than the A compartment see <a href="#fig-GC" class="quarto-xref">Figure&nbsp;9</a>.</p>
 <div id="fig-GC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-GC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment."><img src="illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment."><img src="illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-GC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment.
+Figure&nbsp;4: Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment.
 </figcaption>
 </figure>
 </div>
@@ -453,7 +582,7 @@ Figure&nbsp;3: Compartment analysis for chromosomes X and 8 in five Macaca cell 
 <section id="cps-islands" class="level2">
 <h2 class="anchored" data-anchor-id="cps-islands">CPS islands</h2>
 <p>To investigate chromatin dynamics during spermatogenesis in Macaca, we analyzed genome-wide changes in accessibility across successive developmental stages. We focused on genomic regions undergoing transitions from open to closed chromatin states and vice versa, as these sites represent potential regulatory hotspots that may contribute to germ cell differentiation. To explore the relationship between these transitions and CpG-rich elements, we obtained a genome-wide track of CpG islands and mapped their positions relative to the transition regions. Each transition was further annotated according to its placement within A or B compartments, with compartment A typically associated with transcriptionally active euchromatin and compartment B corresponding to transcriptionally repressed heterochromatin. By integrating chromatin transitions, CpG island mapping, and compartmentalization, we generated a stage-specific view of genome organization across spermatogenesis.</p>
-<p>Figure <a href="#fig-CPG_islands_side_by_side" class="quarto-xref">Figure&nbsp;4</a> illustrates the distribution of CpG island–associated transitions in fibroblasts on chromosome 8. At distances up to ~0.5 Mb, transition counts were comparable between A and B compartments, but beyond this range the A compartment exhibited substantially higher counts. This enrichment persisted until ~1.5 Mb, after which both compartments declined toward zero. The drop at larger distances likely reflects technical constraints: to measure a transition at 1.5 Mb, the minimum spacing between sites must be 3 Mb, which is relatively rare across the genome. This limitation is evident even though counts were normalized to account for the number of possible contributing sites. By contrast, chromosome X showed no compartment-specific differences in fibroblasts, with A and B compartments displaying similar counts across all distances.</p>
+<p>Figure <a href="#fig-CPG_islands_side_by_side" class="quarto-xref">Figure&nbsp;5</a> illustrates the distribution of CpG island–associated transitions in fibroblasts on chromosome 8. At distances up to ~0.5 Mb, transition counts were comparable between A and B compartments, but beyond this range the A compartment exhibited substantially higher counts. This enrichment persisted until ~1.5 Mb, after which both compartments declined toward zero. The drop at larger distances likely reflects technical constraints: to measure a transition at 1.5 Mb, the minimum spacing between sites must be 3 Mb, which is relatively rare across the genome. This limitation is evident even though counts were normalized to account for the number of possible contributing sites. By contrast, chromosome X showed no compartment-specific differences in fibroblasts, with A and B compartments displaying similar counts across all distances.</p>
 <p>In spermatogonia, no compartment-specific differences were observed on either chromosome 8 or chromosome X. Transition counts remained comparable between A and B compartments across all distances, in contrast to the fibroblast profile where chromosome 8 showed A-compartment enrichment.</p>
 <p>In pachytene spermatocytes, chromosome 8 displayed a distinct compartmental pattern. Between 0 and ~1.25 Mb, transition counts were higher in the A compartment compared to the B compartment, but at longer distances the two converged. On chromosome X, however, A and B compartments remained similar, showing no evidence of compartment-specific enrichment.</p>
 <p>In round spermatids, chromosome 8 again showed a bias toward the A compartment, with more transitions observed from 0 to ~1.1 Mb. A comparable, though slightly shifted, pattern was seen on chromosome X, where enrichment in the A compartment was detected between ~0.25 and 1.3 Mb.</p>
@@ -462,10 +591,10 @@ Figure&nbsp;3: Compartment analysis for chromosomes X and 8 in five Macaca cell 
 <div id="fig-CPG_islands_side_by_side" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-CPG_islands_side_by_side-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Figure: cpgislands"><img src="illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Figure: cpgislands"><img src="illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CPG_islands_side_by_side-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: <strong>Figure:</strong> cpgislands
+Figure&nbsp;5: <strong>Figure:</strong> cpgislands
 </figcaption>
 </figure>
 </div>
@@ -481,10 +610,10 @@ Figure&nbsp;4: <strong>Figure:</strong> cpgislands
 <div id="fig-simpel_repeat_side_by_side" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-simpel_repeat_side_by_side-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/simple_repeat/simple_repeat_chr8_vs_chrx_normalized_poisson_CI_allaxes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Distribution of simple repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages. Chromosome 8 is shown on the left and chromosome X on the right. Rows represent different cell types: fibroblasts, spermatogonia, pachytene spermatocytes, round spermatids, and mature sperm. In each panel, simple repeat counts were mapped relative to transition sites, and values in each distance bin were normalized by the number of transition sites that could contribute to that bin."><img src="illustrations/simple_repeat/simple_repeat_chr8_vs_chrx_normalized_poisson_CI_allaxes.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/simple_repeat/simple_repeat_chr8_vs_chrx_normalized_poisson_CI_allaxes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Distribution of simple repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages. Chromosome 8 is shown on the left and chromosome X on the right. Rows represent different cell types: fibroblasts, spermatogonia, pachytene spermatocytes, round spermatids, and mature sperm. In each panel, simple repeat counts were mapped relative to transition sites, and values in each distance bin were normalized by the number of transition sites that could contribute to that bin."><img src="illustrations/simple_repeat/simple_repeat_chr8_vs_chrx_normalized_poisson_CI_allaxes.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpel_repeat_side_by_side-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: <strong>Distribution of simple repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages.</strong><br>
+Figure&nbsp;6: <strong>Distribution of simple repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages.</strong><br>
 Chromosome 8 is shown on the left and chromosome X on the right. Rows represent different cell types: fibroblasts, spermatogonia, pachytene spermatocytes, round spermatids, and mature sperm. In each panel, simple repeat counts were mapped relative to transition sites, and values in each distance bin were normalized by the number of transition sites that could contribute to that bin.
 </figcaption>
 </figure>
@@ -497,11 +626,35 @@ Chromosome 8 is shown on the left and chromosome X on the right. Rows represent 
 <div id="fig-nested_repeat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-nested_repeat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/nested_repeat/nested_repeat_chr8_vs_chrx_normalized_poisson_CI.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Distribution of nested repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages. Chromosome 8 is shown on the left and chromosome X on the right. Rows represent different cell types: fibroblasts, spermatogonia, pachytene spermatocytes, round spermatids, and mature sperm. In each panel, nested repeat counts were mapped relative to transition sites, and values in each distance bin were normalized by the number of transition sites that could contribute to that bin."><img src="illustrations/nested_repeat/nested_repeat_chr8_vs_chrx_normalized_poisson_CI.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/nested_repeat/nested_repeat_chr8_vs_chrx_normalized_poisson_CI.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Distribution of nested repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages. Chromosome 8 is shown on the left and chromosome X on the right. Rows represent different cell types: fibroblasts, spermatogonia, pachytene spermatocytes, round spermatids, and mature sperm. In each panel, nested repeat counts were mapped relative to transition sites, and values in each distance bin were normalized by the number of transition sites that could contribute to that bin."><img src="illustrations/nested_repeat/nested_repeat_chr8_vs_chrx_normalized_poisson_CI.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nested_repeat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: <strong>Distribution of nested repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages.</strong><br>
+Figure&nbsp;7: <strong>Distribution of nested repeats relative to chromatin transition sites in fibroblasts and spermatogenic stages.</strong><br>
 Chromosome 8 is shown on the left and chromosome X on the right. Rows represent different cell types: fibroblasts, spermatogonia, pachytene spermatocytes, round spermatids, and mature sperm. In each panel, nested repeat counts were mapped relative to transition sites, and values in each distance bin were normalized by the number of transition sites that could contribute to that bin.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="control-to-with-a-andf-b-compartment" class="level2">
+<h2 class="anchored" data-anchor-id="control-to-with-a-andf-b-compartment">control to with A andf b compartment</h2>
+<p>To verify that our compartment analysis was not biased by compartment assignment, we performed a negative control experiment. Normally, the data are separated into A or B compartments (as described in the methods section). In the control analysis, however, the data were instead partitioned according to compartment transitions — whether regions lay on an A→B or B→A boundary. Because Hi-C data reflect DNA contacts independently of strand orientation, no systematic difference was expected between the two directions.</p>
+<p>As an additional safeguard, the same experiment was repeated for CpG islands. Filtering was carried out with the following code snippet, which reverses the logic of the standard A/B assignment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    A_val <span class="op">=</span> result[</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        ((result[<span class="st">'comp'</span>] <span class="op">==</span> <span class="st">'A'</span>) <span class="op">&amp;</span> (result[<span class="st">'start'</span>] <span class="op">&lt;</span> <span class="dv">0</span>)) <span class="op">|</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        ((result[<span class="st">'comp'</span>] <span class="op">==</span> <span class="st">'A'</span>) <span class="op">&amp;</span> (result[<span class="st">'start'</span>] <span class="op">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    ].copy()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    B_val <span class="op">=</span> result[</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        ((result[<span class="st">'comp'</span>] <span class="op">==</span> <span class="st">'B'</span>) <span class="op">&amp;</span> (result[<span class="st">'start'</span>] <span class="op">&gt;</span> <span class="dv">0</span>)) <span class="op">|</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        ((result[<span class="st">'comp'</span>] <span class="op">==</span> <span class="st">'B'</span>) <span class="op">&amp;</span> (result[<span class="st">'start'</span>] <span class="op">&lt;</span> <span class="dv">0</span>))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    ].copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The resulting plots, exemplified by Figure <a href="#fig-CPG_normalized_chr_ab" class="quarto-xref">Figure&nbsp;16</a> for CpG islands on chromosome 8, confirmed our expectation: there was no meaningful difference between A→B and B→A transitions. This indicates that compartment boundaries behave symmetrically and supports the conclusion that enrichment patterns observed in the main analysis reflect genuine biological signal rather than artifacts of compartment orientation.</p>
+<div id="fig-CPG_normalized_chr_ab" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-CPG_normalized_chr_ab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes_negative_controal_AB_ba.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Negative control analysis of CpG islands on chromosome 8 across five macaque cell types (fibroblast, spermatogonia, pachytene spermatocyte, round spermatid, and sperm). A→B and B→A compartment transitions were compared."><img src="illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes_negative_controal_AB_ba.png" class="img-fluid figure-img" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CPG_normalized_chr_ab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Negative control analysis of CpG islands on chromosome 8 across five macaque cell types (fibroblast, spermatogonia, pachytene spermatocyte, round spermatid, and sperm). A→B and B→A compartment transitions were compared.
 </figcaption>
 </figure>
 </div>
@@ -521,40 +674,40 @@ Chromosome 8 is shown on the left and chromosome X on the right. Rows represent 
 <div id="fig-GC" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-GC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment."><img src="illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment."><img src="illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-GC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment.
+Figure&nbsp;9: Compartment analysis for chromosomes X and 8 in five Macaca cell types—fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. GC content was remapped to genomic locations where chromatin structure transitions between compartments A and B. The data were separated so that each compartment contains only A or B structure. For each genomic bin, the plot shows the mean GC content, with error bars representing the standard deviation of the mean, adjusted by the effective edge contribution (accounting for how many edges contribute at longer distances).For chromosome 8, the A compartment exhibits higher GC content than the B compartment. In tissues involved in spermatogenesis, chromosome X shows similar GC content in both A and B compartments. In fibroblasts, GC content is higher in the B compartment than in the A compartment.
 </figcaption>
 </figure>
 </div>
 <div id="fig-CPG_islands_overlay" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-CPG_islands_overlay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/cpgislands/cpgislands_chr8_plus_chrx_overlay_grid3x2_allaxes_newdata.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: Figure: cpgislands"><img src="illustrations/cpgislands/cpgislands_chr8_plus_chrx_overlay_grid3x2_allaxes_newdata.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/cpgislands/cpgislands_chr8_plus_chrx_overlay_grid3x2_allaxes_newdata.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Figure: cpgislands"><img src="illustrations/cpgislands/cpgislands_chr8_plus_chrx_overlay_grid3x2_allaxes_newdata.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CPG_islands_overlay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: <strong>Figure:</strong> cpgislands
+Figure&nbsp;10: <strong>Figure:</strong> cpgislands
 </figcaption>
 </figure>
 </div>
 <div id="fig-simple_repeat_combined" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-simple_repeat_combined-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/simple_repeat/simple_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Figure: simple_repeat repeat"><img src="illustrations/simple_repeat/simple_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/simple_repeat/simple_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: Figure: simple_repeat repeat"><img src="illustrations/simple_repeat/simple_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simple_repeat_combined-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: <strong>Figure:</strong> simple_repeat repeat
+Figure&nbsp;11: <strong>Figure:</strong> simple_repeat repeat
 </figcaption>
 </figure>
 </div>
 <div id="fig-nested_repeat_combined" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-nested_repeat_combined-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/nested_repeat/nested_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Figure: nested repeat"><img src="illustrations/nested_repeat/nested_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/nested_repeat/nested_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Figure: nested repeat"><img src="illustrations/nested_repeat/nested_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nested_repeat_combined-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: <strong>Figure:</strong> nested repeat
+Figure&nbsp;12: <strong>Figure:</strong> nested repeat
 </figcaption>
 </figure>
 </div>
@@ -564,10 +717,10 @@ Figure&nbsp;10: <strong>Figure:</strong> nested repeat
 <div id="fig-CPG_not_normalized" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-CPG_not_normalized-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/CPG_islands_chrx_not_normalized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;11: chrX"><img src="illustrations/CPG_islands_chrx_not_normalized.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/CPG_islands_chrx_not_normalized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: chrX"><img src="illustrations/CPG_islands_chrx_not_normalized.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CPG_not_normalized-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11: chrX
+Figure&nbsp;13: chrX
 </figcaption>
 </figure>
 </div>
@@ -577,10 +730,10 @@ Figure&nbsp;11: chrX
 <div id="fig-CPG_normalized_ab_chr_x" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-CPG_normalized_ab_chr_x-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/CPG_islands_chrx_normalized_poisson_CI_AB_BA.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: chrX"><img src="illustrations/CPG_islands_chrx_normalized_poisson_CI_AB_BA.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/CPG_islands_chrx_normalized_poisson_CI_AB_BA.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: chrX"><img src="illustrations/CPG_islands_chrx_normalized_poisson_CI_AB_BA.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CPG_normalized_ab_chr_x-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: chrX
+Figure&nbsp;14: chrX
 </figcaption>
 </figure>
 </div>
@@ -589,10 +742,10 @@ Figure&nbsp;12: chrX
 <div id="fig-CPG_not_normalized" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-CPG_not_normalized-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/CPG_islands_chr8_not_normalized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;13: chr8"><img src="illustrations/CPG_islands_chr8_not_normalized.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/CPG_islands_chr8_not_normalized.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;15: chr8"><img src="illustrations/CPG_islands_chr8_not_normalized.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CPG_not_normalized-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: chr8
+Figure&nbsp;15: chr8
 </figcaption>
 </figure>
 </div>
@@ -602,10 +755,10 @@ Figure&nbsp;13: chr8
 <div id="fig-CPG_normalized_chr_ab" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-CPG_normalized_chr_ab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="illustrations/CPG_islands_chr8_normalized_poisson_CI_AB_BA.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;14: chr8"><img src="illustrations/CPG_islands_chr8_normalized_poisson_CI_AB_BA.png" class="img-fluid figure-img" style="width:100.0%"></a>
+<a href="illustrations/CPG_islands_chr8_normalized_poisson_CI_AB_BA.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;16: chr8"><img src="illustrations/CPG_islands_chr8_normalized_poisson_CI_AB_BA.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-CPG_normalized_chr_ab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: chr8
+Figure&nbsp;16: chr8
 </figcaption>
 </figure>
 </div>
@@ -665,7 +818,7 @@ Figure&nbsp;14: chr8
 <p>Regulatory rewiring during cell fate transition.</p>
 <p>Chromatin accessibility and transcription activation.</p>
 <p>The X chromosome, which undergoes massive reorganization and loss of A/B compartment structure during specific stages (pacSC, rST, eST), may exhibit a distinct repeat signature, though this was only briefly hinted at in the paper.</p>
-<p><span class="citation" data-cites="article">(<a href="#ref-article" role="doc-biblioref"><strong>article?</strong></a>)</span>{Luo2019, year = {2019}, title = {{Three-dimensional genome reorganization during mouse spermatogenesis}}, author = {Luo, Zhen and Wang, Xin and Wang, Rui and Chen, Jie and Chen, Yan and Xu, Qing and Cao, Jun}, journal = {bioRxiv}, doi = {10.1101/585281}, abstract = {{Dynamic changes in chromatin architecture accompany spermatogenesis. Using Hi-C and ATAC-seq, this study reveals A/B compartment transitions and transcription factor motif enrichments that align with germ cell stage-specific chromatin changes.}}, pages = {}, number = {}, volume = {}, pmid = {}, pmcid = {}, issn = {}, keywords = {}, local-url = {https://www.biorxiv.org/content/10.1101/585281v1} }</p>
+<p>article{Luo2019, year = {2019}, title = {{Three-dimensional genome reorganization during mouse spermatogenesis}}, author = {Luo, Zhen and Wang, Xin and Wang, Rui and Chen, Jie and Chen, Yan and Xu, Qing and Cao, Jun}, journal = {bioRxiv}, doi = {10.1101/585281}, abstract = {{Dynamic changes in chromatin architecture accompany spermatogenesis. Using Hi-C and ATAC-seq, this study reveals A/B compartment transitions and transcription factor motif enrichments that align with germ cell stage-specific chromatin changes.}}, pages = {}, number = {}, volume = {}, pmid = {}, pmcid = {}, issn = {}, keywords = {}, local-url = {https://www.biorxiv.org/content/10.1101/585281v1} }</p>
 </section>
 <section id="single-cell-long-read-hi-c-scnanohi-c2" class="level3">
 <h3 class="anchored" data-anchor-id="single-cell-long-read-hi-c-scnanohi-c2">Single-cell long-read Hi-C, scNanoHi-C2</h3>
@@ -749,8 +902,23 @@ Figure&nbsp;14: chr8
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-allshire2016epigenetics" class="csl-entry" role="listitem">
+Allshire, R. C., and H. D. Madhani. 2016. <span>“Ten Principles of Heterochromatin Formation and Function.”</span> <a href="https://www.cell.com/fulltext/S0092-8674(16)31503-3" class="uri">https://www.cell.com/fulltext/S0092-8674(16)31503-3</a>.
+</div>
+<div id="ref-arnold2022chromatin" class="csl-entry" role="listitem">
+Arnold, C. D. 2022. <span>“The Language of Chromatin: Interdisciplinary Decoding of Epigenomic Communication.”</span> <a href="https://www.nature.com/articles/s41588-022-01065-4" class="uri">https://www.nature.com/articles/s41588-022-01065-4</a>.
+</div>
+<div id="ref-bannister2011histone" class="csl-entry" role="listitem">
+Bannister, A. J., and T. Kouzarides. 2011. <span>“Regulation of Chromatin by Histone Modifications.”</span> <a href="https://www.cell.com/fulltext/S0092-8674(11)00438-9" class="uri">https://www.cell.com/fulltext/S0092-8674(11)00438-9</a>.
+</div>
 <div id="ref-Berg2019" class="csl-entry" role="listitem">
 Berg, Jeremy M., John L. Tymoczko, Gregory J. Gatto, and Lubert Stryer. 2019. <em>Biochemistry</em>. 9th ed. New York: W. H. Freeman; Company. <a href="https://www.macmillanlearning.com/college/us/product/Biochemistry/p/1464126100">https://www.macmillanlearning.com/college/us/product/Biochemistry/p/1464126100</a>.
+</div>
+<div id="ref-bickmore2013euchromatin" class="csl-entry" role="listitem">
+Bickmore, W. A., and B. van Steensel. 2013. <span>“Genome Architecture: Domain Organization of Interphase Chromosomes.”</span> <a href="https://www.cell.com/fulltext/S0092-8674(13)01445-4" class="uri">https://www.cell.com/fulltext/S0092-8674(13)01445-4</a>.
+</div>
+<div id="ref-bonev2017organization" class="csl-entry" role="listitem">
+Bonev, B., and G. Cavalli. 2017. <span>“Organization and Function of the 3D Genome.”</span> <a href="https://www.nature.com/articles/nrm.2017.11" class="uri">https://www.nature.com/articles/nrm.2017.11</a>.
 </div>
 <div id="ref-Bonev2016" class="csl-entry" role="listitem">
 Bonev, Boyan, and Giacomo Cavalli. 2016. <span>“Organization and Function of the 3D Genome.”</span> <em>Nature Reviews Genetics</em> 17 (11): 661–78. <a href="https://doi.org/10.1038/nrg.2016.104">https://doi.org/10.1038/nrg.2016.104</a>.
@@ -758,14 +926,83 @@ Bonev, Boyan, and Giacomo Cavalli. 2016. <span>“Organization and Function of t
 <div id="ref-Bourque2018" class="csl-entry" role="listitem">
 Bourque, Guillaume, Kathleen H. Burns, Mary Gehring, Vera Gorbunova, Andrei Seluanov, Molly Hammell, Maïa Imbeault, et al. 2018. <span>“Ten Things You Should Know about Transposable Elements.”</span> <em>Genome Biology</em> 19 (1): 199. <a href="https://doi.org/10.1186/s13059-018-1577-z">https://doi.org/10.1186/s13059-018-1577-z</a>.
 </div>
+<div id="ref-buenrostro2015atacseq" class="csl-entry" role="listitem">
+Buenrostro, J. D., B. Wu, H. Y. Chang, and W. J. Greenleaf. 2015. <span>“ATAC‐seq: A Method for Assaying Chromatin Accessibility Genome‐wide.”</span> <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/0471142727.mb2129s109" class="uri">https://onlinelibrary.wiley.com/doi/full/10.1002/0471142727.mb2129s109</a>.
+</div>
+<div id="ref-Cowell2023" class="csl-entry" role="listitem">
+Cowell, Finn. 2023. <span>“100 Years of Haldane’s Rule.”</span> <em>Journal of Evolutionary Biology</em> 36 (2): 337–46. <a href="https://doi.org/10.1111/jeb.14112">https://doi.org/10.1111/jeb.14112</a>.
+</div>
+<div id="ref-devteam2024sratoolkit" class="csl-entry" role="listitem">
+DevTeam, SRA Toolkit. 2024. <span>“SRA Toolkit.”</span> <a href="https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit" class="uri">https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit</a>.
+</div>
+<div id="ref-Dixon2015" class="csl-entry" role="listitem">
+Dixon, Jesse R., Inkyung Jung, Siddarth Selvaraj, Yin Shen, Jessica E. Antosiewicz-Bourget, Ah Young Lee, Zhen Ye, et al. 2015. <span>“Chromatin Architecture Reorganization During Stem Cell Differentiation.”</span> <em>Nature</em> 518 (7539): 331–36. <a href="https://doi.org/10.1038/nature14222">https://doi.org/10.1038/nature14222</a>.
+</div>
+<div id="ref-ernst2011mapping" class="csl-entry" role="listitem">
+Ernst, J., and M. Kellis. 2011. <span>“Mapping and Analysis of Chromatin State Dynamics in Nine Human Cell Types.”</span> <a href="https://www.nature.com/articles/nature09906" class="uri">https://www.nature.com/articles/nature09906</a>.
+</div>
+<div id="ref-feng2020h3k9me3architecture" class="csl-entry" role="listitem">
+Feng, Y., Wang, Y., Wang, X., He, X., Yang, C., Naseri, A., Zhou, L., et al. 2020. <span>“Simultaneous Epigenetic Perturbation and Genome Imaging Reveal Distinct Roles of H3K9me3 in Chromatin Architecture and Transcription.”</span> <a href="https://link.springer.com/article/10.1186/s13059-020-02201-1" class="uri">https://link.springer.com/article/10.1186/s13059-020-02201-1</a>.
+</div>
 <div id="ref-Gemayel2010" class="csl-entry" role="listitem">
 Gemayel, Rami, Marcelo D. Vinces, Marc Legendre, and Kevin J. Verstrepen. 2010. <span>“Variable Tandem Repeats Accelerate Evolution of Coding and Regulatory Sequences.”</span> <em>Annual Review of Genetics</em> 44: 445–77. <a href="https://doi.org/10.1146/annurev-genet-072610-155046">https://doi.org/10.1146/annurev-genet-072610-155046</a>.
+</div>
+<div id="ref-grewal2007heterochromatin" class="csl-entry" role="listitem">
+Grewal, S. I. S., and S. Jia. 2007. <span>“Heterochromatin Revisited.”</span> <a href="https://www.nature.com/articles/nrg2008" class="uri">https://www.nature.com/articles/nrg2008</a>.
+</div>
+<div id="ref-Haldane1922" class="csl-entry" role="listitem">
+Haldane, J. B. S. 1922. <span>“Sex Ratio and Unisexual Sterility in Hybrid Animals.”</span> <em>Journal of Genetics</em> 12 (2): 101–9. <a href="https://doi.org/10.1007/BF02983075">https://doi.org/10.1007/BF02983075</a>.
+</div>
+<div id="ref-han2023epigenome3d" class="csl-entry" role="listitem">
+Han, M.H., Issagulova, D., and Park, M. 2023. <span>“Interplay Between Epigenome and 3D Chromatin Structure.”</span> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10761748/" class="uri">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10761748/</a>.
+</div>
+<div id="ref-kundaje2015integrative" class="csl-entry" role="listitem">
+Kundaje, A., W. Meuleman, J. Ernst, M. Bilenky, A. Yen, A. Heravi-Moussavi, P. Kheradpour, et al. 2015. <span>“Integrative Analysis of 111 Reference Human Epigenomes.”</span> <a href="https://www.nature.com/articles/nature14248" class="uri">https://www.nature.com/articles/nature14248</a>.
 </div>
 <div id="ref-LiebermanAiden2009" class="csl-entry" role="listitem">
 Lieberman-Aiden, Erez, Nynke L. van Berkum, Louise Williams, Maxim Imakaev, Tobias Ragoczy, Andreas Telling, Ido Amit, et al. 2009. <span>“Comprehensive Mapping of Long-Range Interactions Reveals Folding Principles of the Human Genome.”</span> <em>Science</em> 326 (5950): 289–93. <a href="https://doi.org/10.1126/science.1181369">https://doi.org/10.1126/science.1181369</a>.
 </div>
+<div id="ref-Lindholm2016" class="csl-entry" role="listitem">
+Lindholm, Anna K., Kelly A. Dyer, Renée C. Firman, Lila Fishman, Wolfgang Forstmeier, Luke Holman, Hanna Johannesson, et al. 2016. <span>“The Ecology and Evolutionary Dynamics of Meiotic Drive.”</span> <em>Trends in Ecology &amp; Evolution</em> 31 (4): 315–26. <a href="https://doi.org/10.1016/j.tree.2016.02.001">https://doi.org/10.1016/j.tree.2016.02.001</a>.
+</div>
+<div id="ref-lu2021homotypic" class="csl-entry" role="listitem">
+Lu, J.Y., Chang, L., Li, T., Wang, T., Yin, Y., Zhan, G., Han, X., et al. 2021. <span>“Homotypic Clustering of L1 and B1/Alu Repeats Compartmentalizes the 3D Genome.”</span> <a href="https://www.nature.com/articles/s41422-020-00466-6" class="uri">https://www.nature.com/articles/s41422-020-00466-6</a>.
+</div>
+<div id="ref-lucini2024biochemical" class="csl-entry" role="listitem">
+Lucini, F., Petrini, C., Salviato, E., Pal, K., et al. 2024. <span>“Biochemical Properties of Chromatin Domains Define Genome Compartmentalization.”</span> <a href="https://academic.oup.com/nar/article/52/12/e54/7684597" class="uri">https://academic.oup.com/nar/article/52/12/e54/7684597</a>.
+</div>
+<div id="ref-maeshima2020dynamic" class="csl-entry" role="listitem">
+Maeshima, K., S. Tamura, J. C. Hansen, and Y. Itoh. 2020. <span>“Dynamic Chromatin Organization Without the 30-Nm Fiber.”</span> <a href="https://doi.org/10.1016/j.tcb.2020.05.006" class="uri">https://doi.org/10.1016/j.tcb.2020.05.006</a>.
+</div>
+<div id="ref-marx2019singlecell" class="csl-entry" role="listitem">
+Marx, V. 2019. <span>“Method of the Year: Single-Cell Multimodal Omics.”</span> <a href="https://www.nature.com/articles/d41586-020-00110-6" class="uri">https://www.nature.com/articles/d41586-020-00110-6</a>.
+</div>
+<div id="ref-Ramirez2018" class="csl-entry" role="listitem">
+Ramírez, Fidel, Vivek Bhardwaj, Laura Arrigoni, Kin Chung Lam, Björn A. Grüning, José Villaveces, Bianca Habermann, Asifa Akhtar, and Thomas Manke. 2018. <span>“High-Resolution TADs Reveal DNA Sequences Underlying Genome Organization in Flies.”</span> <em>Nature Communications</em> 9 (1): 189. <a href="https://doi.org/10.1038/s41467-017-02525-w">https://doi.org/10.1038/s41467-017-02525-w</a>.
+</div>
+<div id="ref-rowley2018organizational" class="csl-entry" role="listitem">
+Rowley, M. J., and V. G. Corces. 2018. <span>“Organizational Principles of 3D Genome Architecture.”</span> <a href="https://www.nature.com/articles/s41580-018-0060-8" class="uri">https://www.nature.com/articles/s41580-018-0060-8</a>.
+</div>
+<div id="ref-Sayers2022" class="csl-entry" role="listitem">
+Sayers, Eric W, Evan E Bolton, J Rodney Brister, Kathi Canese, Jessica Chan, Donald C Comeau, Ryan Connor, et al. 2022. <span>“Database Resources of the National Center for Biotechnology Information.”</span> <em>Nucleic Acids Research</em> 50 (D1): D20–26. <a href="https://doi.org/10.1093/nar/gkab1112">https://doi.org/10.1093/nar/gkab1112</a>.
+</div>
+<div id="ref-valadezgraham2020chromatin" class="csl-entry" role="listitem">
+Valadez-Graham, V., and Magaña-Acosta, M. 2020. <span>“Chromatin Remodelers in the 3D Nuclear Compartment.”</span> <a href="https://www.frontiersin.org/articles/10.3389/fgene.2020.600615/full" class="uri">https://www.frontiersin.org/articles/10.3389/fgene.2020.600615/full</a>.
+</div>
 <div id="ref-Wang2019" class="csl-entry" role="listitem">
 Wang, Yao, Hanben Wang, Yu Zhang, Zhenhai Du, Wei Si, Suixing Fan, Dongdong Qin, et al. 2019. <span>“Reprogramming of Meiotic Chromatin Architecture During Spermatogenesis.”</span> <em>Molecular Cell</em> 73 (3): 547–561.e6. <a href="https://doi.org/10.1016/j.molcel.2018.11.019">https://doi.org/10.1016/j.molcel.2018.11.019</a>.
+</div>
+<div id="ref-wen2022compartmentalization" class="csl-entry" role="listitem">
+Wen, Z., Zhang, W., Zhong, Q., Xu, J., Hou, C., et al. 2022. <span>“Extensive Chromatin Structure-Function Associations Revealed by Accurate 3D Compartmentalization Characterization.”</span> <a href="https://www.frontiersin.org/articles/10.3389/fcell.2022.845118/full" class="uri">https://www.frontiersin.org/articles/10.3389/fcell.2022.845118/full</a>.
+</div>
+<div id="ref-zhang2021senescence" class="csl-entry" role="listitem">
+Zhang, X., Liu, X., Du, Z., Wei, L., Fang, H., Dong, Q., et al. 2021. <span>“The Loss of Heterochromatin Is Associated with Multiscale Three-Dimensional Genome Reorganization and Aberrant Transcription During Cellular Senescence.”</span> <a href="https://genome.cshlp.org/content/31/7/1121" class="uri">https://genome.cshlp.org/content/31/7/1121</a>.
+</div>
+<div id="ref-zhou2011dna" class="csl-entry" role="listitem">
+Zhou, X., B. Maricque, M. Xie, D. Li, V. Sundaram, E. A. Martin, B. C. Koebbe, et al. 2011. <span>“The Human Epigenome Browser at Washington University.”</span> <a href="https://www.nature.com/articles/nmeth.1772" class="uri">https://www.nature.com/articles/nmeth.1772</a>.
+</div>
+<div id="ref-Zuo2021" class="csl-entry" role="listitem">
+Zuo, Wu, Guangming Chen, Zhimei Gao, Shuai Li, Yanyan Chen, Chenhui Huang, Juan Chen, Zhengjun Chen, Ming Lei, and Qian Bian. 2021. <span>“Stage-Resolved Hi-c Analyses Reveal Meiotic Chromosome Organizational Features Influencing Homolog Alignment.”</span> <em>Nature Communications</em> 12 (1): 5827. <a href="https://doi.org/10.1038/s41467-021-26033-0">https://doi.org/10.1038/s41467-021-26033-0</a>.
 </div>
 </div></section></div></main>
 <!-- /main column -->
