@@ -25,13 +25,13 @@ degree: Master of Science in Bioinformatics
 
 
 ## evolution on X
-The production of gametes in sexually reproducing organisms is a complex, tightly regulated process involving numerous cellular and molecular mechanisms. In males, spermatogenesis—the process by which sperm are formed—progresses through four main stages of differentiation: from germ cells to spermatogonia, then to pachytene spermatocytes, round spermatids, and finally to mature spermatozoa \cite{Wang2019}(Wang et al. 2019). This process is fundamental to male fertility. Meiosis, a specialized form of cell division, ensures the proper pairing, recombination, and segregation of homologous chromosomes, thereby maintaining genetic integrity and promoting variation. A deep understanding of these molecular events is essential for comprehending inheritance, speciation, population genetics, and the biological causes of infertility.
+The production of gametes in sexually reproducing organisms is a complex, tightly regulated process involving numerous cellular and molecular mechanisms. In males, spermatogenesis—the process by which sperm are formed—progresses through four main stages of differentiation: from germ cells to spermatogonia, then to pachytene spermatocytes, round spermatids, and finally to mature spermatozoa [@Wang2019](Wang et al. 2019). This process is fundamental to male fertility. Meiosis, a specialized form of cell division, ensures the proper pairing, recombination, and segregation of homologous chromosomes, thereby maintaining genetic integrity and promoting variation. A deep understanding of these molecular events is essential for comprehending inheritance, speciation, population genetics, and the biological causes of infertility.
 
 Sex chromosomes differ from autosomes in several key ways due to their distinct patterns of inheritance and copy number. The Y chromosome is found only in males and exists as a single copy. In contrast, the X chromosome follows a more complex inheritance pattern: females carry two copies, while males carry only one. Consequently, the X chromosome resides two-thirds of the time in females and one-third in males, a distribution that influences how selection acts upon it. In males, the hemizygous nature of the X chromosome means that any mutations or deleterious alleles are fully exposed, without a second copy to mask their effects.
 
-This feature is central to Haldane’s rule \cite{Haldane1922} (Haldane 1922), which posits that in hybrids between two species, the heterogametic sex (e.g., XY in mammals or ZW in birds) is more likely to be inviable or sterile. While widely observed, the precise causes of this pattern remain a subject of ongoing debate. Several hypotheses have been proposed to explain it. One suggests that incompatibilities involving the Y chromosome can arise if it fails to remain compatible with the X chromosome or autosomes. Another centers on dosage compensation, proposing that hybridization may disrupt the regulatory mechanisms that balance gene expression between sex chromosomes. The dominance hypothesis argues that recessive deleterious alleles may be unmasked in the heterogametic sex, leading to sterility. Additional ideas include the faster evolution of male-biased reproductive genes, which can result in functional mismatches, and the accelerated divergence of X-linked loci compared to autosomes, known as faster-X evolution. Lastly, meiotic drive—genetic conflicts between selfish elements on sex chromosomes—has also been implicated in hybrid sterility.
+This feature is central to Haldane’s rule [@Haldane1922] (Haldane 1922), which posits that in hybrids between two species, the heterogametic sex (e.g., XY in mammals or ZW in birds) is more likely to be inviable or sterile. While widely observed, the precise causes of this pattern remain a subject of ongoing debate. Several hypotheses have been proposed to explain it. One suggests that incompatibilities involving the Y chromosome can arise if it fails to remain compatible with the X chromosome or autosomes. Another centers on dosage compensation, proposing that hybridization may disrupt the regulatory mechanisms that balance gene expression between sex chromosomes. The dominance hypothesis argues that recessive deleterious alleles may be unmasked in the heterogametic sex, leading to sterility. Additional ideas include the faster evolution of male-biased reproductive genes, which can result in functional mismatches, and the accelerated divergence of X-linked loci compared to autosomes, known as faster-X evolution. Lastly, meiotic drive—genetic conflicts between selfish elements on sex chromosomes—has also been implicated in hybrid sterility.
 
-These hypotheses underscore the complex interplay between sex chromosomes, selection, and hybridization \cite{Cowell2023} (Cowell 2023). Although Haldane’s rule is consistently observed across diverse taxa—and even across kingdoms—the underlying mechanisms are not universally agreed upon. In many cases, multiple processes may act together \cite{Lindholm2016} (Lindholm et al. 2016).
+These hypotheses underscore the complex interplay between sex chromosomes, selection, and hybridization [@Cowell2023] (Cowell 2023). Although Haldane’s rule is consistently observed across diverse taxa—and even across kingdoms—the underlying mechanisms are not universally agreed upon. In many cases, multiple processes may act together [@Lindholm2016] (Lindholm et al. 2016).
 
 The X chromosome, in particular, appears to be subject to strong and unique selective pressures, especially in primates. This topic is explored in greater depth in the following sections.
 
@@ -39,22 +39,33 @@ The X chromosome, in particular, appears to be subject to strong and unique sele
 
 Regions under strong selection across primate species—including humans and baboons—are consistently found on the X chromosome, spanning megabase-scale genomic areas. As previously noted, factors such as chromosomal architecture and structural rearrangements may play crucial roles in enabling, regulating, or insulating these regions from selective pressures.
 
-Understanding genome organization and variation is therefore essential for uncovering the mechanisms behind selection. Chromatin has long been recognized as central to gene regulation and cellular function (Lieberman-Aiden et al. 2009), in part because the 3D structure of chromosomes brings distant genomic elements into close contact. Disruption of this spatial organization can lead to developmental abnormalities \cite{Dixon2015} (Dixon et al. 2015). Chromatin is organized hierarchically, with multiple levels of structure nested within one another (see Figure 2). At the broadest level, chromatin compartments can span several megabases \cite{LiebermanAiden2009} (Lieberman-Aiden et al. 2009), while at finer scales, even 500 base pairs can contribute to subgenic structural organization. Structures such as topologically associating domains (TADs) and chromatin loops, which operate at sub-megabase scales, further help partition regulatory elements and maintain proper genomic function \cite{Ramirez2018}\cite{Zuo2021}(Ramírez et al. 2018; Zuo et al. 2021).
+Understanding genome organization and variation is therefore essential for uncovering the mechanisms behind selection. Chromatin has long been recognized as central to gene regulation and cellular function [@LiebermanAiden2009] (Lieberman-Aiden et al. 2009), in part because the 3D structure of chromosomes brings distant genomic elements into close contact. Disruption of this spatial organization can lead to developmental abnormalities [@Dixon2015] (Dixon et al. 2015). Chromatin is organized hierarchically, with multiple levels of structure nested within one another (see Figure 2). At the broadest level, chromatin compartments can span several megabases [@LiebermanAiden2009] (Lieberman-Aiden et al. 2009), while at finer scales, even 500 base pairs can contribute to subgenic structural organization. Structures such as topologically associating domains (TADs) and chromatin loops, which operate at sub-megabase scales, further help partition regulatory elements and maintain proper genomic function [@Ramirez2018][@Zuo2021](Ramírez et al. 2018; Zuo et al. 2021).
 
-Chromatin, the complex of DNA wrapped around histone proteins and associated with various regulatory factors, plays a central role in the spatial and temporal control of gene expression, as well as in maintaining the structural integrity and stability of the genome. Far from being a static scaffold, chromatin is a highly dynamic entity, subject to extensive remodeling in response to cellular signals, developmental cues, and environmental stimuli. Its organization within the nucleus is hierarchical, ranging from nucleosomes to higher-order domains, and this architecture can differ substantially across cell types, developmental stages, and even between closely related species. One of the key features of chromatin organization is its division into functionally distinct states—broadly classified as euchromatin, which is generally open and transcriptionally active, and heterochromatin, which is compacted and repressive. Transitions between these states, whether developmentally programmed or evolutionarily emergent, are often tightly coupled to shifts in gene regulatory activity and cellular identity.
 
-In this study, we focus on characterizing these chromatin state transitions, with a particular interest in understanding how they are distributed across the genome and whether they exhibit predictable patterns linked to specific sequence features or regulatory elements. We ask whether certain genomic regions are more prone to undergoing structural reorganization and whether such regions harbor conserved sequence motifs, epigenetic signatures, or binding sites for key regulatory proteins. Furthermore, we investigate whether particular chromatin configurations are disproportionately associated with genes involved in critical biological processes or with regions of the genome that show signatures of evolutionary constraint or adaptation.
 
-By examining the diversity of chromatin states and transitions across individuals and lineages, we also aim to uncover broader principles governing chromatin architecture and its functional consequences. These insights may inform our understanding of how chromatin organization evolves, how it contributes to phenotypic diversity, and how its dysregulation may underlie disease states. Ultimately, this work contributes to a growing body of knowledge on the interplay between genome structure, function, and evolution.
+Chromatin, the complex of DNA wrapped around histone proteins and associated with various regulatory factors, plays a central role in the spatial and temporal control of gene expression, as well as in maintaining the structural integrity and stability of the genome [@allshire2016epigenetics; @bannister2011histone]. Far from being a static scaffold, chromatin is a highly dynamic entity, subject to extensive remodeling in response to cellular signals, developmental cues, and environmental stimuli [@maeshima2020dynamic]. Its organization within the nucleus is hierarchical, ranging from nucleosomes to higher-order domains, and this architecture can differ substantially across cell types, developmental stages, and even between closely related species [@rowley2018organizational; @bonev2017organization].
+
+One of the key features of chromatin organization is its division into functionally distinct states—broadly classified as euchromatin, which is generally open and transcriptionally active, and heterochromatin, which is compacted and repressive [@grewal2007heterochromatin; @bickmore2013euchromatin]. Transitions between these states, whether developmentally programmed or evolutionarily emergent, are often tightly coupled to shifts in gene regulatory activity and cellular identity [@arnold2022chromatin].
+
+In this study, we focus on characterizing these chromatin state transitions, with a particular interest in understanding how they are distributed across the genome and whether they exhibit predictable patterns linked to specific sequence features or regulatory elements. We ask whether certain genomic regions are more prone to undergoing structural reorganization and whether such regions harbor conserved sequence motifs, epigenetic signatures, or binding sites for key regulatory proteins [@zhou2011dna; @ernst2011mapping]. Furthermore, we investigate whether particular chromatin configurations are disproportionately associated with genes involved in critical biological processes or with regions of the genome that show signatures of evolutionary constraint or adaptation [@kundaje2015integrative].
+
+By examining the diversity of chromatin states and transitions across individuals and lineages, we also aim to uncover broader principles governing chromatin architecture and its functional consequences [@marx2019singlecell]. These insights may inform our understanding of how chromatin organization evolves, how it contributes to phenotypic diversity, and how its dysregulation may underlie disease states [@buenrostro2015atacseq]. Ultimately, this work contributes to a growing body of knowledge on the interplay between genome structure, function, and evolution.
+
 
 ## A/B configurations
-One widely studied aspect of chromatin architecture is its partitioning into A and B compartments, as revealed by Hi-C and other genome conformation capture techniques. These compartments represent large-scale topological domains of the genome that differ markedly in their regulatory environment and functional output. A compartments are typically associated with euchromatic regions—open, accessible chromatin that is rich in actively transcribed genes, regulatory elements like enhancers and promoters, and active histone marks such as H3K4me3 and H3K27ac. In contrast, B compartments correspond to heterochromatic, transcriptionally repressive regions characterized by reduced accessibility, fewer active genes, and enrichment of repressive epigenetic marks like H3K9me3 and DNA methylation.
 
-This spatial segregation of the genome into A and B compartments plays a critical role in regulating which genes are expressed in a given cell or context. Genes located in A compartments are more likely to be in close physical proximity to other regulatory elements, transcriptional machinery, and nuclear compartments that promote gene activation, such as nuclear speckles. Conversely, genes embedded in B compartments are more isolated from such transcriptional hubs and may be sequestered near the nuclear lamina, where gene silencing is reinforced.
+One of the most fundamental and widely studied features of three-dimensional genome organization is its partitioning into A and B compartments, originally revealed by high-throughput chromosome conformation capture techniques such as Hi-C [@LiebermanAiden2009]. These compartments represent megabase-scale regions of the genome that differ significantly in their epigenetic state, transcriptional activity, nuclear positioning, and physical interaction profiles. The identification of compartments via principal component analysis (PCA) of Hi-C matrices has become a cornerstone in mapping chromatin architecture across species and cell types.
 
-Importantly, the assignment of a genomic region to either an A or B compartment is not fixed; it can shift in response to developmental signals, environmental stress, or disease states. Such compartment switching is a powerful mechanism of gene regulation. For example, when a gene or regulatory locus moves from a B to an A compartment, it may become transcriptionally activated due to its new, more permissive chromatin environment. Likewise, genes that transition into B compartments often show downregulation or complete silencing. These dynamic shifts allow the cell to orchestrate complex gene expression programs with spatial precision, integrating structural and regulatory layers of genome function.
+The A compartment is typically associated with euchromatin—open, accessible chromatin that supports active gene expression. Regions within A compartments are enriched with transcriptionally active histone modifications, including H3K27ac, H3K4me3, and H3K36me3, as well as high levels of DNase I hypersensitivity, RNA polymerase II occupancy, and active transcription [@han2023epigenome3d; @wen2022compartmentalization; @lu2021homotypic]. In contrast, B compartments correspond to heterochromatic domains, which are transcriptionally silent or repressed. These regions are often localized near the nuclear lamina, marked by H3K9me3, H3K27me3, Lamin B1 association, and DNA methylation, and exhibit low transcriptional activity [@han2023epigenome3d; @lu2021homotypic; @feng2020h3k9me3architecture]. The biochemical and physical segregation of chromatin into A and B compartments reinforces a higher-order regulatory framework for genome function [@lucini2024biochemical].
 
-Moreover, comparative studies across species and populations suggest that A/B compartmentalization is both conserved and evolutionarily flexible. Certain compartments—particularly those associated with developmental and housekeeping genes—are stably maintained across evolutionary time, reflecting strong selective pressure to preserve core regulatory networks. Other regions, especially those involved in species-specific traits or environmental responses, exhibit greater compartmental plasticity. By studying the distribution and dynamics of A/B compartments, especially in non-model organisms and hybrid genomes, we can gain novel insights into how chromatin structure evolves and how it contributes to phenotypic diversity and adaptation.
+Importantly, A/B compartment identity is not fixed but can undergo dynamic switching in response to developmental cues, environmental stimuli, cell differentiation, aging, or disease states such as cancer and senescence. This process, referred to as compartment switching, entails a region transitioning from a repressive B compartment to an active A compartment (or vice versa), often accompanied by changes in chromatin accessibility, histone modification landscapes, and gene expression profiles [@zhang2021senescence; @lucini2024biochemical; @wen2022compartmentalization]. For instance, during lineage specification or upon activation of certain signaling pathways, genes or regulatory loci may shift from a transcriptionally repressive nuclear environment to one permissive for gene activation. This spatial repositioning allows cells to coordinate complex transcriptional programs in a spatiotemporally regulated manner.
+
+At the structural level, compartmental identity correlates with nuclear topography: A compartments tend to localize to the nuclear interior and are often associated with nuclear speckles—subnuclear domains involved in transcriptional and RNA processing. B compartments, on the other hand, are frequently found near the nuclear lamina, where gene silencing is promoted through anchoring and phase-separated heterochromatin domains [@lu2021homotypic; @feng2020h3k9me3architecture].
+
+From an evolutionary perspective, comparative Hi-C and epigenomic studies across species have revealed that certain A and B compartmental domains are highly conserved, especially those involving developmental genes, housekeeping genes, and essential regulatory networks [@valadezgraham2020chromatin]. However, other regions—particularly those involved in immune response, sensory perception, or species-specific traits—exhibit compartmental plasticity, reflecting their role in adaptive evolution and phenotypic diversity. For example, chromatin compartments in plants, mammals, and even non-model organisms show patterns of both conservation and innovation in their compartmental structures, highlighting the flexibility of genome organization mechanisms in accommodating species-specific regulatory needs [@wen2022compartmentalization].
+
+The study of A/B compartment dynamics not only offers insights into basic principles of genome function but also provides a framework for understanding disease-associated epigenetic reprogramming, evolutionary divergence, and the mechanistic underpinnings of cell identity.
+
 
 ## GPN
 Recent advances in artificial intelligence have brought powerful tools to genomics, particularly through the development of Genomic Pre-trained Networks (GPNs)—deep learning models trained on large-scale genomic sequence data using architectures inspired by natural language processing. GPNs apply self-supervised learning approaches, analogous to models like BERT or GPT, to the DNA sequence, learning to predict masked or missing bases in context. Through this training, GPNs develop an internal representation of the "language of the genome," capturing patterns of sequence composition, motif syntax, and long-range dependencies that underlie regulatory function.
@@ -95,13 +106,13 @@ Pachytene spermatocytes represent a central point in meiosis, specifically proph
 
 Round spermatids are the direct products of the two meiotic divisions. They are haploid cells that no longer divide but instead undergo spermiogenesis, a process of dramatic morphological and chromatin remodeling. Although post-meiotic, they carry the molecular signatures of meiotic recombination and genome reduction[@Berg2019].
 
-During spermatogenesis, large-scale reprogramming of three-dimensional (3D) chromatin organization is required to enable meiosis and germ cell differentiation. Recent studies using low-input Hi-C in both rhesus monkeys and mice have revealed that the higher-order chromatin landscape is far from static. Instead, it undergoes stage-specific remodeling in which topologically associating domains (TADs), normally stable units of genome folding, become progressively dissolved as germ cells enter meiotic prophase. This disruption reaches its peak in pachytene spermatocytes, where TADs are almost entirely absent despite the presence of widespread transcriptional activity [@wang2019].
+During spermatogenesis, large-scale reprogramming of three-dimensional (3D) chromatin organization is required to enable meiosis and germ cell differentiation. Recent studies using low-input Hi-C in both rhesus monkeys and mice have revealed that the higher-order chromatin landscape is far from static. Instead, it undergoes stage-specific remodeling in which topologically associating domains (TADs), normally stable units of genome folding, become progressively dissolved as germ cells enter meiotic prophase. This disruption reaches its peak in pachytene spermatocytes, where TADs are almost entirely absent despite the presence of widespread transcriptional activity [@Wang2019].
 
-Interestingly, the loss of TADs at this stage is accompanied by the emergence of refined A/B compartments. These compartments alternate between transcriptionally active and inactive regions, providing a new level of chromatin organization that correlates more directly with gene expression than classical TAD structures. Such reorganization suggests that the meiotic genome adopts a unique 3D folding principle optimized for homologous recombination and transcriptional control [@wang2019].
+Interestingly, the loss of TADs at this stage is accompanied by the emergence of refined A/B compartments. These compartments alternate between transcriptionally active and inactive regions, providing a new level of chromatin organization that correlates more directly with gene expression than classical TAD structures. Such reorganization suggests that the meiotic genome adopts a unique 3D folding principle optimized for homologous recombination and transcriptional control [@Wang2019].
 
-A key driver of this transition appears to be the synaptonemal complex (SC), a protein scaffold that aligns homologous chromosomes during meiosis. Wang and colleagues demonstrated that in spermatocytes lacking proper SC formation, refined compartments fail to develop, and TAD-like structures re-emerge prematurely. This finding indicates that the SC does not merely stabilize chromosome pairing, but also actively contributes to global chromatin architecture by suppressing TADs and promoting compartmentalization [@wang2019].
+A key driver of this transition appears to be the synaptonemal complex (SC), a protein scaffold that aligns homologous chromosomes during meiosis. Wang and colleagues demonstrated that in spermatocytes lacking proper SC formation, refined compartments fail to develop, and TAD-like structures re-emerge prematurely. This finding indicates that the SC does not merely stabilize chromosome pairing, but also actively contributes to global chromatin architecture by suppressing TADs and promoting compartmentalization [@Wang2019].
 
-Overall, this work highlights that spermatogenesis involves not only dynamic transcriptional and epigenetic changes but also profound reprogramming of chromatin folding. The discovery that such architectural shifts are conserved between primates and rodents underscores their biological importance. Furthermore, it raises the possibility that defects in these processes could contribute to infertility or other germline disorders, linking 3D genome organization to reproductive health [@wang2019].
+Overall, this work highlights that spermatogenesis involves not only dynamic transcriptional and epigenetic changes but also profound reprogramming of chromatin folding. The discovery that such architectural shifts are conserved between primates and rodents underscores their biological importance. Furthermore, it raises the possibility that defects in these processes could contribute to infertility or other germline disorders, linking 3D genome organization to reproductive health [@Wang2019].
 
 ## X Chromosome Compartments and GC Content
 
@@ -182,24 +193,51 @@ This approach proved successful. When processing a single chromosome at a time, 
 However, due to time constraints near the conclusion of the project timeline, the extracted embeddings were not subjected to further downstream analysis. Although they were successfully retrieved and stored, no additional modeling, interpretation, or evaluation steps were completed within the project scope.
 
 
-## using HIC to extract transtion areas 
+## Fecting the raw data 
+The original sequencing data was obtained by a colleague in our research group in order to reproduce the results reported by Wang et al. (2019) [@Wang2019]. The raw data was downloaded from the SRA portal [@Sayers2022] and subsequently filtered to include only paired-end Hi-C reads from macaque samples.
+
+To provide an overview of the material, a summary of the SRA runtable is presented in @tbl-cell-data. This table lists the accession numbers alongside key metadata for each sample. Altogether, the dataset amounts to approximately 1 TB of compressed FASTQ files, comprising ~9.5 billion reads distributed roughly evenly across five tissue types.
+
+Table: Summary of Hi-C sequencing data across five macaque cell types, retrieved from the NCBI SRA portal for initial data exploration. {#tbl-cell-data}
+
+| source_name            | GB        | Bases          | Reads        |
+|------------------------|-----------|----------------|--------------|
+| fibroblast             | 211.403275| 553,968,406,500| 1,846,561,355|
+| pachytene spermatocyte | 274.835160| 715,656,614,700| 2,385,522,049|
+| round spermatid        | 243.128044| 655,938,457,200| 2,186,461,524|
+| sperm                  | 164.131640| 428,913,635,400| 1,429,712,118|
+| spermatogonia          | 192.794420| 518,665,980,300| 1,728,886,601|
 
 
-## DATA 
+### Data Generation and Processing
 
-The dataset used in this study was generated from Macaca (rhesus macaque) samples, covering five distinct stages of spermatogenesis, as well as fibroblasts for comparison. These stages represent the continuum of male germ cell development from undifferentiated precursors to mature gametes.
 
-Spermatogonia are the mitotically active stem and progenitor cells located at the basal layer of the seminiferous tubules. They serve as the foundation of spermatogenesis by both self-renewing to maintain the stem cell pool and differentiating to give rise to spermatocytes. This stage is characterized by robust proliferative activity and the initiation of gene expression programs that prepare cells for meiosis.
+The Hi-C sequencing data analyzed in this study was not generated or processed by myself, but by another member of our research group. What follows is a condensed description of their workflow, included here for clarity and reproducibility.
 
-Pachytene spermatocytes are primary spermatocytes in the prolonged pachytene stage of meiotic prophase I. During this phase, homologous chromosomes are fully synapsed and undergo genetic recombination through crossing-over, ensuring genetic diversity in gametes. These cells also exhibit high levels of transcriptional activity, producing RNAs that will be used later during spermatid development, as transcription becomes reduced after meiosis.
+The data were processed using the Open2C pipeline, implemented as a GWF workflow. This framework allowed each sequencing accession (i.e., paired-end read sets) to be handled independently and in parallel, improving efficiency and scalability. The raw reads were retrieved directly from the NCBI SRA [@devteam2024sratoolkit] using the SRA Toolkit, run in a containerized environment for consistency. Downloads were saved as compressed FASTQ files, ensuring a standardized input format for downstream analysis.
 
-Following meiosis II, round spermatids are formed as haploid germ cells. At this point, the cells no longer divide but instead undergo extensive remodeling during spermiogenesis. Chromatin begins to compact, transcriptional activity decreases, and transcripts stored earlier are translated to support structural changes. Morphologically, the cells remain spherical at this stage.
+Read alignment was carried out against the rheMac10 reference genome using bwa-mem in paired-end mode, following the recommended parameters provided by the Open2C team. The resulting alignments were then parsed into ligation events with pairtools, which not only distinguishes valid Hi-C contacts but also applies essential preprocessing steps such as sorting, removal of PCR duplicates, and exclusion of reads mapping to unplaced scaffolds. This filtering ensured that only informative, high-confidence pairs were retained for analysis.
 
-Through spermiogenesis, round spermatids differentiate into elongated spermatids and ultimately mature spermatozoa. This process involves dramatic nuclear condensation, replacement of histones with protamines, formation of the acrosome, and development of the flagellum for motility. Mature sperm are transcriptionally silent and highly specialized for fertilization.
+The resulting valid pairs were aggregated into cooler files, the standard data structure for Hi-C contact matrices. To maximize coverage, biological replicates were merged at the cell-type level into a single matrix. These contact matrices were then “zoomified” into multiple resolutions (10 kb to 500 kb bins), enabling both fine-scale and large-scale chromatin features to be studied within the same dataset. To correct for technical biases, each matrix was subsequently normalized using iterative correction, producing balanced matrices suitable for quantitative comparison.
 
-Finally, fibroblasts, isolated from connective tissue, were included as a non-germline somatic control. Unlike germ cells, fibroblasts are not involved in reproduction but maintain structural and extracellular matrix functions. Their inclusion allows for distinguishing germline-specific molecular signatures from general cellular processes.
+To identify higher-order chromatin organization, eigendecomposition of the contact matrices was performed. The first eigenvector (E1) was phased using GC content, ensuring consistent orientation of A/B compartments across chromosomes. While eigenvectors were computed at multiple resolutions during intermediate steps, all final analyses and compartment calls were performed at a uniform resolution of 100 kilobases (kb) to ensure consistency across datasets. The eigentrack shown in @fig-eigentrack illustrates a representative example of the first eigenvector at this resolution.
 
-Together, these samples provide a comprehensive view of germ cell differentiation across spermatogenesis, with fibroblasts serving as a reference point for somatic baseline comparisons.
+Finally, visualization of contact matrices and compartments was conducted within the Open2C ecosystem using matplotlib and seaborn, which enabled efficient data access and flexible plotting. These tools allowed for side-by-side comparison of balanced versus unbalanced matrices, as well as detailed compartment tracks at 100 kb resolution.
+
+Together, this workflow produced a high-quality, reproducible dataset. The combination of containerized processing, rigorous filtering, normalization, and replicate merging ensured that the resulting chromatin contact maps were reliable and well-suited for downstream compartment analysis.
+
+
+
+
+::: {#fig-eigentrack}
+![](illustrations/eigentrack.png){width=100%}
+
+**Example of the first eigenvector ("eigentrack") used in A/B chromatin compartment analysis.**  
+This track represents the first principal component (PC1) of the Hi-C contact matrix at a resolution of 100 kilobases (kb), with eigenvector values ranging from –1 to +1. Genomic regions with positive eigenvector values (colored red) are assigned to A compartments, typically associated with open, transcriptionally active euchromatin. Conversely, negative values (colored blue) correspond to B compartments, generally representing condensed, transcriptionally repressive heterochromatin. This eigentrack provides a quantitative basis for segmenting the genome into large-scale chromatin domains based on spatial interaction patterns.
+
+:::
+
+
 
 ## Datahandeling of the data befor analysisi 
 To load the data we use the function parse_compartment_data(file_name), which transforms the raw eigenvector track into meaningful genomic segments. The function begins by reading a CSV file that contains at least one column, e1, representing eigenvector values at 100 kb resolution.
@@ -242,14 +280,27 @@ We then binned these half-distances and computed the reverse cumulative count fo
 ![](illustrations/reverse_cumulative_count_total.png){width="100%" }
 :::
 
+## Error bars calculation
+To estimate uncertainty around the binned values in the plot, 95% confidence intervals (CIs) were calculated using a normal approximation to the binomial distribution. For each bin, the standard deviation was computed as:
+
+$$
+\text{SD} = \sqrt{\frac{c}{n}}
+$$
+
+where c is the observed count of events (e.g., repeat instances), and n is the number of positions (or sites) that could potentially contribute to that bin, derived from a reverse cumulative count. To avoid division by zero, a minimum denominator of 1 was enforced.
+
+The error bars represent 95% confidence intervals, calculated as:
+
+$$
+\text{CI}_{95} = 1.96 \times \text{SD}
+$$
 
 
-## compare GC conent to transition in macaca 
+This approach accounts for the decreasing number of possible sites at increasing distances from the reference point and provides a conservative estimate of variation across bins.
 
+# Result 
 
-# result 
-
-## compare GC conent to transition in macaca 
+## Compare GC conent to transition in macaca 
 
 We compared GC content between A and B chromatin compartments for chromosome 8 and chromosome X across five Macaca cell types: fibroblasts, sperm, round spermatids, pachytene spermatocytes, and spermatogonia. Chromatin compartments were defined from A–B and B–A structural transitions, and GC content was measured separately for each compartment.
 
@@ -329,8 +380,28 @@ Chromosome 8 is shown on the left and chromosome X on the right. Rows represent 
 
 :::
 
+## control to with A andf b compartment
+To verify that our compartment analysis was not biased by compartment assignment, we performed a negative control experiment. Normally, the data are separated into A or B compartments (as described in the methods section). In the control analysis, however, the data were instead partitioned according to compartment transitions — whether regions lay on an A→B or B→A boundary. Because Hi-C data reflect DNA contacts independently of strand orientation, no systematic difference was expected between the two directions.
+
+As an additional safeguard, the same experiment was repeated for CpG islands. Filtering was carried out with the following code snippet, which reverses the logic of the standard A/B assignment:
+
+``` python 
+    A_val = result[
+        ((result['comp'] == 'A') & (result['start'] < 0)) |
+        ((result['comp'] == 'A') & (result['start'] > 0))
+    ].copy()
+    B_val = result[
+        ((result['comp'] == 'B') & (result['start'] > 0)) |
+        ((result['comp'] == 'B') & (result['start'] < 0))
+    ].copy()
+```
+The resulting plots, exemplified by Figure @fig-CPG_normalized_chr_ab for CpG islands on chromosome 8, confirmed our expectation: there was no meaningful difference between A→B and B→A transitions. This indicates that compartment boundaries behave symmetrically and supports the conclusion that enrichment patterns observed in the main analysis reflect genuine biological signal rather than artifacts of compartment orientation.
+
+::: {#fig-CPG_normalized_chr_ab fig-cap= "Negative control analysis of CpG islands on chromosome 8 across five macaque cell types (fibroblast, spermatogonia, pachytene spermatocyte, round spermatid, and sperm). A→B and B→A compartment transitions were compared."}
+ ![](illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes_negative_controal_AB_ba.png){width="100%"} 
 
 
+:::
 
 
 
@@ -477,7 +548,7 @@ Chromatin accessibility and transcription activation.
 
 The X chromosome, which undergoes massive reorganization and loss of A/B compartment structure during specific stages (pacSC, rST, eST), may exhibit a distinct repeat signature, though this was only briefly hinted at in the paper.
 
-@article{Luo2019, 
+article{Luo2019, 
   year = {2019}, 
   title = {{Three-dimensional genome reorganization during mouse spermatogenesis}}, 
   author = {Luo, Zhen and Wang, Xin and Wang, Rui and Chen, Jie and Chen, Yan and Xu, Qing and Cao, Jun}, 
