@@ -238,6 +238,17 @@ try:
             ((result['comp'] == 'B') & (result['start'] < 0))       # is greater than 0
         ].copy()
 
+        # A_val = result[
+        #     ((result['comp'] == 'A') & (result['start'] < 0)) |     # is greater than 0
+        #     ((result['comp'] == 'A') & (result['start'] > 0))       # is less than 0
+        # ].copy()
+
+        # # Entries within B compartment (right of origin if A, left if B)
+        # B_val = result[
+        #     ((result['comp'] == 'B') & (result['start'] > 0)) |     # is less than 0
+        #     ((result['comp'] == 'B') & (result['start'] < 0))       # is greater than 0
+        # ].copy()
+
         return A_val, B_val
 
     fibroblast_A, fibroblast_B = filter_into_A_B_compartments(fibroblast)
@@ -286,7 +297,12 @@ try:
                     ((df['comp'] == 'B') & (df['start'] > 0))]
         B_side = df[((df['comp'] == 'A') & (df['start'] > 0)) |
                     ((df['comp'] == 'B') & (df['start'] < 0))]
-        return A_side, B_side
+        
+        # A_side = df[((df['comp'] == 'A') & (df['start'] < 0)) |
+        #             ((df['comp'] == 'A') & (df['start'] > 0))]
+        # B_side = df[((df['comp'] == 'B') & (df['start'] > 0)) |
+        #             ((df['comp'] == 'B') & (df['start'] < 0))]
+        # return A_side, B_side
 
     def _bin_stats(gc_df, edges, edge_frac):
         """Mean and 95% CI using SEM, scaled by edge availability as effective N."""
