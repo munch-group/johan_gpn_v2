@@ -193,6 +193,17 @@
 \@addtoreset{chapter}{part}
 \makeatother
 \makeatletter
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{plain}
+\@ifundefined{c@chapter}{\newfloat{suppfig}{h}{losuppfig}}{\newfloat{suppfig}{h}{losuppfig}[chapter]}
+\floatname{suppfig}{Figure S}
+\newcommand*\quartosuppfigref[1]{Figure \hyperref[#1]{S\ref{#1}}}
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\DeclareCaptionLabelFormat{quartosuppfigreflabelformat}{#1#2}
+\captionsetup[suppfig]{labelformat=quartosuppfigreflabelformat}
+\newcommand*\listofsuppfigs{\listof{suppfig}{List of Supplementary Figures}}
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
 \ifdefined\contentsname
@@ -252,7 +263,7 @@
 \makeatother
 \subtitle{Some subtitle for my thesis}
 \author{Johan Ulstrup}
-\date{September 23, 2025}
+\date{September 25, 2025}
 \begin{document}
 \frontmatter
 \maketitle
@@ -1202,7 +1213,7 @@ higher in the B compartment than in the A compartment.}
 
 \end{figure}%
 
-\section{CPS islands}\label{cps-islands}
+\section{CPG islands}\label{cpg-islands-1}
 
 To investigate chromatin dynamics during spermatogenesis in Macaca, we
 analyzed genome-wide changes in accessibility across successive
@@ -1381,7 +1392,7 @@ could contribute to that bin.}
 
 \end{figure}%
 
-\section{control to with A andf b
+\section{Control to with A andf B
 compartment}\label{control-to-with-a-andf-b-compartment}
 
 To verify that our compartment analysis was not biased by compartment
@@ -1410,13 +1421,37 @@ which reverses the logic of the standard A/B assignment:
 \end{Highlighting}
 \end{Shaded}
 
-The resulting plots, exemplified by Figure
-Figure~\ref{fig-CPG_normalized_chr_ab} for CpG islands on chromosome 8,
-confirmed our expectation: there was no meaningful difference between
-A→B and B→A transitions. This indicates that compartment boundaries
-behave symmetrically and supports the conclusion that enrichment
-patterns observed in the main analysis reflect genuine biological signal
-rather than artifacts of compartment orientation.
+The resulting profiles in Figure
+Figure~\ref{fig-CPG_normalized_chr_ab_new} illustrate the distribution
+of CpG islands relative to compartment transitions (A→B vs.~B→A) on
+chromosomes 8 and X across multiple cell types.
+
+On chromosome 8, fibroblasts and sperm show a pronounced asymmetry:
+between \textasciitilde0.5 and 1.5 Mb from transition edges, CpG islands
+are more abundant in regions undergoing A→B transitions than in those
+switching from B→A. This suggests that CpG islands are preferentially
+associated with loci moving from active to repressive chromatin
+environments in these contexts. In round spermatids, a similar
+enrichment is observed closer to the transition site (0--1 Mb), again
+with higher counts in A→B compared to B→A. By contrast, in spermatogonia
+and pachytene spermatocytes, CpG islands display a more balanced
+distribution, with comparable counts in both transition directions
+across the full range of distances examined.
+
+On chromosome X, no strong directional bias is detected. Across all
+tissues analyzed---including fibroblasts, spermatogonia, pachytene
+spermatocytes, round spermatids, and sperm---the counts of CpG islands
+at A→B and B→A transitions remain similar across the 0--2 Mb distance
+range. This uniformity suggests that, unlike chromosome 8, the X
+chromosome does not exhibit a consistent asymmetry in the distribution
+of CpG islands relative to compartment switching.
+
+Together, these results indicate that CpG islands are not randomly
+associated with chromatin transitions but instead show chromosome- and
+stage-specific patterns. Chromosome 8 exhibits directional enrichment of
+CpG islands, particularly in fibroblasts, sperm, and round spermatids,
+while the X chromosome appears more symmetric, lacking a consistent bias
+between A→B and B→A transitions.
 
 \begin{figure}
 
@@ -1426,470 +1461,259 @@ rather than artifacts of compartment orientation.
 
 }
 
-\caption{\label{fig-CPG_normalized_chr_ab}Negative control analysis of
-CpG islands on chromosome 8 across five macaque cell types (fibroblast,
-spermatogonia, pachytene spermatocyte, round spermatid, and sperm). A→B
-and B→A compartment transitions were compared.}
+\caption{\label{fig-CPG_normalized_chr_ab_new}Negative control analysis
+of CpG islands on chromosome 8 across five macaque cell types
+(fibroblast, spermatogonia, pachytene spermatocyte, round spermatid, and
+sperm). A→B (AB) and B→A (BA) compartment transitions were compared.}
 
 \end{figure}%
+
+the control was also done on GC content here we see there is a simular
+procentece of GC in each bin across all tisues
+\quartosuppfigref{suppfig-GC_content_contol}. The same was done with
+simple repates and nested repeat
+\quartosuppfigref{suppfig-simple_repeat_contol} and
+\quartosuppfigref{suppfig-nested_repeat_contol}
 
 \chapter{Dissusion}\label{dissusion}
 
-\section{repeats}\label{repeats}
+\section{GC content and A/B compartmentalization on the macaque X
+chromosome}\label{gc-content-and-ab-compartmentalization-on-the-macaque-x-chromosome}
+
+Across autosomes, GC content is a strong, well-established correlate of
+A/B compartment identity: GC-rich, gene-dense regions tend to occupy
+active A compartments, whereas AT-rich regions are depleted for genes
+and fall into repressive B compartments. Our analysis of macaque
+chromosome 8 conforms to this canonical relationship in all five cell
+types examined, reinforcing that our compartment calling and GC mapping
+are technically sound and biologically consistent. In contrast,
+chromosome X departs from this pattern in several notable ways. First,
+the magnitude of GC differences between A and B is markedly reduced in
+spermatogonia, pachytene spermatocytes, round spermatids, and sperm.
+Second, fibroblasts show an apparent inversion---higher GC in B than in
+A.
+
+Our analysis computes GC content in 5-bp windows genome-wide and aligns
+those values to A/B compartment transition edges identified from the
+Hi-C PC1 track at 100-kb resolution. GC values are summarized in
+distance-from-edge bins, and uncertainty is quantified using the
+reverse-cumulative count of available edges at each distance. This
+design reduces distance-dependent sampling bias but has three caveats:
+(i) edge positions are localized only to 100 kb, so features within
+\textasciitilde±50 kb of a boundary may be blurred by binning; (ii) the
+effective sample size declines with increasing distance from edges
+across all chromosomes (due to finite domain lengths and masked gaps),
+which widens confidence intervals at longer distances even after
+normalization; and (iii) because PC1 was phased using GC to orient A/B,
+there is potential circularity---especially on X, where regulation is
+atypical---so cross-phasing with independent marks (e.g.,
+H3K27ac/H3K9me3, replication timing, Lamin B1, RNA-seq) is recommended
+to validate label orientation.
+
+Biological implications
+
+That chromosome 8 obeys the classic GC--A/B relationship while
+chromosome X does not highlights an important distinction: GC content is
+a robust predictor of compartment state on autosomes but not necessarily
+on sex chromosomes. The attenuated contrast and apparent fibroblast
+reversal suggest that on X, base composition is a strong prior for
+compartmentalization but not a determinant under all conditions.
+Regulatory programs such as dosage compensation, sex-specific chromatin
+environments, and the unusual sequence architecture of the X can
+override the typical GC→A mapping, compressing or inverting the signal.
+
+These findings argue for additional validation when interpreting
+compartment states on chrX. Cross-referencing with independent chromatin
+marks and stratifying X into domain types (e.g., ampliconic versus
+non-ampliconic, CGI-rich versus CGI-poor) would help clarify whether the
+reduced GC--compartment correlation reflects biological mechanisms or
+labeling artifacts. More broadly, the results underscore that while GC
+content is a useful baseline for compartment identity, its predictive
+power may be context-dependent---particularly on the sex chromosomes,
+which are subject to distinct evolutionary and regulatory pressures.
+
+\section{CpG islands and chromatin transitions during
+spermatogenesis}\label{cpg-islands-and-chromatin-transitions-during-spermatogenesis}
+
+(this is kinda shit) Our analysis reveals that CpG island--associated
+chromatin transitions show distinct, stage-specific, and
+chromosome-specific patterns across macaque spermatogenesis. On
+chromosome 8, fibroblasts already exhibit a strong enrichment of CpG
+island--linked transitions in the A compartment, particularly at
+distances up to \textasciitilde1.5 Mb. In spermatogonia, by contrast,
+transitions are distributed more evenly between compartments, with
+little evidence of bias. At later germline stages---pachytene
+spermatocytes, round spermatids, and mature sperm---an A-compartment
+bias re-emerges, indicating that CpG islands become increasingly
+associated with open, transcriptionally active regions as chromatin
+undergoes extensive remodeling during meiosis and spermiogenesis. This
+developmental trajectory suggests that the relationship between CpG
+islands and compartment identity is not fixed but dynamically regulated,
+absent in early germline precursors, present in differentiated somatic
+fibroblasts, and reinforced during the major reorganizational phases of
+germ cell maturation.
+
+(this is okay) By contrast, the X chromosome generally shows weaker and
+more variable compartmental differences. In fibroblasts and
+spermatogonia, no enrichment is observed, mirroring the pattern seen on
+chromosome 8. In round spermatids, however, a modest A-compartment bias
+emerges, and in sperm this trend persists but remains less pronounced
+than on the autosome. These findings align with the idea that the X
+chromosome is subject to distinct regulatory pressures---such as meiotic
+sex chromosome inactivation (MSCI) and post-meiotic repression---that
+may dampen or delay the coupling between CpG islands and active
+chromatin states. The X appears less responsive to the same
+sequence-based cues that strongly partition CpG island--associated
+transitions on autosomes.
+
+CpG islands are well known to act as promoters, boundary elements, and
+nucleation sites for chromatin remodeling. Their enrichment within A
+compartments during later spermatogenic stages suggests that they may
+stabilize or reinforce transcriptionally permissive domains at precisely
+the time when the 3D genome undergoes wholesale remodeling. In
+particular, pachytene spermatocytes and spermatids show both loss of
+canonical TADs and emergence of refined compartmental structures. CpG
+islands could therefore help define or insulate these reorganized
+domains, ensuring that key regulatory programs for gamete development
+are maintained.
+
+everal factors caution against over-interpretation. First, transition
+edges are identified at 100-kb resolution, which limits positional
+accuracy; associations between CpG islands and compartments may
+therefore be blurred within ±50 kb of boundaries. Second, the
+normalization procedure compensates for distance-dependent availability
+of transitions, but the steep decline in counts at longer distances
+still reflects limited genomic sampling. Third, our analysis does not
+distinguish between CpG islands at active promoters, intergenic CGIs, or
+those embedded within repeats---categories that may behave differently.
+Finally, on the X chromosome, compartment labels are phased by GC
+content, raising the possibility of mislabeling in contexts where the
+GC--compartment correlation is weak.
+
+\section{Discussion: Simple repeats and compartment-specific
+enrichment}\label{discussion-simple-repeats-and-compartment-specific-enrichment}
+
+Our analysis of simple repeats reveals consistent stage- and
+chromosome-specific differences in their relationship to chromatin
+compartments. On chromosome 8, simple repeats are preferentially
+associated with the B compartment in fibroblasts, pachytene
+spermatocytes, round spermatids, and mature sperm, with spermatogonia
+representing the only stage without a clear bias. By contrast, the X
+chromosome shows the opposite pattern: simple repeats are generally
+enriched in the A compartment across most developmental stages, with
+only minor differences in spermatogonia at shorter distances. This
+reciprocal behavior between the autosome and the sex chromosome
+highlights that the genomic context strongly shapes how repetitive
+elements interact with higher-order chromatin structure.
+
+A second consistent feature across all stages and both chromosomes is
+the sharp enrichment of simple repeats near chromatin transition sites,
+with counts declining steadily at larger distances. This pattern
+suggests that simple repeats may preferentially accumulate at or around
+regions where chromatin states switch between active and inactive
+configurations. Whether repeats directly contribute to establishing such
+boundaries, or instead persist in these regions due to reduced selective
+constraints, remains unclear. Nonetheless, their proximity to transition
+sites supports the idea that repetitive elements may play a structural
+role in shaping domain organization, either by altering nucleosome
+positioning, promoting local heterochromatinization, or acting as
+anchors for chromatin remodeling complexes.
+
+The contrasting biases between chromosome 8 and the X chromosome may
+reflect differences in the sequence composition, regulatory environment,
+and evolutionary dynamics of these genomic regions. On autosomes, simple
+repeats appear to reinforce repressed, heterochromatic domains, while on
+the X they are more often linked to active A compartments. One possible
+explanation is that the unique regulatory pressures on the X
+chromosome---such as dosage compensation, sex-specific silencing, and
+its repeat-rich architecture---decouple the typical relationship between
+repeats and heterochromatin, allowing repeats to persist or even become
+enriched in euchromatic environments.
+
+Together, these findings suggest that simple repeats are not randomly
+distributed with respect to 3D genome organization, but instead exhibit
+compartment- and chromosome-specific associations that shift across
+developmental stages. Their enrichment near transition regions in
+particular points to a potential role in modulating or stabilizing
+chromatin boundaries during spermatogenesis. Further work, integrating
+repeat subtypes, transcriptional data, and histone modification
+profiles, will be needed to test whether these associations are
+structural, regulatory, or a byproduct of local sequence composition.
+
+\section{Control analysis of A→B vs.~B→A
+transitions}\label{control-analysis-of-ab-vs.-ba-transitions}
+
+The control analysis was designed to ensure that our compartment-based
+approach was not biased by the way A and B compartments were assigned.
+Because Hi-C data capture spatial proximity without strand
+directionality, no systematic difference should exist between
+transitions designated as A→B versus B→A. Under a strict null
+expectation, counts of CpG islands should therefore be distributed
+symmetrically across both categories.
+
+Our results confirm this expectation on the X chromosome, where all cell
+types exhibited comparable CpG island counts at A→B and B→A transitions.
+This uniformity suggests that the labeling of compartments on X was not
+introducing an artificial bias. By contrast, chromosome 8 showed
+directional enrichment of CpG islands at A→B transitions in fibroblasts,
+round spermatids, and sperm. The fact that this asymmetry was
+stage-specific, and absent in spermatogonia and pachytene spermatocytes,
+argues against a technical artifact. Instead, it points to a genuine
+biological difference in how CpG islands are distributed relative to
+chromatin reorganization on chromosome 8.
+
+Together, these findings indicate that the control analysis functioned
+as intended. The absence of systematic A→B versus B→A differences on X
+validates the robustness of our compartment assignment procedure, while
+the enrichment observed on chromosome 8 likely reflects underlying
+biology rather than methodological bias. In particular, the preferential
+association of CpG islands with A→B transitions in certain cell types
+may signal a directional aspect of chromatin remodeling, where
+regulatory elements are disproportionately positioned at boundaries
+moving from active to inactive states.
 
 \chapter{Conclussion}\label{conclussion}
 
-\chapter{maybe artikler}\label{maybe-artikler}
+\chapter{Supplemental Figures}\label{supplemental-figures}
 
-\begin{figure}
-
-\centering{
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/gc_compartment_analysis_chrX_chr8_combined_20250812_144327.png}
-
-}
-
-\caption{\label{fig-GC}Compartment analysis for chromosomes X and 8 in
-five Macaca cell types---fibroblasts, sperm, round spermatids, pachytene
-spermatocytes, and spermatogonia. GC content was remapped to genomic
-locations where chromatin structure transitions between compartments A
-and B. The data were separated so that each compartment contains only A
-or B structure. For each genomic bin, the plot shows the mean GC
-content, with error bars representing the standard deviation of the
-mean, adjusted by the effective edge contribution (accounting for how
-many edges contribute at longer distances).For chromosome 8, the A
-compartment exhibits higher GC content than the B compartment. In
-tissues involved in spermatogenesis, chromosome X shows similar GC
-content in both A and B compartments. In fibroblasts, GC content is
-higher in the B compartment than in the A compartment.}
-
-\end{figure}%
-
-\begin{figure}
+\begin{suppfig}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/cpgislands/cpgislands_chr8_plus_chrx_overlay_grid3x2_allaxes_newdata.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/gc_compartment_analysis_chrX_chr8_combined_control_20250925_091502.png}
 
 }
 
-\caption{\label{fig-CPG_islands_overlay}\textbf{Figure:} cpgislands}
+\caption{\label{suppfig-GC_content_contol}\textbf{Figure:} GC content
+but contol}
 
-\end{figure}%
+\end{suppfig}%
 
-\begin{figure}
+\begin{suppfig}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/simple_repeat/simple_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/simple_repeat/simple_repeat_chr8_vs_chrx_normalized_poisson_CI_allaxes_control.png}
 
 }
 
-\caption{\label{fig-simple_repeat_combined}\textbf{Figure:}
-simple\_repeat repeat}
+\caption{\label{suppfig-simple_repeat_contol}\textbf{Figure:} GC content
+but contol}
 
-\end{figure}%
+\end{suppfig}%
 
-\begin{figure}
+\begin{suppfig}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/nested_repeat/nested_repeat_chr8_plus_chrx_overlay_grid3x2_allaxes.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/nested_repeat/nested_repeat_chr8_vs_chrx_normalized_poisson_CI_control.png}
 
 }
 
-\caption{\label{fig-nested_repeat_combined}\textbf{Figure:} nested
-repeat}
+\caption{\label{suppfig-nested_repeat_contol}\textbf{Figure:} GC content
+but contol}
 
-\end{figure}%
-
-\chapter{suppelementery}\label{suppelementery}
-
-\begin{figure}
-
-\centering{
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/CPG_islands_chrx_not_normalized.png}
-
-}
-
-\caption{\label{fig-CPG_not_normalized}chrX}
-
-\end{figure}%
-
-\begin{figure}
-
-\centering{
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/CPG_islands_chrx_normalized_poisson_CI_AB_BA.png}
-
-}
-
-\caption{\label{fig-CPG_normalized_ab_chr_x}chrX}
-
-\end{figure}%
-
-\section{chr 8}\label{chr-8}
-
-\begin{figure}
-
-\centering{
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/CPG_islands_chr8_not_normalized.png}
-
-}
-
-\caption{\label{fig-CPG_not_normalized}chr8}
-
-\end{figure}%
-
-\begin{figure}
-
-\centering{
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{illustrations/CPG_islands_chr8_normalized_poisson_CI_AB_BA.png}
-
-}
-
-\caption{\label{fig-CPG_normalized_chr_ab}chr8}
-
-\end{figure}%
-
-\chapter{notes}\label{notes}
-
-\chapter{cromatin structure and regulatiopn of
-genes}\label{cromatin-structure-and-regulatiopn-of-genes}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Regulation of Gene Expression The chromatin state influences gene
-  accessibility:
-\end{enumerate}
-
-Open chromatin is associated with active gene transcription.
-
-Closed chromatin represses gene activity. Repetitive elements near
-regulatory genes can shift chromatin structure, acting as silencers or
-enhancers depending on the epigenetic landscape (Venkatesh \& Workman,
-2015).
-
-Venkatesh \& Workman (2015) -- Histone exchange, chromatin structure and
-transcription regulation Nature Reviews Molecular Cell Biology
-Highlights the plasticity of chromatin around repeats and its impact on
-transcription.
-
-\chapter{repeats sorunding edges}\label{repeats-sorunding-edges}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Genome Stability and Repression of Transposable Elements Repetitive
-  sequences, such as LINEs, SINEs, and satellite DNA, are often silenced
-  via heterochromatin formation. This closed chromatin state is
-  essential to suppress transposable elements, which can otherwise
-  mobilize and disrupt genome integrity (Moazed, 2011).
-\end{enumerate}
-
-Makova \& Hardison (2015) -- The effects of chromatin organization on
-variation in mutation rates Nature Reviews Genetics Discusses how
-heterochromatin protects repeats but also contributes to mutational
-heterogeneity.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  Development and Cell Differentiation During development, regions with
-  repetitive DNA undergo reconfiguration. The switch from euchromatin to
-  heterochromatin is essential for cell lineage specification, and
-  misregulation can cause developmental disorders (Gelato \& Fischle,
-  2008).
-\end{enumerate}
-
-Ghosh \& Woodcock (2010) -- Chromatin higher-order structure and
-dynamics Cold Spring Harbor Perspectives Explains how chromatin
-compaction is governed by nucleosome positioning and repeat regions.
-
-\subsection{Three-dimensional genome reorganization during mouse
-spermatogenesis}\label{three-dimensional-genome-reorganization-during-mouse-spermatogenesis}
-
-\begin{itemize}
-\tightlist
-\item
-  Highlights how A/B compartment transitions coincide with major cell
-  state transitions during spermatogenesis.
-\item
-  Found TF motifs and simple repeats enriched in switching regions.
-\item
-  Sheds light on regulatory elements linked to chromatin phase
-  switching.
-\end{itemize}
-
-Core Findings This study investigates how the 3D organization of the
-genome changes across seven sequential stages of mouse spermatogenesis,
-using Hi-C technology. The work specifically focuses on topologically
-associating domains (TADs), chromatin loops, and A/B compartments,
-revealing highly dynamic reorganization events.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  TAD and Loop Dynamics Present in Type A spermatogonia (early stage).
-\end{enumerate}
-
-Disappear at pachytene stage (meiosis I prophase).
-
-Reappear in mature spermatozoa.
-
-This pattern indicates that TADs are not static during development and
-may not be essential for transcription at all stages.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  CTCF Binding CTCF remains bound at TAD boundary regions even when TADs
-  are absent (e.g., in pachytene spermatocytes).
-\end{enumerate}
-
-This suggests CTCF binding is not sufficient by itself to maintain 3D
-structure.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Enhancers, Promoters, and Active Transcription Despite the absence of
-  TADs at pachytene, enhancers and promoters retain open chromatin.
-\end{enumerate}
-
-Transcription continues, implying that gene expression can occur
-independently of higher-order chromatin loops.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  A/B Compartment Changes A/B compartments are largely conserved on
-  autosomes throughout spermatogenesis.
-\end{enumerate}
-
-However, specific A -\textgreater{} B switching events are correlated
-with changes in gene activity.
-
-The X chromosome loses its A/B compartment structure during stages like
-pachytene spermatocytes (pacSC), round spermatids (rST), and elongating
-spermatids (eST).
-
-Repeats and Chromatin Compartment Transitions TF motif enrichment was
-analyzed in differentially active chromatin regions, which also included
-repetitive DNA content.
-
-During A/B compartment switching, particularly in regions transitioning
-from B (closed) to A (open), some simple and low-complexity repeats were
-enriched, suggesting a role in:
-
-Regulatory rewiring during cell fate transition.
-
-Chromatin accessibility and transcription activation.
-
-The X chromosome, which undergoes massive reorganization and loss of A/B
-compartment structure during specific stages (pacSC, rST, eST), may
-exhibit a distinct repeat signature, though this was only briefly hinted
-at in the paper.
-
-article\{Luo2019, year = \{2019\}, title = \{\{Three-dimensional genome
-reorganization during mouse spermatogenesis\}\}, author = \{Luo, Zhen
-and Wang, Xin and Wang, Rui and Chen, Jie and Chen, Yan and Xu, Qing and
-Cao, Jun\}, journal = \{bioRxiv\}, doi = \{10.1101/585281\}, abstract =
-\{\{Dynamic changes in chromatin architecture accompany spermatogenesis.
-Using Hi-C and ATAC-seq, this study reveals A/B compartment transitions
-and transcription factor motif enrichments that align with germ cell
-stage-specific chromatin changes.\}\}, pages = \{\}, number = \{\},
-volume = \{\}, pmid = \{\}, pmcid = \{\}, issn = \{\}, keywords = \{\},
-local-url = \{https://www.biorxiv.org/content/10.1101/585281v1\} \}
-
-\subsection{Single-cell long-read Hi-C,
-scNanoHi-C2}\label{single-cell-long-read-hi-c-scnanohi-c2}
-
-\begin{itemize}
-\tightlist
-\item
-  Uses single-cell Hi-C to resolve chromatin changes in early germ
-  cells.
-\item
-  Finds TE subfamilies enriched differently in A/B compartments,
-  suggesting a regulatory function of repeat elements.
-\end{itemize}
-
-Key Findings Summary Development of scNanoHi-C2
-
-The authors introduce scNanoHi-C2, a novel single-cell long-read Hi-C
-technique.
-
-It overcomes limitations of standard Hi-C by capturing long-range,
-multi-contact chromatin interactions in individual cells.
-
-3D Genome Dynamics in Germ Cells
-
-Applied to embryonic germline cells, the technique reveals:
-
-Stage-specific topological reorganization of the genome.
-
-Highly dynamic A/B compartment transitions, even at early embryonic
-stages.
-
-Repeat Element Profiling
-
-The study shows distinct enrichment patterns of transposable elements
-(TEs) in A and B compartments.
-
-LINEs and SINEs were differentially represented, correlating with
-developmental chromatin remodeling.
-
-These repeats may contribute to insulation, compartmental identity, or
-nuclear architecture.
-
-Chromatin Rewiring during Primordial Germ Cell (PGC) Development
-
-Early embryonic germ cells exhibit weaker TAD boundaries and less stable
-compartments compared to somatic cells.
-
-As differentiation progresses, compartment strength increases,
-indicating a progressive maturation of 3D genome organization.
-
-X Chromosome Inactivation Patterns
-
-The paper provides high-resolution views of X chromosome organization,
-noting changes in compartmental asymmetry and pairing during early germ
-cell development.
-
-(\textbf{article?})\{Lu2025, year = \{2025\}, title = \{\{Single-cell
-long-read Hi-C, scNanoHi-C2, details 3D genome reorganization in
-embryonic-stage germ cells\}\}, author = \{Lu, Jiawei and Li, Wen and
-Tang, Fuchou\}, journal = \{Nature Structural \& Molecular Biology\},
-doi = \{10.1038/s41594-025-01604-7\}, issn = \{1545-9985\}, abstract =
-\{\{This study applies scNanoHi-C2 to reveal high-resolution single-cell
-3D chromatin structure changes during germline development. Transposable
-elements and repeat families were differentially enriched in A/B
-compartments, impacting developmental regulation.\}\}, pages = \{\},
-number = \{\}, volume = \{\}, pmid = \{\}, pmcid = \{\}, keywords =
-\{\}, local-url = \{https://www.nature.com/articles/s41594-025-01604-7\}
-\}
-
-\subsection{3D genome remodeling and homologous pairing during meiotic
-prophase}\label{d-genome-remodeling-and-homologous-pairing-during-meiotic-prophase}
-
-\begin{itemize}
-\tightlist
-\item
-  Simple and LINE repeats enriched in B compartments, involved in
-  meiotic structural integrity.
-\end{itemize}
-
-Key Findings Summary This study integrates Hi-C chromatin conformation
-capture with super-resolution microscopy to uncover how 3D genome
-architecture is remodeled during meiotic prophase I in both male and
-female germlines (spermatogenesis and oogenesis) in mice.
-
-Homologous Chromosome Pairing Chromosomes exhibit precise and
-progressive pairing during prophase I.
-
-The study captures early pairing events in spermatocytes and oocytes,
-using high-resolution contact maps.
-
-Contact frequency increases significantly in homologous regions during
-zygotene and pachytene stages.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Chromatin Compartment Remodeling A/B compartments are weakened or
-  restructured during prophase.
-\end{enumerate}
-
-Specific B compartments, enriched in LINE elements and heterochromatin,
-show elevated pairing dynamics.
-
-Suggests B compartment flexibility supports pairing more than A.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Role of Repeat Elements Repeat-rich regions, especially LINEs and
-  LTRs, are preferentially localized to B compartments and correlate
-  with stronger interhomolog interactions.
-\end{enumerate}
-
-Repeats may play a structural role in mediating nuclear architecture
-during meiosis.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  Sex Differences in Chromosome Pairing The authors find distinct
-  dynamics between male and female germ cells, including:
-\end{enumerate}
-
-Differences in compartment switching speed.
-
-Asynchronous timing in homolog pairing progression.
-
-Oocytes retain more stable open chromatin than spermatocytes during
-mid-prophase.
-
-(\textbf{article?})\{He2023, year = \{2023\}, title = \{\{3D genome
-remodeling and homologous pairing during meiotic prophase of mouse
-oogenesis and spermatogenesis\}\}, author = \{He, Jianrong and Yan, Ao
-and Chen, Bohan and Huang, Jin and Kee, Kehkooi\}, journal =
-\{Developmental Cell\}, doi = \{10.1016/j.devcel.2023.07.004\}, issn =
-\{1534-5807\}, abstract = \{\{By applying Hi-C and super-resolution
-microscopy, this study tracks chromatin compartment transitions and
-homolog pairing in meiosis. Repeat-enriched B compartments show
-increased pairing dynamics and regulate meiotic architecture.\}\}, pages
-= \{\}, number = \{\}, volume = \{\}, pmid = \{\}, pmcid = \{\},
-keywords = \{\}, local-url =
-\{https://www.cell.com/developmental-cell/abstract/S1534-5807(23)00553-1\}
-\}
-
-\subsection{DICER regulates repeat RNA and chromosome segregation
-(maybe???)}\label{dicer-regulates-repeat-rna-and-chromosome-segregation-maybe}
-
-\begin{itemize}
-\tightlist
-\item
-  Satellite repeats involved in chromatin architecture, A/B compartment
-  boundary insulation via RNA-based silencing pathways.
-\end{itemize}
-
-(\textbf{article?})\{He2023, year = \{2023\}, title = \{\{3D genome
-remodeling and homologous pairing during meiotic prophase of mouse
-oogenesis and spermatogenesis\}\}, author = \{He, Jianrong and Yan, Ao
-and Chen, Bohan and Huang, Jin and Kee, Kehkooi\}, journal =
-\{Developmental Cell\}, doi = \{10.1016/j.devcel.2023.07.004\}, issn =
-\{1534-5807\}, abstract = \{\{By applying Hi-C and super-resolution
-microscopy, this study tracks chromatin compartment transitions and
-homolog pairing in meiosis. Repeat-enriched B compartments show
-increased pairing dynamics and regulate meiotic architecture.\}\}, pages
-= \{\}, number = \{\}, volume = \{\}, pmid = \{\}, pmcid = \{\},
-keywords = \{\}, local-url =
-\{https://www.cell.com/developmental-cell/abstract/S1534-5807(23)00553-1\}
-\}
+\end{suppfig}%
 
 \chapter{Aknowledgements}\label{aknowledgements}
 
@@ -1938,6 +1762,12 @@ existing code to reflect updated variables and experimental needs.
 
 ChatGPT provided syntax support, to accelerate my learning of new
 programming languages. it also help me with proof reading.
+
+\section{Cloudi AI}\label{cloudi-ai}
+
+Cloudi AI helped with debugging my code, making it easier to identify
+and fix errors during the analysis process. It also supported smoother
+progress by suggesting improvements to my workflow.
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
