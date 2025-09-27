@@ -29,8 +29,12 @@ crossref:
       latex-list-of-description: Supplementary Figure
 
 ---
-# index
+# Introduction
+The central aim of this thesis is to investigate chromosomal regions where chromatin transitions between A and B compartments, specifically focusing on the sequence features and regulatory elements that accompany these boundaries. These transitions are of particular interest because they represent dynamic sites of genome reorganization, linking sequence composition to higher-order chromatin structure and, ultimately, to functional outcomes in gene regulation and evolution.
 
+The original idea for this project was to leverage artificial intelligence—specifically genomic pre-trained networks (GPNs)—to predict conservation across species and compare these predictions with chromatin compartment organization. While technically ambitious, this initial approach proved infeasible within the scope of the project, primarily due to computational limitations and the complexity of reproducing large-scale models. Rather than abandoning the question, the project pivoted toward more classical and tractable methodologies, extending the investigation of chromatin transitions through established bioinformatic and comparative genomic approaches.
+
+This transition in strategy opened up the possibility of exploring compartment boundaries from multiple complementary angles: analyzing sequence features such as GC content, CpG islands, and repetitive elements; assessing their distribution relative to compartment edges; and considering their potential roles in genome function and evolution. In doing so, the work contributes both methodological insights—on the challenges of applying AI in genomics—and biological insights into how compartmental transitions are structured and maintained.
 
 ## evolution on X
 The production of gametes in sexually reproducing organisms is a complex, tightly regulated process involving numerous cellular and molecular mechanisms. In males, spermatogenesis—the process by which sperm are formed—progresses through four main stages of differentiation: from germ cells to spermatogonia, then to pachytene spermatocytes, round spermatids, and finally to mature spermatozoa [@Wang2019](Wang et al. 2019). This process is fundamental to male fertility. Meiosis, a specialized form of cell division, ensures the proper pairing, recombination, and segregation of homologous chromosomes, thereby maintaining genetic integrity and promoting variation. A deep understanding of these molecular events is essential for comprehending inheritance, speciation, population genetics, and the biological causes of infertility.
@@ -149,7 +153,7 @@ Repetitive elements make up a large portion of the eukaryotic genome and are bro
 
 # Materials and Methods
 ## GPN arcitecture
-The idea for this project was to evaluate the Genome-Pretrained Network (GPN) introduced in \cite{Kantorovitz2024} and determine whether it could achieve greater accuracy than traditional methods in predicting genome-wide variant effects.
+The idea for this project was to evaluate the Genome-Pretrained Network (GPN) introduced in @Kantorovitz2024 \cite{Kantorovitz2024} and determine whether it could achieve greater accuracy than traditional methods in predicting genome-wide variant effects.
 
 The model is designed as a convolutional neural network (CNN) and takes input sequences with a window size of 512. During training, 15\% of the positions within each window are masked to enable the model to learn meaningful representations.
 
@@ -163,9 +167,22 @@ After passing through the 25 layers, the model produces a contextual embedding w
 
 The GPN variant effect prediction score is calculated as the log-likelihood ratio between the alternate (ALT) and reference (REF) alleles. Here, L represents the window length in base pairs, and D denotes the embedding dimension.
 
+
 ::: {#fig-fig_1_kantorovitz}
 ![](illustrations/fig_1_kantorovitz.png){width="50%"}
+
+**Figure 1.** Schematic overview of the Genome-Pretrained Network (GPN) architecture, adapted from @@Kantorovitz2024. The model processes genomic sequences using stacked dilated convolutional and feedforward layers with skip connections, producing contextual embeddings that support masked nucleotide prediction and variant effect scoring.
 :::
+
+
+
+
+## Data Access
+
+We based our implementation work on the official **GPN** repository maintained by Song Lab: [songlab-cal/gpn](https://github.com/songlab-cal/gpn).
+
+In particular, we referred to the **`analysis/gpn_arabidopsis`** subdirectory of the repository as an example of end-to-end model application on a plant genome: [gpn_arabidopsis](https://github.com/songlab-cal/gpn/tree/main/analysis/gpn_arabidopsis).
+
 
 ## Data Preparation and Pretraining Workflow
 To evaluate the Genome-Pretrained Network (GPN), the initial step involved reproducing the pretraining workflow provided in the original publication. This workflow outlines the procedure for generating a dataset compatible with the model, specifically for masked language modeling over genomic sequences.
@@ -201,7 +218,7 @@ This approach proved successful. When processing a single chromosome at a time, 
 However, due to time constraints near the conclusion of the project timeline, the extracted embeddings were not subjected to further downstream analysis. Although they were successfully retrieved and stored, no additional modeling, interpretation, or evaluation steps were completed within the project scope.
 
 
-## Fecting the raw data 
+## Fecting the raw data Hic analysis 
 The original sequencing data was obtained by a colleague in our research group in order to reproduce the results reported by Wang et al. (2019) [@Wang2019]. The raw data was downloaded from the SRA portal [@Sayers2022] and subsequently filtered to include only paired-end Hi-C reads from macaque samples.
 
 To provide an overview of the material, a summary of the SRA runtable is presented in @tbl-cell-data. This table lists the accession numbers alongside key metadata for each sample. Altogether, the dataset amounts to approximately 1 TB of compressed FASTQ files, comprising ~9.5 billion reads distributed roughly evenly across five tissue types.
@@ -391,7 +408,7 @@ Chromosome 8 is shown on the left and chromosome X on the right. Rows represent 
 ## Control to with A andf B compartment
 To verify that our compartment analysis was not biased by compartment assignment, we performed a negative control experiment. Normally, the data are separated into A or B compartments (as described in the methods section). In the control analysis, however, the data were instead partitioned according to compartment transitions — whether regions lay on an A→B or B→A boundary. Because Hi-C data reflect DNA contacts independently of strand orientation, no systematic difference was expected between the two directions.
 
-As an additional safeguard, the same experiment was repeated for CpG islands. Filtering was carried out with the following code snippet, which reverses the logic of the standard A/B assignment:
+As an additional safeguard, the same experiment was repeated for CpG islands, repeats and GC content. Filtering was carried out with the following code snippet, which reverses the logic of the standard A/B assignment:
 
 ``` python 
     A_val = result[
@@ -403,6 +420,31 @@ As an additional safeguard, the same experiment was repeated for CpG islands. Fi
         ((result['comp'] == 'B') & (result['start'] < 0))
     ].copy()
 ```
+
+The outcomes of the control analysis for simple and nested repeats are presented in Figures @fig-simple_repeat_contol and @suppfig-nested_repeat_contol. Across all tissues, the distributions for both chromosome 8 and chromosome X show identical counts within each bin.  
+
+This consistency indicates that the choice of chromosome split does not introduce a biological difference in the observed patterns. In other words, the apparent symmetry between the A→B and B→A transitions confirms that the results are not biased by the direction of the split, validating the robustness of the control setup.  
+
+
+::: {#fig-simple_repeat_contol}
+![](illustrations/simple_repeat/simple_repeat_chr8_vs_chrx_normalized_poisson_CI_allaxes_control.png){width=100%}
+
+ Control analysis of simple repeats. The distributions for chromosome 8 and chromosome X show identical counts across bins in all tissues, indicating no biological difference introduced by this chromosome split.
+:::
+
+When running the control analysis with GC content, we plotted all five tissues for both chromosome 8 and chromosome X (Figure @fig-GC_content_contol).  
+
+For chromosome 8, no significant differences were observed between the A→B and B→A splits across tissues, with the exception of spermatogonia, where a deviation appeared in the region spanning 0.25 Mb to 1.25 Mb.  
+
+For chromosome X, the results varied by tissue. In fibroblasts, the B→A split showed consistently higher GC content compared to A→B within the 0–1 Mb region. A similar pattern was observed in sperm, where GC content remained higher in B→A. By contrast, in round spermatids and pachytene spermatocytes, there were no significant differences between the two splits. In spermatogonia, however, GC content was again higher in B→A compared to A→B.  
+
+
+::: {#fig-GC_content_contol }
+![](illustrations/gc_compartment_analysis_chrX_chr8_combined_control_20250925_091502.png){width=100%}
+
+ Control analysis of GC content for chromosomes 8 and X across five tissues. For chromosome 8, no significant differences between A→B and B→A were detected except in spermatogonia (0.25–1.25 Mb). For chromosome X, higher GC content was observed in B→A compared to A→B in fibroblasts (0–1 Mb), sperm (0–1 Mb), and spermatogonia, while round spermatids and pachytene spermatocytes showed no differences.
+:::
+
 The resulting profiles in Figure @fig-CPG_normalized_chr_ab_new illustrate the distribution of CpG islands relative to compartment transitions (A→B vs. B→A) on chromosomes 8 and X across multiple cell types.
 
 On chromosome 8, fibroblasts and sperm show a pronounced asymmetry: between ~0.5 and 1.5 Mb from transition edges, CpG islands are more abundant in regions undergoing A→B transitions than in those switching from B→A. This suggests that CpG islands are preferentially associated with loci moving from active to repressive chromatin environments in these contexts. In round spermatids, a similar enrichment is observed closer to the transition site (0–1 Mb), again with higher counts in A→B compared to B→A. By contrast, in spermatogonia and pachytene spermatocytes, CpG islands display a more balanced distribution, with comparable counts in both transition directions across the full range of distances examined.
@@ -411,12 +453,26 @@ On chromosome X, no strong directional bias is detected. Across all tissues anal
 
 Together, these results indicate that CpG islands are not randomly associated with chromatin transitions but instead show chromosome- and stage-specific patterns. Chromosome 8 exhibits directional enrichment of CpG islands, particularly in fibroblasts, sperm, and round spermatids, while the X chromosome appears more symmetric, lacking a consistent bias between A→B and B→A transitions.
 
-::: {#fig-CPG_normalized_chr_ab_new fig-cap= "Negative control analysis of CpG islands on chromosome 8 across five macaque cell types (fibroblast, spermatogonia, pachytene spermatocyte, round spermatid, and sperm). A→B (AB) and B→A (BA) compartment transitions were compared."}
+
+::: {#fig-CPG_normalized_chr_ab_new}
  ![](illustrations/cpgislands/cpgislands_chr8_vs_chrx_normalized_poisson_CI_allaxes_negative_controal_AB_ba.png){width="100%"} 
+
+Negative control analysis of CpG islands on chromosome 8 across five macaque cell types (fibroblast, spermatogonia, pachytene spermatocyte, round spermatid, and sperm). A→B (AB) and B→A (BA) compartment transitions were compared.
+
 :::
 
-the control was also done on GC content here we see there is a simular procentece of GC in each bin across all tisues @suppfig-GC_content_contol. 
-The same was done with simple repates and nested repeat @suppfig-simple_repeat_contol and @suppfig-nested_repeat_contol
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Dissusion 
@@ -456,32 +512,47 @@ Together, these findings suggest that simple repeats are not randomly distribute
 
 ## Control analysis of A→B vs. B→A transitions
 
-The control analysis was designed to ensure that our compartment-based approach was not biased by the way A and B compartments were assigned. Because Hi-C data capture spatial proximity without strand directionality, no systematic difference should exist between transitions designated as A→B versus B→A. Under a strict null expectation, counts of CpG islands should therefore be distributed symmetrically across both categories.
+The negative control analysis was designed to test whether directional compartment assignments (A→B versus B→A) could introduce spurious structure into our results. Since Hi-C captures contact frequencies independently of strand orientation, the null expectation is symmetry: features such as repeats, GC content, or CpG islands should be distributed equivalently across both types of transitions. In large part, our findings support this expectation. For example, simple and nested repeats showed no systematic differences across transition categories or tissues, confirming that our splitting strategy did not artificially bias these features. Similarly, on the X chromosome, CpG islands and GC content exhibited balanced distributions across A→B and B→A transitions in most tissues.
 
-Our results confirm this expectation on the X chromosome, where all cell types exhibited comparable CpG island counts at A→B and B→A transitions. This uniformity suggests that the labeling of compartments on X was not introducing an artificial bias. By contrast, chromosome 8 showed directional enrichment of CpG islands at A→B transitions in fibroblasts, round spermatids, and sperm. The fact that this asymmetry was stage-specific, and absent in spermatogonia and pachytene spermatocytes, argues against a technical artifact. Instead, it points to a genuine biological difference in how CpG islands are distributed relative to chromatin reorganization on chromosome 8.
+However, several deviations from symmetry were observed. Most notably, chromosome 8 displayed stage-specific enrichment of CpG islands in A→B transitions, particularly in fibroblasts, sperm, and round spermatids. Likewise, GC content differences emerged on chromosome X in some tissues, with B→A regions showing consistently elevated values. These patterns raise an important interpretive challenge: are they biologically meaningful, or could they reflect artifacts introduced by the partitioning scheme itself?
 
-Together, these findings indicate that the control analysis functioned as intended. The absence of systematic A→B versus B→A differences on X validates the robustness of our compartment assignment procedure, while the enrichment observed on chromosome 8 likely reflects underlying biology rather than methodological bias. In particular, the preferential association of CpG islands with A→B transitions in certain cell types may signal a directional aspect of chromatin remodeling, where regulatory elements are disproportionately positioned at boundaries moving from active to inactive states.
+One possible explanation is that the asymmetries arise from the structure of the data splitting procedure. By conditioning on compartment boundaries, the analysis inherently emphasizes regions undergoing dynamic changes in chromatin state. If features such as CpG islands or GC-rich domains are unevenly distributed relative to those boundaries, then separating regions into A→B versus B→A could exaggerate apparent differences even if no true directional bias exists. In other words, what appears to be a biological signal may instead reflect the geometry of the compartment transition and how bins are aligned across the genome.
+
+At the same time, the tissue- and chromosome-specific nature of these asymmetries argues against a purely technical artifact. If the differences were driven solely by the method of splitting, one would expect them to occur broadly and consistently across tissues and chromosomes. Instead, the enrichment of CpG islands in A→B regions is largely confined to chromosome 8 and restricted to particular developmental stages, suggesting that at least part of the signal reflects genuine biology. This interpretation is supported by the absence of comparable asymmetries on the X chromosome, which serves as an internal control.
+
+Taken together, these results highlight both the strength and the limitation of the control design. On the one hand, the null expectation of symmetry holds for many features, providing reassurance that our compartmental analyses are not systematically biased. On the other hand, the exceptions underscore that care must be taken when interpreting direction-specific enrichments. Some patterns, particularly those restricted to individual chromosomes and developmental stages, may represent true biological processes—for instance, preferential positioning of CpG islands at A→B transitions during chromatin remodeling. Others, however, may be artifacts of the binning and splitting procedure. Distinguishing between these possibilities will require further analyses, such as permuted controls, higher-resolution maps, or independent validation datasets.
+
+## Reproduction Attempt of GPN
+
+Our attempts to reproduce the Genome-Pretrained Network (GPN) workflow highlighted both the promise of the approach and the challenges of applying it under limited computational resources. While we successfully generated pretraining-compatible datasets and partially executed the workflow, full-scale training was hindered by two main factors: insufficient documentation and substantial hardware requirements.  
+
+The original GPN study relied on multiple high-memory GPUs (A100s with 80–100 GB RAM), whereas our available infrastructure consisted of GPUs with less than half this capacity. This mismatch resulted in repeated out-of-memory errors and prevented us from scaling the model to the level reported in the original publication. Although we explored workarounds such as chromosome-level partitioning, these only enabled partial execution and did not allow for comprehensive evaluation.  
+
+This outcome underscores a broader limitation of cutting-edge genomics deep learning models: their reliance on specialized hardware makes reproducibility difficult for smaller research groups. At the same time, the successful preparation of compatible datasets and the partial execution steps demonstrate that the workflow is adaptable in principle. Future work should prioritize clearer documentation and optimization strategies that reduce the model’s hardware footprint, thereby lowering barriers to entry for the wider community.  
 
 
 # Conclussion 
 
+Analyses of GC content, CpG islands, and simple repeats relative to A/B compartments and their transitions reveal both stable principles of 3D genome organization and notable exceptions. On autosomes such as chromosome 8, the canonical link between GC-rich, CpG island–dense regions and active A compartments is maintained across developmental stages, underscoring the reliability of the compartment-calling strategy. In contrast, the macaque X chromosome departs from this pattern, showing attenuated or inverted correlations that reflect its distinctive regulatory environment and evolutionary history.
 
+CpG islands show dynamic, stage-specific associations with compartment transitions, becoming enriched in A→B regions during later stages of spermatogenesis when chromatin is extensively reorganized. Simple repeats, by comparison, display reciprocal biases between autosomes and the X chromosome and accumulate at compartment boundaries, consistent with potential structural or modulatory roles.
+
+Control analyses provide important context for these observations. Symmetry between A→B and B→A transitions holds in many cases, yet selective deviations—such as CpG island enrichment on chromosome 8 and GC asymmetries on the X—raise the possibility that both true biological processes and methodological artifacts are contributing to the signal. Independent validation with orthogonal datasets and higher-resolution maps will be crucial for resolving this ambiguity.
+
+Altogether, the findings indicate that while GC content and CpG islands are strong predictors of compartment identity on autosomes, their predictive power is context-dependent and less reliable on the X chromosome. Sequence composition, repeats, and chromatin structure emerge as deeply interconnected, shaped by both general organizing principles and chromosome-specific constraints. Future work integrating chromatin marks, transcriptional activity, and experimental perturbations will be essential to separate methodological effects from genuine biology and to refine models of how sequence features guide higher-order genome folding.
+
+## futher investigation 
+This study establishes a foundation for linking sequence features with chromatin compartments during spermatogenesis, but several directions remain open. A key next step is to integrate protein-binding data, particularly CTCF, to test whether compartment edges coincide with architectural anchor points and how these relationships change across developmental stages.
+
+Recombination rates also warrant investigation. Because meiotic hotspots are shaped by chromatin environment, assessing crossover frequency near compartment boundaries could connect 3D genome structure with germline evolution. Structural variants such as inversions provide another opportunity, as they can reposition or disrupt boundaries and reveal causal effects of sequence context.
+
+Finally, higher resolution will be essential. Our current 100-kb compartment calls provide a broad view but obscure finer features. Moving to 10-kb resolution would sharpen boundary localization and enable more precise comparisons with sequence elements, regulatory sites, and recombination maps. Ongoing efforts in this direction within the group will provide an important resource for these future analyses.
 
 
 
 # Supplemental Figures
 
-::: {#suppfig-GC_content_contol }
-![](illustrations/gc_compartment_analysis_chrX_chr8_combined_control_20250925_091502.png){width=100%}
 
-**Figure:** GC content but contol
-:::
-
-::: {#suppfig-simple_repeat_contol }
-![](illustrations/simple_repeat/simple_repeat_chr8_vs_chrx_normalized_poisson_CI_allaxes_control.png){width=100%}
-
-**Figure:** GC content but contol
-:::
 
 
 ::: {#suppfig-nested_repeat_contol }
